@@ -6,7 +6,7 @@ const PartnersSection = () => {
     >
       <div className="max-w-7xl mx-auto w-full text-center">
         <div className="mb-12">
-          <h2 className="text-4xl font-bold text-textDark mb-4 flex items-center justify-center gap-2">
+          <h2 className="md:text-4xl text-2xl font-bold text-textDark mb-4 flex items-center justify-center gap-2">
             Our Partners & Sponsors
           </h2>
         </div>

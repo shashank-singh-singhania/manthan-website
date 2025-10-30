@@ -286,6 +286,45 @@ export default function Register() {
               </Form.Item>
 
               <Form.Item
+                label={<span className="text-textDark">State</span>}
+                name="state"
+                rules={[{ required: true, message: "Select your state" }]}
+              >
+                <Select
+                  placeholder="Select your state"
+                  className="rounded-lg"
+                  // loading={loading.states}
+                  // disabled={loading.states}
+                  onChange={handleStateChange}
+                >
+                  {states.map((state) => (
+                    <Option key={state.id} value={state.id}>
+                      {state.name}
+                    </Option>
+                  ))}
+                </Select>
+              </Form.Item>
+
+              <Form.Item
+                label={<span className="text-textDark">District</span>}
+                name="district"
+                rules={[{ required: true, message: "Select your district" }]}
+              >
+                <Select
+                  placeholder="Select your district"
+                  className="rounded-lg"
+                  // loading={loading.districts}
+                  // disabled={loading.districts || districts.length === 0}
+                >
+                  {districts.map((district) => (
+                    <Option key={district.id} value={district.id}>
+                      {district.name}
+                    </Option>
+                  ))}
+                </Select>
+              </Form.Item>
+
+              <Form.Item
                 label={<span className="text-textDark">School Name</span>}
                 name="school"
                 rules={[{ required: true, message: "Select your school name" }]}
@@ -334,45 +373,6 @@ export default function Register() {
               </Form.Item>
 
               <Form.Item
-                label={<span className="text-textDark">State</span>}
-                name="state"
-                rules={[{ required: true, message: "Select your state" }]}
-              >
-                <Select
-                  placeholder="Select your state"
-                  className="rounded-lg"
-                  // loading={loading.states}
-                  // disabled={loading.states}
-                  onChange={handleStateChange}
-                >
-                  {states.map((state) => (
-                    <Option key={state.id} value={state.id}>
-                      {state.name}
-                    </Option>
-                  ))}
-                </Select>
-              </Form.Item>
-
-              <Form.Item
-                label={<span className="text-textDark">District</span>}
-                name="district"
-                rules={[{ required: true, message: "Select your district" }]}
-              >
-                <Select
-                  placeholder="Select your district"
-                  className="rounded-lg"
-                  // loading={loading.districts}
-                  // disabled={loading.districts || districts.length === 0}
-                >
-                  {districts.map((district) => (
-                    <Option key={district.id} value={district.id}>
-                      {district.name}
-                    </Option>
-                  ))}
-                </Select>
-              </Form.Item>
-
-              <Form.Item
                 label={<span className="text-textDark">School ID</span>}
                 name="schoolId"
                 valuePropName="fileList"
@@ -386,7 +386,31 @@ export default function Register() {
                     icon={<UploadOutlined />}
                     className="rounded-lg border-border text-textDark"
                   >
-                    Upload School ID
+                    Upload your School ID
+                  </Button>
+                </Upload>
+              </Form.Item>
+
+              <Form.Item
+                label={
+                  <span className="text-textDark">High School Certificate</span>
+                }
+                name="highSchoolCertificate"
+                valuePropName="fileList"
+                getValueFromEvent={(e) => (Array.isArray(e) ? e : e?.fileList)}
+                rules={[
+                  {
+                    required: true,
+                    message: "Please upload your high school certificate",
+                  },
+                ]}
+              >
+                <Upload beforeUpload={() => false} maxCount={1}>
+                  <Button
+                    icon={<UploadOutlined />}
+                    className="rounded-lg border-border text-textDark"
+                  >
+                    Upload High School Certificate
                   </Button>
                 </Upload>
               </Form.Item>

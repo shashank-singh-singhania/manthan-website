@@ -16,7 +16,7 @@ const Contact = () => {
 
           <div className="grid md:grid-cols-2 gap-10 pt-10">
             <div className="bg-linear-to-br from-white to-gray-100 rounded-3xl p-8 shadow-lg transition-all border border-gray-200">
-              <h3 className="text-2xl font-bold mb-6 text-primary">
+              <h3 className="md:text-2xl text-xl font-bold mb-6 text-primary">
                 Student Coordinators
               </h3>
               <div className="space-y-6">
@@ -41,7 +41,7 @@ const Contact = () => {
             </div>
 
             <div className="bg-linear-to-br from-white to-gray-100 rounded-3xl p-8 shadow-lg transition-all border border-gray-200">
-              <h3 className="text-2xl font-bold mb-6 text-primary">
+              <h3 className="md:text-2xl text-xl font-bold mb-6 text-primary">
                 Faculty Coordinators
               </h3>
               <div className="space-y-6">
