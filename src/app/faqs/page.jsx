@@ -70,6 +70,7 @@ const Faqs = () => {
           </div>
         </div>
       </section>
+      <div className="py-10"></div>
       <Footer />
     </div>
   );

@@ -2,7 +2,7 @@ const PartnersSection = () => {
   return (
     <section
       id="partners"
-      className="flex flex-col items-center justify-center py-20 px-4"
+      className="flex flex-col items-center justify-center pb-20 px-4"
     >
       <div className="max-w-7xl mx-auto w-full text-center">
         <div className="mb-12">

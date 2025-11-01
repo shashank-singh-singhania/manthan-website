@@ -1,75 +1,34 @@
 "use client";
-import { Form, Input, Select, Upload, Button, Spin } from "antd";
+import { Form, Input, Select, Upload, Button } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import toast from "react-hot-toast";
 import { endpoints } from "@/constants/urls";
 import { apiCall } from "@/utils/api";
 
 const { Option } = Select;
 
-export default function Register() {
+export default function OnlineRegister() {
   const [form] = Form.useForm();
   const [schools, setSchools] = useState([]);
-  const [states, setStates] = useState([]);
-  const [districts, setDistricts] = useState([]);
+  const [classes, setClasses] = useState([]);
+  const [sections, setSections] = useState([]);
   const [emailVerified, setEmailVerified] = useState(false);
-  const [aadharVerified, setAadharVerified] = useState(false);
-
-  useEffect(() => {
-    fetchSchools();
-    fetchStates();
-  }, []);
 
   const fetchSchools = async () => {
-    // setLoading((prev) => ({ ...prev, schools: true }));
     try {
       const response = await apiCall("get", endpoints.GET_SCHOOLS, {
         headers: { loader: false },
       });
       if (response.success) {
         setSchools(response.data.schools || []);
+        setClasses(response.data.classes || []);
+        setSections(response.data.sections || []);
       } else {
-        toast.error("Failed to load schools");
+        toast.error("Failed to load schools, classes and sections");
       }
     } catch (error) {
-      toast.error("Error loading schools");
-    }
-  };
-
-  const fetchStates = async () => {
-    // setLoading((prev) => ({ ...prev, states: true }));
-    try {
-      const response = await apiCall("get", endpoints.GET_STATES, {
-        headers: { loader: false },
-      });
-      if (response.success) {
-        setStates(response.data.states || []);
-      } else {
-        toast.error("Failed to load states");
-      }
-    } catch (error) {
-      toast.error("Error loading states");
-    }
-  };
-
-  const fetchDistricts = async (stateId) => {
-    // setLoading((prev) => ({ ...prev, districts: true }));
-    setDistricts([]);
-    form.setFieldValue("district", undefined);
-
-    try {
-      const response = await apiCall(
-        "get",
-        `${endpoints.GET_DISTRICTS}/${stateId}`
-      );
-      if (response.success) {
-        setDistricts(response.data.districts || []);
-      } else {
-        toast.error("Failed to load districts");
-      }
-    } catch (error) {
-      toast.error("Error loading districts");
+      toast.error("Error loading data");
     }
   };
 
@@ -100,53 +59,43 @@ export default function Register() {
     }
   };
 
-  const handleAadharVerification = async () => {
-    const aadhar = form.getFieldValue("aadhar");
+  const handlePincodeVerification = async () => {
+    const pincode = form.getFieldValue("pincode");
     try {
-      await form.validateFields(["aadhar"]);
+      await form.validateFields(["pincode"]);
     } catch {
       return;
     }
 
-    if (!aadhar || aadharVerified) return;
+    if (!pincode) return;
 
     try {
-      const response = await apiCall("post", endpoints.VERIFY_AADHAR, {
-        data: { aadhar },
+      const response = await apiCall("post", endpoints.VERIFY_PINCODE, {
+        data: { pincode },
       });
 
       if (response.success) {
-        setAadharVerified(true);
-        toast.success("Aadhar verified successfully");
+        form.setFieldsValue({
+          state: response.data.state,
+          district: response.data.district,
+        });
+        toast.success("Pincode verified successfully");
       } else {
-        toast.error(response.data.message || "Aadhar verification failed");
-        form.setFieldValue("aadhar", "");
+        toast.error(response.data.message || "Pincode verification failed");
+        form.setFieldValue("pincode", "");
       }
     } catch (error) {
-      toast.error("Error verifying Aadhar");
+      toast.error("Error verifying pincode");
     }
-  };
-
-  const handleStateChange = (stateId) => {
-    fetchDistricts(stateId);
   };
 
   const handleEmailChange = () => {
     setEmailVerified(false);
   };
 
-  const handleAadharChange = () => {
-    setAadharVerified(false);
-  };
-
   const onFinish = async (values) => {
     if (!emailVerified) {
       toast.error("Please verify your email first");
-      return;
-    }
-
-    if (!aadharVerified) {
-      toast.error("Please verify your Aadhar number first");
       return;
     }
 
@@ -159,7 +108,6 @@ export default function Register() {
       toast.success(response.data.message);
       form.resetFields();
       setEmailVerified(false);
-      setAadharVerified(false);
     } else {
       toast.error(response.data.error);
     }
@@ -170,14 +118,14 @@ export default function Register() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="w-full max-w-2xl">
-        <div className="bg-white rounded-2xl shadow-xl p-2 md:p-10">
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-8">
+      <div className="w-full max-w-3xl">
+        <div className="bg-white rounded-2xl shadow-xl p-6 md:p-10">
           <div className="text-center mb-6">
-            <h1 className="text-3xl md:text-4xl font-bold mb-2 text-primary">
+            <h1 className="text-3xl md:text-4xl font-bold mb-2 text-blue-600">
               MANTHAN 3.0
             </h1>
-            <p className="text-sm md:text-base text-textLight">
+            <p className="text-sm md:text-base text-gray-600">
               Register for the online quiz
             </p>
           </div>
@@ -192,7 +140,7 @@ export default function Register() {
           >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4">
               <Form.Item
-                label={<span className="text-textDark">First Name</span>}
+                label={<span className="text-gray-700">First Name</span>}
                 name="firstName"
                 rules={[
                   { required: true, message: "Enter your first name" },
@@ -209,7 +157,7 @@ export default function Register() {
               </Form.Item>
 
               <Form.Item
-                label={<span className="text-textDark">Last Name</span>}
+                label={<span className="text-gray-700">Last Name</span>}
                 name="lastName"
                 rules={[
                   {
@@ -225,7 +173,7 @@ export default function Register() {
               </Form.Item>
 
               <Form.Item
-                label={<span className="text-textDark">Email</span>}
+                label={<span className="text-gray-700">Email</span>}
                 name="email"
                 rules={[
                   { required: true, message: "Enter your email" },
@@ -235,13 +183,28 @@ export default function Register() {
                 <Input
                   placeholder="Enter your email"
                   className="rounded-lg"
-                  onBlur={handleEmailVerification}
                   onChange={handleEmailChange}
+                  suffix={
+                    emailVerified && (
+                      <span className="text-green-600 font-bold">✓</span>
+                    )
+                  }
                 />
               </Form.Item>
 
+              <Form.Item label=" ">
+                <Button
+                  onClick={handleEmailVerification}
+                  disabled={emailVerified}
+                  className="w-full rounded-lg"
+                  type="primary"
+                >
+                  {emailVerified ? "Verified" : "Verify Email"}
+                </Button>
+              </Form.Item>
+
               <Form.Item
-                label={<span className="text-textDark">Phone Number</span>}
+                label={<span className="text-gray-700">Phone Number</span>}
                 name="phone"
                 rules={[
                   { required: true, message: "Enter your phone number" },
@@ -259,7 +222,7 @@ export default function Register() {
               </Form.Item>
 
               <Form.Item
-                label={<span className="text-textDark">Aadhar Number</span>}
+                label={<span className="text-gray-700">Aadhar Number</span>}
                 name="aadhar"
                 rules={[
                   { required: true, message: "Enter your Aadhar number" },
@@ -273,68 +236,56 @@ export default function Register() {
                   placeholder="Enter your Aadhar number"
                   className="rounded-lg"
                   maxLength={12}
-                  onBlur={handleAadharVerification}
-                  onChange={handleAadharChange}
-                  // suffix={
-                  //   loading.aadharVerification ? (
-                  //     <Spin size="small" />
-                  //   ) : aadharVerified ? (
-                  //     <span className="text-green-600">✓</span>
-                  //   ) : null
-                  // }
                 />
               </Form.Item>
 
               <Form.Item
-                label={<span className="text-textDark">State</span>}
+                label={<span className="text-gray-700">Pincode</span>}
+                name="pincode"
+                rules={[
+                  { required: true, message: "Enter your Pincode" },
+                  {
+                    pattern: /^[0-9]{6}$/,
+                    message: "Enter a valid 6-digit Pincode",
+                  },
+                ]}
+              >
+                <Input
+                  placeholder="Enter your Pincode"
+                  className="rounded-lg"
+                  maxLength={6}
+                  onBlur={handlePincodeVerification}
+                />
+              </Form.Item>
+
+              <Form.Item
+                label={<span className="text-gray-700">State</span>}
                 name="state"
-                rules={[{ required: true, message: "Select your state" }]}
+                rules={[{ required: true, message: "Enter State" }]}
               >
-                <Select
-                  placeholder="Select your state"
+                <Input
+                  placeholder="Auto-filled from pincode"
                   className="rounded-lg"
-                  // loading={loading.states}
-                  // disabled={loading.states}
-                  onChange={handleStateChange}
-                >
-                  {states.map((state) => (
-                    <Option key={state.id} value={state.id}>
-                      {state.name}
-                    </Option>
-                  ))}
-                </Select>
+                />
               </Form.Item>
 
               <Form.Item
-                label={<span className="text-textDark">District</span>}
+                label={<span className="text-gray-700">District</span>}
                 name="district"
-                rules={[{ required: true, message: "Select your district" }]}
+                rules={[{ required: true, message: "Enter District" }]}
               >
-                <Select
-                  placeholder="Select your district"
+                <Input
+                  placeholder="Auto-filled from pincode"
                   className="rounded-lg"
-                  // loading={loading.districts}
-                  // disabled={loading.districts || districts.length === 0}
-                >
-                  {districts.map((district) => (
-                    <Option key={district.id} value={district.id}>
-                      {district.name}
-                    </Option>
-                  ))}
-                </Select>
+                />
               </Form.Item>
 
               <Form.Item
-                label={<span className="text-textDark">School Name</span>}
+                label={<span className="text-gray-700">School Name</span>}
                 name="school"
                 rules={[{ required: true, message: "Select your school name" }]}
               >
-                <Select
-                  placeholder="Select your school"
-                  className="rounded-lg"
-                  // loading={loading.schools}
-                  // disabled={loading.schools}
-                >
+                <Select placeholder="Select your school" className="rounded-lg">
                   {schools.map((school) => (
                     <Option key={school.id} value={school.id}>
                       {school.name}
@@ -344,20 +295,21 @@ export default function Register() {
               </Form.Item>
 
               <Form.Item
-                label={<span className="text-textDark">Class</span>}
+                label={<span className="text-gray-700">Class</span>}
                 name="class"
                 rules={[{ required: true, message: "Select your class" }]}
               >
                 <Select placeholder="Select your class" className="rounded-lg">
-                  <Option value="9">Class 9</Option>
-                  <Option value="10">Class 10</Option>
-                  <Option value="11">Class 11</Option>
-                  <Option value="12">Class 12</Option>
+                  {classes.map((cls) => (
+                    <Option key={cls.id} value={cls.id}>
+                      {cls.name}
+                    </Option>
+                  ))}
                 </Select>
               </Form.Item>
 
               <Form.Item
-                label={<span className="text-textDark">Section</span>}
+                label={<span className="text-gray-700">Section</span>}
                 name="section"
                 rules={[{ required: true, message: "Select your section" }]}
               >
@@ -365,15 +317,16 @@ export default function Register() {
                   placeholder="Select your section"
                   className="rounded-lg"
                 >
-                  <Option value="A">A</Option>
-                  <Option value="B">B</Option>
-                  <Option value="C">C</Option>
-                  <Option value="D">D</Option>
+                  {sections.map((section) => (
+                    <Option key={section.id} value={section.id}>
+                      {section.name}
+                    </Option>
+                  ))}
                 </Select>
               </Form.Item>
 
               <Form.Item
-                label={<span className="text-textDark">School ID</span>}
+                label={<span className="text-gray-700">School ID</span>}
                 name="schoolId"
                 valuePropName="fileList"
                 getValueFromEvent={(e) => (Array.isArray(e) ? e : e?.fileList)}
@@ -382,10 +335,7 @@ export default function Register() {
                 ]}
               >
                 <Upload beforeUpload={() => false} maxCount={1}>
-                  <Button
-                    icon={<UploadOutlined />}
-                    className="rounded-lg border-border text-textDark"
-                  >
+                  <Button icon={<UploadOutlined />} className="rounded-lg">
                     Upload your School ID
                   </Button>
                 </Upload>
@@ -393,7 +343,7 @@ export default function Register() {
 
               <Form.Item
                 label={
-                  <span className="text-textDark">High School Certificate</span>
+                  <span className="text-gray-700">High School Certificate</span>
                 }
                 name="highSchoolCertificate"
                 valuePropName="fileList"
@@ -406,10 +356,7 @@ export default function Register() {
                 ]}
               >
                 <Upload beforeUpload={() => false} maxCount={1}>
-                  <Button
-                    icon={<UploadOutlined />}
-                    className="rounded-lg border-border text-textDark"
-                  >
+                  <Button icon={<UploadOutlined />} className="rounded-lg">
                     Upload High School Certificate
                   </Button>
                 </Upload>
@@ -419,7 +366,7 @@ export default function Register() {
             <Form.Item className="mb-0">
               <button
                 type="submit"
-                className="w-full h-12 rounded-lg text-base font-semibold bg-primary text-white hover:bg-primary/90 transition-colors mt-2"
+                className="w-full h-12 rounded-lg text-base font-semibold bg-blue-600 text-white hover:bg-blue-700 transition-colors mt-2"
               >
                 Register
               </button>

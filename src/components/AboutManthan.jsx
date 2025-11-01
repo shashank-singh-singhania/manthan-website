@@ -24,19 +24,22 @@ const AboutManthan = () => {
   return (
     <section
       id="about-manthan"
-      className="md:py-20 py-10 px-4 font-inter min-h-screen"
+      className="md:py-20 py-10 px-4 font-inter min-h-screen relative overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-14">
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className="text-center mb-14 ">
           <h2
             className={`text-2xl md:text-4xl font-extrabold mb-3 leading-tight`}
           >
-            About <span className="text-primary">MANTHAN 3.0</span>
+            About{" "}
+            <span className="text-primary relative inline-block group">
+              MANTHAN 3.0
+            </span>
           </h2>
-          <div className="w-20 h-1 bg-primary mx-auto rounded-full"></div>
+          <div className="w-20 h-1 bg-primary mx-auto rounded-full transition-all duration-500 hover:w-32"></div>
         </div>
 
-        <div className="mb-12 bg-primary/5 rounded-2xl p-8 border border-primary/20">
+        <div className="mb-12 bg-primary/5 rounded-2xl p-8 border border-primary/20 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group">
           <p className="text-xl font-semibold text-textDark mb-3 italic">
             "War and Diplomacy: Crafting Nations Towards Peace"
           </p>
@@ -63,12 +66,14 @@ const AboutManthan = () => {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8 mb-12">
-          <div className="bg-white rounded-xl p-8 shadow-md border border-primary/20 hover:shadow-lg transition-shadow">
-            <div className="flex items-center gap-3 mb-4">
-              <Users className="w-6 h-6 text-primary" />
+          <div className="bg-white rounded-xl p-8 shadow-md border border-primary/20 relative overflow-hidden">
+            <div className="flex items-center gap-3 mb-4 relative z-10">
+              <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center transition-transform duration-300 ">
+                <Users className="w-6 h-6 text-primary" />
+              </div>
               <h3 className="text-2xl font-bold text-primary">The Vision</h3>
             </div>
-            <p className="text-textLight text-justify leading-relaxed">
+            <p className="text-textLight text-justify leading-relaxed relative z-10">
               Manthan is not just a competition - it is a movement that aims to
               empower students with confidence, broaden their horizons, and
               prepare them to shine on national and global platforms. By
@@ -77,18 +82,20 @@ const AboutManthan = () => {
             </p>
           </div>
 
-          <div className="bg-white rounded-xl p-8 shadow-md border border-accent/20 hover:shadow-lg transition-shadow">
-            <div className="flex items-center gap-3 mb-4">
-              <Award className="w-6 h-6 text-accent" />
+          <div className="bg-white rounded-xl p-8 shadow-md border border-accent/20 relative overflow-hidden">
+            <div className="flex items-center gap-3 mb-4 relative z-10">
+              <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center transition-transform duration-300 ">
+                <Award className="w-6 h-6 text-accent" />
+              </div>
               <h3 className="text-2xl font-bold text-accent">Quiz Master</h3>
             </div>
-            <p className="text-textLight leading-relaxed mb-3 text-justify">
+            <p className="text-textLight leading-relaxed mb-3 text-justify relative z-10">
               <span className="font-semibold text-textDark">
                 Mr. Gautam Bose
               </span>
               , Event Manager and CEO of Greycells
             </p>
-            <p className="text-textLight leading-relaxed text-justify">
+            <p className="text-textLight leading-relaxed text-justify relative z-10">
               Renowned for his unmatched energy and vast experience, Mr. Bose
               has made Manthan a memorable intellectual fest for participants
               and audiences alike.
@@ -113,12 +120,13 @@ const AboutManthan = () => {
                 return (
                   <div
                     key={idx}
-                    className="bg-white rounded-xl p-5 text-center border border-primary/20 shadow-sm hover:shadow-md transition-shadow cursor-pointer min-w-[120px] flex flex-col justify-center"
+                    className="bg-white rounded-xl p-5 text-center border border-primary/20 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-2 cursor-pointer min-w-[120px] flex flex-col justify-center group animate-scale-in"
+                    style={{ animationDelay: `${idx * 100}ms` }}
                   >
-                    <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
-                      <Icon className="w-6 h-6 text-primary" />
+                    <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3 transition-all duration-300 group-hover:bg-primary/20 group-hover:scale-110 group-hover:rotate-6">
+                      <Icon className="w-6 h-6 text-primary transition-transform duration-300 group-hover:scale-110" />
                     </div>
-                    <div className="font-semibold text-sm md:text-base text-primary mb-1">
+                    <div className="font-semibold text-sm md:text-base text-primary mb-1 transition-colors duration-300 group-hover:text-accent">
                       {item.word}
                     </div>
                     <div className="text-xs text-textLight italic">
@@ -133,7 +141,9 @@ const AboutManthan = () => {
 
         <div className="mb-12">
           <div className="text-center mb-8 pt-10">
-            <Trophy className="w-12 h-12 mx-auto mb-3 text-accent" />
+            <div className="inline-block">
+              <Trophy className="w-12 h-12 mx-auto mb-3 text-accent" />
+            </div>
             <h3 className="text-3xl font-bold text-primary mb-2">
               Prizes Worth ₹1 Lakh
             </h3>
@@ -143,7 +153,7 @@ const AboutManthan = () => {
           </div>
 
           <div className="grid lg:grid-cols-2 gap-8">
-            <div className="bg-white rounded-xl p-8 shadow-md border border-gray-200">
+            <div className="bg-white rounded-xl p-8 shadow-md border border-gray-200 hover:shadow-xl transition-all duration-300">
               <h4 className="md:text-2xl text-xl font-bold mb-6 text-primary text-center">
                 Online Quiz Winners
               </h4>
@@ -152,12 +162,12 @@ const AboutManthan = () => {
                   <div
                     key={idx}
                     className="flex justify-between items-center p-3 rounded-lg 
-                        bg-gray-50 border border-gray-200"
+                        bg-gray-50 border border-gray-200 hover:bg-primary/5 hover:border-primary/30 transition-all duration-200 hover:translate-x-2 group"
                   >
-                    <span className="font-semibold text-textDark">
+                    <span className="font-semibold text-textDark group-hover:text-primary transition-colors duration-200">
                       {prize.position} Prize
                     </span>
-                    <span className="font-bold text-lg text-primary">
+                    <span className="font-bold text-lg text-primary transition-transform duration-200 group-hover:scale-110">
                       {prize.amount}
                     </span>
                   </div>
@@ -165,21 +175,21 @@ const AboutManthan = () => {
               </div>
             </div>
 
-            <div className="bg-white rounded-xl p-8 shadow-md border border-gray-200">
+            <div className="bg-white rounded-xl p-8 shadow-md border border-gray-200 hover:shadow-xl transition-all duration-300">
               <h4 className="md:text-2xl text-xl font-bold mb-6 text-accent text-center">
                 Grand Finale (On-Campus)
               </h4>
-              <div className="space-y-4">
+              <div className="space-y-4 pb-10">
                 {finalePrizes.map((prize, idx) => (
                   <div
                     key={idx}
-                    className="bg-primary/5 border border-primary/20 rounded-lg p-6"
+                    className="bg-primary/5 border border-primary/20 rounded-lg p-6 hover:bg-primary/10 hover:border-primary/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-md group"
                   >
                     <div className="flex justify-between items-center">
-                      <span className="font-semibold text-textDark">
+                      <span className="font-semibold text-textDark group-hover:text-primary transition-colors duration-200">
                         {prize.position}
                       </span>
-                      <span className="font-bold text-2xl text-primary">
+                      <span className="font-bold text-2xl text-primary transition-transform duration-200 group-hover:scale-110">
                         {prize.amount}
                       </span>
                     </div>
@@ -191,8 +201,8 @@ const AboutManthan = () => {
                   </div>
                 ))}
               </div>
-              <div className="text-center bg-primary/5 rounded-xl p-10 mt-15 border border-primary/20">
-                <h3 className="md:text-3xl text-2xl font-bold mb-4">
+              <div className="text-center bg-primary/5 rounded-xl p-10 mt-6 border border-primary/20 hover:bg-primary/10 transition-all duration-300 group">
+                <h3 className="md:text-3xl text-2xl font-bold mb-4 group-hover:text-primary transition-colors duration-300">
                   Join Us at Manthan 3.0
                 </h3>
                 <p className="md:text-lg text-sm text-textLight mb-6 max-w-3xl mx-auto">
@@ -201,13 +211,13 @@ const AboutManthan = () => {
                   horizons, and shine on the national stage!
                 </p>
                 <div className="flex flex-wrap justify-center gap-3 text-sm">
-                  <span className="bg-white px-5 py-2 rounded-full border border-primary/30 text-textLight">
+                  <span className="bg-white px-5 py-2 rounded-full border border-primary/30 text-textLight hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 cursor-default">
                     Critical Thinking
                   </span>
-                  <span className="bg-white px-5 py-2 rounded-full border border-primary/30 text-textLight">
+                  <span className="bg-white px-5 py-2 rounded-full border border-primary/30 text-textLight hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 cursor-default">
                     Analytical Skills
                   </span>
-                  <span className="bg-white px-5 py-2 rounded-full border border-primary/30 text-textLight">
+                  <span className="bg-white px-5 py-2 rounded-full border border-primary/30 text-textLight hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 cursor-default">
                     Teamwork
                   </span>
                 </div>
