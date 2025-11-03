@@ -1,0 +1,12 @@
+services:
+  nginx-react:
+    build:
+      context: .
+      dockerfile: DockerFile
+    restart: always
+    tty: true
+    volumes:
+      - ./nginx/ssl:/etc/ssl
+    ports:
+      - 80:80
+      - 443:443
