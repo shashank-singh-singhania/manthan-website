@@ -4,21 +4,15 @@ import useGlobalLoader from "@/store/useGlobalLoader";
 
 const IncCount = useGlobalLoader.getState().increaseCounter;
 const decCount = useGlobalLoader.getState().decreaseCounter;
-const counter = useGlobalLoader.getState().counter;
 
 const apiClient = axios.create({
   baseURL: baseURL,
   withCredentials: true,
-  headers: {
-    "Content-Type": "multipart/form-data",
-    "ngrok-skip-browser-warning": "true",
-  },
 });
 
 apiClient.interceptors.request.use(
   (config) => {
     !(config.headers.loader === false) && IncCount();
-    console.log(counter, "counter value");
     return config;
   },
   (error) => {
@@ -40,7 +34,6 @@ apiClient.interceptors.response.use(
       status: error.response?.status,
       data: error.response?.data,
     };
-
     if (error.response) {
       switch (error.response.status) {
         case 401:
@@ -73,7 +66,6 @@ apiClient.interceptors.response.use(
 
 export const apiCall = async (method, url, options = {}) => {
   const { data, params, contentType, headers = {} } = options;
-
   const config = {
     method: method.toLowerCase(),
     url,
@@ -84,7 +76,6 @@ export const apiCall = async (method, url, options = {}) => {
       "Content-Type": contentType || "application/json",
     },
   };
-
   try {
     const response = await apiClient(config);
     return {

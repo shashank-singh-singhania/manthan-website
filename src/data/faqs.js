@@ -1,7 +1,7 @@
 const faqs = [
   {
     q: "Who can participate in Manthan 3.0?",
-    a: "Students from classes 9th to 12th from any school across India can participate.",
+    a: "Students from classes 11th and 12th from any school across India can participate.",
   },
   {
     q: "How many members should be in a team?",
