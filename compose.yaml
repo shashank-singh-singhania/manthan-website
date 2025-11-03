@@ -1,10 +1,9 @@
-version: "3.5"
 services:
   nginx-react:
     build:
       context: .
-      dockerfile: Dockerfile
-    networks:
-      - nginx-network
+      dockerfile: DockerFile
+    # networks:
+    #   - nginx-network
     ports:
-      - 8001:80
+      - 80:80
