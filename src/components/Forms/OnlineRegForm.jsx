@@ -203,22 +203,19 @@ export default function OnlineRegisterForm({
                 >
                   <Select
                     showSearch
-                    placeholder="Search and select your school"
+                    placeholder="Select your school"
                     className="rounded-lg"
                     disabled={!emailVerified || schools.length === 0}
                     loading={schoolsLoading}
-                    // filterOption={(input, option) =>
-                    //   (option?.children ?? "")
-                    //     .toLowerCase()
-                    //     .includes(input.toLowerCase())
-                    // }
-                  >
-                    {schools.map((school) => (
-                      <Option key={school.uuid} value={school.uuid}>
-                        {school.name} ({school.address})
-                      </Option>
-                    ))}
-                  </Select>
+                    optionFilterProp="label"
+                    filterOption={(input, option) =>
+                      option?.label?.toLowerCase().includes(input.toLowerCase())
+                    }
+                    options={schools.map((school) => ({
+                      label: `${school.name} (${school.address})`,
+                      value: school.uuid,
+                    }))}
+                  />
                 </Form.Item>
 
                 <Form.Item
