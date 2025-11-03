@@ -3,7 +3,9 @@ services:
     build:
       context: .
       dockerfile: DockerFile
-    # networks:
-    #   - nginx-network
+    restart: always
+    tty: true
+    volumes:
+      - ./nginx/ssl:/etc/ssl
     ports:
       - 80:80
