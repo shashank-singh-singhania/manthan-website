@@ -15,14 +15,19 @@ const Loader = () => {
 
   if (counter > 0) {
     return (
-      <>
-        <div className=" h-screen w-screen bg-white flex justify-center items-center body">
-          <img
-            src="https://loading.io/assets/mod/spinner/spinner/lg.gif"
-            alt="loader"
-          />
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-white/80">
+        <div class="relative w-20 h-20">
+          <div class="absolute inset-0 rounded-full border-4 border-gray-200/30"></div>
+          <div
+            class="absolute inset-0 rounded-full border-4 border-transparent border-t-primary border-r-primary animate-spin"
+            style={{ animationDuration: "1s" }}
+          ></div>
+          <div
+            class="absolute inset-2 rounded-full border-3 border-transparent border-b-primary/60 border-l-primary/60"
+            style={{ animation: "spin 1.5s linear infinite reverse" }}
+          ></div>
         </div>
-      </>
+      </div>
     );
   } else {
     return <></>;
