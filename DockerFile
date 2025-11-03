@@ -1,7 +1,7 @@
 FROM oven/bun:latest as build
 WORKDIR /manthan-client
 COPY package.json .
-RUN bun init
+# RUN bun init
 RUN bun install
 COPY . .
 RUN bun run build
