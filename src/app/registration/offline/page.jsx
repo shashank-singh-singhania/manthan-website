@@ -10,6 +10,8 @@ export default function OfflineRegister() {
   const [form] = Form.useForm();
   const [classes, setClasses] = useState([]);
   const [sections, setSections] = useState([]);
+  const [schools, setSchools] = useState([]);
+  const [schoolsLoading, setSchoolsLoading] = useState(false);
   const [teamMembers, setTeamMembers] = useState([]);
   const [emailVerified, setEmailVerified] = useState(false);
   const [isOtpModalVisible, setIsOtpModalVisible] = useState(false);
@@ -26,7 +28,7 @@ export default function OfflineRegister() {
       if (response.success) {
         setClasses(response.data || []);
       } else {
-        toast.error("Failed to load classes");
+        toast.error("Error loading classes");
       }
     } catch (error) {
       toast.error("Error loading classes");
@@ -49,6 +51,25 @@ export default function OfflineRegister() {
     }
   };
 
+  const fetchSchools = async (state, district) => {
+    if (!state || !district) return;
+    setSchoolsLoading(true);
+    try {
+      const response = await apiCall("get", endpoints.GET_SCHOOLS, {
+        params: { state, district },
+      });
+      if (response.success) {
+        setSchools(response.data || []);
+      } else {
+        toast.error(response.data.msg);
+      }
+    } catch (error) {
+      toast.error("Error loading schools");
+    } finally {
+      setSchoolsLoading(false);
+    }
+  };
+
   const handleEmailVerification = async () => {
     const email = form.getFieldValue("leaderEmail");
     try {
@@ -67,7 +88,7 @@ export default function OfflineRegister() {
         toast.success(response.data.msg);
         setIsOtpModalVisible(true);
       } else {
-        toast.error("Email is already registered!");
+        toast.error("Error verifying email!");
         form.setFieldValue("leaderEmail", "");
       }
     } catch (error) {
@@ -86,7 +107,6 @@ export default function OfflineRegister() {
         headers: { loader: false },
         data: { uuid, otp: parseInt(otp) },
       });
-
       if (response.success) {
         setEmailVerified(true);
         setIsOtpModalVisible(false);

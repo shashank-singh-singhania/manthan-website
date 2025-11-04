@@ -1,4 +1,4 @@
-export const baseURL = "https://manthan.kiet.edu/api/manthan";
+export const baseURL = "manthan.kiet.edu/api/manthan";
 
 export const endpoints = {
   REGISTER: "/exam/api/v1/registration/",

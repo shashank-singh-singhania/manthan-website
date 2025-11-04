@@ -11,12 +11,11 @@ export default function OnlineRegister() {
   const [classes, setClasses] = useState([]);
   const [sections, setSections] = useState([]);
   const [schools, setSchools] = useState([]);
-  const [schoolsLoading, setSchoolsLoading] = useState(false);
   const [emailVerified, setEmailVerified] = useState(false);
   const [isOtpModalVisible, setIsOtpModalVisible] = useState(false);
+  const [uuid, setUuid] = useState("");
   const [otp, setOtp] = useState("");
   const [otpLoading, setOtpLoading] = useState(false);
-  const [uuid, setUuid] = useState("");
 
   const fetchClasses = async () => {
     try {
@@ -43,7 +42,7 @@ export default function OnlineRegister() {
       if (response.success) {
         setSections(response.data || []);
       } else {
-        toast.error("Failed to load sections");
+        toast.error("Error loading sections");
       }
     } catch (error) {
       toast.error("Error loading sections");
@@ -52,7 +51,6 @@ export default function OnlineRegister() {
 
   const fetchSchools = async (state, district) => {
     if (!state || !district) return;
-    setSchoolsLoading(true);
     try {
       const response = await apiCall("get", endpoints.GET_SCHOOLS, {
         params: { state, district },
@@ -64,8 +62,6 @@ export default function OnlineRegister() {
       }
     } catch (error) {
       toast.error("Error loading schools");
-    } finally {
-      setSchoolsLoading(false);
     }
   };
 
@@ -79,24 +75,31 @@ export default function OnlineRegister() {
     if (!email || emailVerified) return;
     try {
       const response = await apiCall("post", endpoints.VERIFY_EMAIL_OTP, {
-        headers: { loader: false },
         data: { email },
       });
       if (response.success) {
-        setUuid(response.data.user);
-        toast.success(response.data.msg);
-        setIsOtpModalVisible(true);
+        if (response.data.status === true) {
+          setEmailVerified(true);
+          toast.success(response.data.msg);
+          await fetchClasses();
+          await fetchSections();
+        } else {
+          setUuid(response.data.user);
+          toast.success(response.data.msg);
+          setIsOtpModalVisible(true);
+        }
       } else {
-        toast.error("Email is already registered!");
+        toast.error("Error verifying email");
         form.setFieldValue("email", "");
       }
     } catch (error) {
-      toast.error("Error sending OTP");
+      toast.error("Error verifying email");
     }
   };
 
-  const handleOtpVerification = async () => {
-    if (!otp || otp.length !== 6) {
+  const handleOtpVerification = async (otpValue) => {
+    const otpToVerify = otpValue || otp;
+    if (!otpToVerify || otpToVerify.length !== 6) {
       toast.error("Please enter a valid 6-digit OTP");
       return;
     }
@@ -104,7 +107,7 @@ export default function OnlineRegister() {
     try {
       const response = await apiCall("put", endpoints.VERIFY_EMAIL_OTP, {
         headers: { loader: false },
-        data: { uuid, otp: parseInt(otp) },
+        data: { uuid, otp: parseInt(otpToVerify) },
       });
       if (response.success) {
         setEmailVerified(true);
@@ -128,12 +131,16 @@ export default function OnlineRegister() {
     setOtp("");
   };
 
-  const handleOtpChange = (e) => {
-    setOtp(e.target.value.replace(/\D/g, ""));
+  const handleOtpChange = (value) => {
+    const cleanValue = value.replace(/\D/g, "");
+    setOtp(cleanValue);
+    if (cleanValue.length === 6) {
+      handleOtpVerification(cleanValue);
+    }
   };
 
-  const handlePincodeVerification = async () => {
-    const pincode = form.getFieldValue("pincode");
+  const handlePincodeVerification = async (pincodeValue) => {
+    const pincode = pincodeValue || form.getFieldValue("pincode");
     try {
       await form.validateFields(["pincode"]);
     } catch {
@@ -157,12 +164,6 @@ export default function OnlineRegister() {
     } catch (error) {
       toast.error("Error verifying pincode");
     }
-  };
-
-  const handleStateDistrictChange = () => {
-    form.setFieldValue("school", undefined);
-    setSchools([]);
-    fetchSchools();
   };
 
   const onFinish = async (values) => {
@@ -220,7 +221,6 @@ export default function OnlineRegister() {
       classes={classes}
       sections={sections}
       schools={schools}
-      schoolsLoading={schoolsLoading}
       emailVerified={emailVerified}
       isOtpModalVisible={isOtpModalVisible}
       otp={otp}
@@ -230,7 +230,6 @@ export default function OnlineRegister() {
       onOtpModalCancel={handleOtpModalCancel}
       onOtpChange={handleOtpChange}
       onPincodeVerification={handlePincodeVerification}
-      onStateDistrictChange={handleStateDistrictChange}
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}
     />

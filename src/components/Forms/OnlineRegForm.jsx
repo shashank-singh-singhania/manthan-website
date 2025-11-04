@@ -9,7 +9,6 @@ export default function OnlineRegisterForm({
   classes,
   sections,
   schools,
-  schoolsLoading,
   emailVerified,
   isOtpModalVisible,
   otp,
@@ -19,7 +18,6 @@ export default function OnlineRegisterForm({
   onOtpModalCancel,
   onOtpChange,
   onPincodeVerification,
-  onStateDistrictChange,
   onFinish,
   onFinishFailed,
 }) {
@@ -163,8 +161,13 @@ export default function OnlineRegisterForm({
                     placeholder="Enter your pincode"
                     className="rounded-lg"
                     maxLength={6}
-                    onBlur={onPincodeVerification}
                     disabled={!emailVerified}
+                    onChange={(e) => {
+                      const value = e.target.value.replace(/\D/g, "");
+                      if (value.length === 6) {
+                        onPincodeVerification(value);
+                      }
+                    }}
                   />
                 </Form.Item>
 
@@ -174,10 +177,9 @@ export default function OnlineRegisterForm({
                   rules={[{ required: true, message: "Enter your state" }]}
                 >
                   <Input
-                    placeholder="Enter your state"
+                    placeholder="Auto-filled from pincode"
                     className="rounded-lg"
-                    disabled={!emailVerified}
-                    onChange={onStateDistrictChange}
+                    disabled
                   />
                 </Form.Item>
 
@@ -187,10 +189,9 @@ export default function OnlineRegisterForm({
                   rules={[{ required: true, message: "Enter your district" }]}
                 >
                   <Input
-                    placeholder="Enter your district"
+                    placeholder="Auto-filled from pincode"
                     className="rounded-lg"
-                    disabled={!emailVerified}
-                    onChange={onStateDistrictChange}
+                    disabled
                   />
                 </Form.Item>
 
@@ -206,7 +207,6 @@ export default function OnlineRegisterForm({
                     placeholder="Select your school"
                     className="rounded-lg"
                     disabled={!emailVerified || schools.length === 0}
-                    loading={schoolsLoading}
                     optionFilterProp="label"
                     filterOption={(input, option) =>
                       option?.label?.toLowerCase().includes(input.toLowerCase())
@@ -336,23 +336,24 @@ export default function OnlineRegisterForm({
         centered
       >
         <div className="py-4">
-          <p className="text-gray-600 mb-4">
+          <p className="text-gray-600 mb-4 text-center">
             Enter the 6-digit OTP sent to your email
           </p>
-          <Input
-            placeholder="Enter OTP"
+
+          <Input.OTP
+            length={6}
             value={otp}
             onChange={onOtpChange}
-            maxLength={6}
             size="large"
             className="rounded-lg"
+            style={{ width: "100%", justifyContent: "center" }}
           />
-          <div className="mt-4"></div>
+
           <Button
             type="primary"
             onClick={onOtpVerification}
             loading={otpLoading}
-            className="w-full rounded-lg"
+            className="w-full rounded-lg mt-6"
             size="large"
           >
             Verify OTP
