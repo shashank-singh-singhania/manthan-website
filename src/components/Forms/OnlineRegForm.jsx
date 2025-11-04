@@ -1,6 +1,7 @@
 "use client";
 import { Form, Input, Select, Upload, Button, Modal } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
+import toast from "react-hot-toast";
 
 const { Option } = Select;
 
@@ -21,6 +22,15 @@ export default function OnlineRegisterForm({
   onFinish,
   onFinishFailed,
 }) {
+  const beforeUpload = (file) => {
+    const isLt5M = file.size / 1024 / 1024 < 5;
+    if (!isLt5M) {
+      toast.error("File size must be less than 5MB!");
+      return Upload.LIST_IGNORE;
+    }
+    return false;
+  };
+
   return (
     <>
       <div className="min-h-screen flex items-center justify-center bg-gray-50 py-4">
@@ -255,7 +265,9 @@ export default function OnlineRegisterForm({
                 </Form.Item>
 
                 <Form.Item
-                  label={<span className="text-gray-700">School ID</span>}
+                  label={
+                    <span className="text-gray-700">School ID (Max 5MB)</span>
+                  }
                   name="schoolId"
                   valuePropName="fileList"
                   getValueFromEvent={(e) =>
@@ -266,7 +278,7 @@ export default function OnlineRegisterForm({
                   ]}
                 >
                   <Upload
-                    beforeUpload={() => false}
+                    beforeUpload={beforeUpload}
                     maxCount={1}
                     disabled={!emailVerified}
                   >
@@ -283,7 +295,7 @@ export default function OnlineRegisterForm({
                 <Form.Item
                   label={
                     <span className="text-gray-700">
-                      High School Certificate
+                      High School Certificate (Max 5MB)
                     </span>
                   }
                   name="highSchoolCertificate"
@@ -299,7 +311,7 @@ export default function OnlineRegisterForm({
                   ]}
                 >
                   <Upload
-                    beforeUpload={() => false}
+                    beforeUpload={beforeUpload}
                     maxCount={1}
                     disabled={!emailVerified}
                   >

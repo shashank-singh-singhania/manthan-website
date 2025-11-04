@@ -160,6 +160,7 @@ export default function OnlineRegister() {
         await fetchSchools(response.data.state, response.data.district);
       } else {
         form.setFieldValue("pincode", "");
+        toast.error(response.data.msg);
       }
     } catch (error) {
       toast.error("Error verifying pincode");
