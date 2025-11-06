@@ -7,13 +7,17 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-linear-to-br from-indigo-50 via-white to-amber-50">
+    <div className="min-h-screen ">
       <Header />
-      <HeroSection />
+      <div className="lg:sticky top-0 right-0 w-full">
+        <HeroSection />
+      </div>
       <AboutKiet />
-      <AboutManthan />
-      <PartnersSection />
-      <Footer />
+      <div id="about-manthan" className="relative top-0 z-30 bg-white">
+        <AboutManthan />
+        <PartnersSection />
+        <Footer />
+      </div>
     </div>
   );
 }

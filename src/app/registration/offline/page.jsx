@@ -11,13 +11,12 @@ export default function OfflineRegister() {
   const [classes, setClasses] = useState([]);
   const [sections, setSections] = useState([]);
   const [schools, setSchools] = useState([]);
-  const [schoolsLoading, setSchoolsLoading] = useState(false);
   const [teamMembers, setTeamMembers] = useState([]);
   const [emailVerified, setEmailVerified] = useState(false);
   const [isOtpModalVisible, setIsOtpModalVisible] = useState(false);
+  const [uuid, setUuid] = useState("");
   const [otp, setOtp] = useState("");
   const [otpLoading, setOtpLoading] = useState(false);
-  const [uuid, setUuid] = useState("");
 
   const fetchClasses = async () => {
     try {
@@ -44,7 +43,7 @@ export default function OfflineRegister() {
       if (response.success) {
         setSections(response.data || []);
       } else {
-        toast.error("Failed to load sections");
+        toast.error("Error loading sections");
       }
     } catch (error) {
       toast.error("Error loading sections");
@@ -53,7 +52,6 @@ export default function OfflineRegister() {
 
   const fetchSchools = async (state, district) => {
     if (!state || !district) return;
-    setSchoolsLoading(true);
     try {
       const response = await apiCall("get", endpoints.GET_SCHOOLS, {
         params: { state, district },
@@ -65,8 +63,6 @@ export default function OfflineRegister() {
       }
     } catch (error) {
       toast.error("Error loading schools");
-    } finally {
-      setSchoolsLoading(false);
     }
   };
 
@@ -80,24 +76,31 @@ export default function OfflineRegister() {
     if (!email || emailVerified) return;
     try {
       const response = await apiCall("post", endpoints.VERIFY_EMAIL_OTP, {
-        headers: { loader: false },
         data: { email },
       });
       if (response.success) {
-        setUuid(response.data.user);
-        toast.success(response.data.msg);
-        setIsOtpModalVisible(true);
+        if (response.data.status === true) {
+          setEmailVerified(true);
+          toast.success(response.data.msg);
+          await fetchClasses();
+          await fetchSections();
+        } else {
+          setUuid(response.data.user);
+          toast.success(response.data.msg);
+          setIsOtpModalVisible(true);
+        }
       } else {
-        toast.error("Error verifying email!");
+        toast.error("Error verifying email");
         form.setFieldValue("leaderEmail", "");
       }
     } catch (error) {
-      toast.error("Error sending OTP");
+      toast.error("Error verifying email");
     }
   };
 
-  const handleOtpVerification = async () => {
-    if (!otp || otp.length !== 6) {
+  const handleOtpVerification = async (otpValue) => {
+    const otpToVerify = otpValue || otp;
+    if (!otpToVerify || otpToVerify.length !== 6) {
       toast.error("Please enter a valid 6-digit OTP");
       return;
     }
@@ -105,7 +108,7 @@ export default function OfflineRegister() {
     try {
       const response = await apiCall("put", endpoints.VERIFY_EMAIL_OTP, {
         headers: { loader: false },
-        data: { uuid, otp: parseInt(otp) },
+        data: { uuid, otp: parseInt(otpToVerify) },
       });
       if (response.success) {
         setEmailVerified(true);
@@ -129,65 +132,56 @@ export default function OfflineRegister() {
     setOtp("");
   };
 
-  const handleOtpChange = (e) => {
-    setOtp(e.target.value.replace(/\D/g, ""));
+  const handleOtpChange = (value) => {
+    const cleanValue = value.replace(/\D/g, "");
+    setOtp(cleanValue);
+    if (cleanValue.length === 6) {
+      handleOtpVerification(cleanValue);
+    }
   };
 
-  const handleLeaderPincodeVerification = async () => {
-    const pincode = form.getFieldValue("leaderPincode");
-    try {
-      await form.validateFields(["leaderPincode"]);
-    } catch {
-      return;
-    }
-    if (!pincode) return;
+  const handlePincodeVerification = async (
+    pincodeValue,
+    memberIndex = null
+  ) => {
+    const pincode = pincodeValue;
+    if (!pincode || pincode.length !== 6) return;
+
+    setSchools([]);
 
     try {
-      const response = await apiCall("post", endpoints.VERIFY_PINCODE, {
-        headers: { loader: false },
+      const response = await apiCall("get", endpoints.VERIFY_PINCODE, {
         params: { pincode },
       });
 
       if (response.success) {
-        form.setFieldsValue({
-          leaderState: response.data.state,
-          leaderDistrict: response.data.district,
-        });
+        if (memberIndex === null) {
+          form.setFieldsValue({
+            leaderState: response.data.state,
+            leaderDistrict: response.data.district,
+            leaderSchool: undefined,
+          });
+          await fetchSchools(response.data.state, response.data.district);
+        } else {
+          const members = form.getFieldValue("members") || [];
+          members[memberIndex] = {
+            ...members[memberIndex],
+            state: response.data.state,
+            district: response.data.district,
+            school: undefined,
+          };
+          form.setFieldsValue({ members });
+          await fetchSchools(response.data.state, response.data.district);
+        }
       } else {
-        form.setFieldValue("leaderPincode", "");
-      }
-    } catch (error) {
-      toast.error("Error verifying pincode");
-    }
-  };
-
-  const handleMemberPincodeVerification = async (index) => {
-    const pincode = form.getFieldValue(["members", index, "pincode"]);
-    try {
-      await form.validateFields([["members", index, "pincode"]]);
-    } catch {
-      return;
-    }
-    if (!pincode) return;
-    try {
-      const response = await apiCall("post", endpoints.VERIFY_PINCODE, {
-        data: { pincode },
-      });
-
-      if (response.success) {
-        const members = form.getFieldValue("members");
-        members[index] = {
-          ...members[index],
-          state: response.data.state,
-          district: response.data.district,
-        };
-        form.setFieldsValue({ members });
-        toast.success("Pincode verified successfully");
-      } else {
-        toast.error(response.data.message || "Pincode verification failed");
-        const members = form.getFieldValue("members");
-        members[index].pincode = "";
-        form.setFieldsValue({ members });
+        if (memberIndex === null) {
+          form.setFieldValue("leaderPincode", "");
+        } else {
+          const members = form.getFieldValue("members") || [];
+          members[memberIndex].pincode = "";
+          form.setFieldsValue({ members });
+        }
+        toast.error(response.data.msg);
       }
     } catch (error) {
       toast.error("Error verifying pincode");
@@ -210,29 +204,90 @@ export default function OfflineRegister() {
 
   const onFinish = async (values) => {
     if (!emailVerified) {
-      toast.error("Please verify team leader's email first");
+      toast.error("Please verify your email first");
       return;
     }
     if (teamMembers.length !== 2) {
       toast.error("Please add exactly 2 team members");
       return;
     }
+
+    const formData = new FormData();
+    formData.append("registration_mode", 0);
+    formData.append("team_name", values.teamName);
+    formData.append("captain[first_name]", values.leaderFirstName);
+    formData.append("captain[last_name]", values.leaderLastName);
+    formData.append("captain[email]", values.leaderEmail);
+    formData.append("captain[phone_no]", values.leaderPhone);
+    formData.append("captain[aadhaar_no]", values.leaderAadhar);
+    formData.append("captain[pincode]", values.leaderPincode);
+    formData.append("captain[state]", values.leaderState);
+    formData.append("captain[district]", values.leaderDistrict);
+    formData.append("captain[school]", values.leaderSchool);
+    formData.append("captain[cuid]", values.leaderClass);
+    formData.append("captain[suid]", values.leaderSection);
+
+    if (values.leaderSchoolId?.[0]?.originFileObj) {
+      formData.append(
+        "captain[id_card]",
+        values.leaderSchoolId[0].originFileObj
+      );
+    }
+    if (values.leaderHighSchoolCertificate?.[0]?.originFileObj) {
+      formData.append(
+        "captain[marksheet]",
+        values.leaderHighSchoolCertificate[0].originFileObj
+      );
+    }
+
+    values.members?.forEach((member, index) => {
+      formData.append(`members[${index}][first_name]`, member.firstName);
+      formData.append(`members[${index}][last_name]`, member.lastName);
+      formData.append(`members[${index}][email]`, member.email);
+      formData.append(`members[${index}][phone_no]`, member.phone);
+      formData.append(`members[${index}][aadhaar_no]`, member.aadhar);
+      formData.append(`members[${index}][pincode]`, member.pincode);
+      formData.append(`members[${index}][state]`, member.state);
+      formData.append(`members[${index}][district]`, member.district);
+      formData.append(`members[${index}][school]`, member.school);
+      formData.append(`members[${index}][cuid]`, member.class);
+      formData.append(`members[${index}][suid]`, member.section);
+
+      if (member.schoolId?.[0]?.originFileObj) {
+        formData.append(
+          `members[${index}][id_card]`,
+          member.schoolId[0].originFileObj
+        );
+      }
+      if (member.highSchoolCertificate?.[0]?.originFileObj) {
+        formData.append(
+          `members[${index}][marksheet]`,
+          member.highSchoolCertificate[0].originFileObj
+        );
+      }
+    });
+
     const response = await apiCall("post", endpoints.REGISTER, {
-      data: values,
+      data: formData,
+      contentType: "multipart/form-data",
     });
 
     if (response.success) {
       toast.success(response.data.msg);
       form.resetFields();
       setEmailVerified(false);
+      setClasses([]);
+      setSections([]);
+      setSchools([]);
       setTeamMembers([]);
+      setUuid("");
     } else {
-      toast.error(response.data.error);
+      toast.error(response?.data?.error);
     }
   };
 
   const onFinishFailed = () => {
-    toast.error("Please fill all required fields correctly for all 3 members");
+    toast.error("Please fill all required fields correctly");
   };
 
   return (
@@ -240,6 +295,7 @@ export default function OfflineRegister() {
       form={form}
       classes={classes}
       sections={sections}
+      schools={schools}
       teamMembers={teamMembers}
       emailVerified={emailVerified}
       isOtpModalVisible={isOtpModalVisible}
@@ -249,8 +305,7 @@ export default function OfflineRegister() {
       onOtpVerification={handleOtpVerification}
       onOtpModalCancel={handleOtpModalCancel}
       onOtpChange={handleOtpChange}
-      onLeaderPincodeVerification={handleLeaderPincodeVerification}
-      onMemberPincodeVerification={handleMemberPincodeVerification}
+      onPincodeVerification={handlePincodeVerification}
       onAddTeamMember={addTeamMember}
       onRemoveTeamMember={removeTeamMember}
       onFinish={onFinish}

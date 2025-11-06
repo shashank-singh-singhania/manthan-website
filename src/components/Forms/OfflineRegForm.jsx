@@ -5,6 +5,7 @@ import {
   PlusOutlined,
   MinusCircleOutlined,
 } from "@ant-design/icons";
+import toast from "react-hot-toast";
 
 const { Option } = Select;
 
@@ -12,6 +13,7 @@ export default function OfflineRegisterForm({
   form,
   classes,
   sections,
+  schools,
   teamMembers,
   emailVerified,
   isOtpModalVisible,
@@ -21,13 +23,21 @@ export default function OfflineRegisterForm({
   onOtpVerification,
   onOtpModalCancel,
   onOtpChange,
-  onLeaderPincodeVerification,
-  onMemberPincodeVerification,
+  onPincodeVerification,
   onAddTeamMember,
   onRemoveTeamMember,
   onFinish,
   onFinishFailed,
 }) {
+  const beforeUpload = (file) => {
+    const isLt5M = file.size / 1024 / 1024 < 5;
+    if (!isLt5M) {
+      toast.error("File size must be less than 5MB!");
+      return Upload.LIST_IGNORE;
+    }
+    return false;
+  };
+
   return (
     <>
       <div className="min-h-screen flex items-center justify-center bg-gray-50 py-4">
@@ -66,7 +76,6 @@ export default function OfflineRegisterForm({
                 <Input
                   placeholder="Enter your team name"
                   className="rounded-lg"
-                  disabled={emailVerified}
                 />
               </Form.Item>
 
@@ -92,7 +101,6 @@ export default function OfflineRegisterForm({
                   <Input
                     placeholder="Enter first name"
                     className="rounded-lg"
-                    disabled={emailVerified}
                   />
                 </Form.Item>
 
@@ -106,11 +114,7 @@ export default function OfflineRegisterForm({
                     },
                   ]}
                 >
-                  <Input
-                    placeholder="Enter last name"
-                    className="rounded-lg"
-                    disabled={emailVerified}
-                  />
+                  <Input placeholder="Enter last name" className="rounded-lg" />
                 </Form.Item>
 
                 <Form.Item
@@ -197,8 +201,13 @@ export default function OfflineRegisterForm({
                     placeholder="Enter pincode"
                     className="rounded-lg"
                     maxLength={6}
-                    onBlur={onLeaderPincodeVerification}
                     disabled={!emailVerified}
+                    onChange={(e) => {
+                      const value = e.target.value.replace(/\D/g, "");
+                      if (value.length === 6) {
+                        onPincodeVerification(value);
+                      }
+                    }}
                   />
                 </Form.Item>
 
@@ -208,9 +217,9 @@ export default function OfflineRegisterForm({
                   rules={[{ required: true, message: "Enter state" }]}
                 >
                   <Input
-                    placeholder="Enter state"
+                    placeholder="Auto-filled from pincode"
                     className="rounded-lg"
-                    disabled={!emailVerified}
+                    disabled
                   />
                 </Form.Item>
 
@@ -220,21 +229,32 @@ export default function OfflineRegisterForm({
                   rules={[{ required: true, message: "Enter district" }]}
                 >
                   <Input
-                    placeholder="Enter district"
+                    placeholder="Auto-filled from pincode"
                     className="rounded-lg"
-                    disabled={!emailVerified}
+                    disabled
                   />
                 </Form.Item>
 
                 <Form.Item
                   label={<span className="text-gray-700">School Name</span>}
                   name="leaderSchool"
-                  rules={[{ required: true, message: "Enter school name" }]}
+                  rules={[
+                    { required: true, message: "Select your school name" },
+                  ]}
                 >
-                  <Input
-                    placeholder="Enter school name"
+                  <Select
+                    showSearch
+                    placeholder="Select your school"
                     className="rounded-lg"
-                    disabled={!emailVerified}
+                    disabled={!emailVerified || schools.length === 0}
+                    optionFilterProp="label"
+                    filterOption={(input, option) =>
+                      option?.label?.toLowerCase().includes(input.toLowerCase())
+                    }
+                    options={schools.map((school) => ({
+                      label: `${school.name} (${school.address})`,
+                      value: school.uuid,
+                    }))}
                   />
                 </Form.Item>
 
@@ -249,8 +269,8 @@ export default function OfflineRegisterForm({
                     disabled={!emailVerified}
                   >
                     {classes.map((cls) => (
-                      <Option key={cls.id} value={cls.id}>
-                        {cls.name}
+                      <Option key={cls.uuid} value={cls.uuid}>
+                        {cls.label}
                       </Option>
                     ))}
                   </Select>
@@ -267,15 +287,17 @@ export default function OfflineRegisterForm({
                     disabled={!emailVerified}
                   >
                     {sections.map((section) => (
-                      <Option key={section.id} value={section.id}>
-                        {section.name}
+                      <Option key={section.uuid} value={section.uuid}>
+                        {section.label}
                       </Option>
                     ))}
                   </Select>
                 </Form.Item>
 
                 <Form.Item
-                  label={<span className="text-gray-700">School ID</span>}
+                  label={
+                    <span className="text-gray-700">School ID (Max 5MB)</span>
+                  }
                   name="leaderSchoolId"
                   valuePropName="fileList"
                   getValueFromEvent={(e) =>
@@ -284,7 +306,7 @@ export default function OfflineRegisterForm({
                   rules={[{ required: true, message: "Upload school ID" }]}
                 >
                   <Upload
-                    beforeUpload={() => false}
+                    beforeUpload={beforeUpload}
                     maxCount={1}
                     disabled={!emailVerified}
                   >
@@ -293,7 +315,7 @@ export default function OfflineRegisterForm({
                       className="rounded-lg"
                       disabled={!emailVerified}
                     >
-                      Upload School ID
+                      Upload your School ID
                     </Button>
                   </Upload>
                 </Form.Item>
@@ -301,7 +323,7 @@ export default function OfflineRegisterForm({
                 <Form.Item
                   label={
                     <span className="text-gray-700">
-                      High School Certificate
+                      High School Certificate (Max 5MB)
                     </span>
                   }
                   name="leaderHighSchoolCertificate"
@@ -317,7 +339,7 @@ export default function OfflineRegisterForm({
                   ]}
                 >
                   <Upload
-                    beforeUpload={() => false}
+                    beforeUpload={beforeUpload}
                     maxCount={1}
                     disabled={!emailVerified}
                   >
@@ -326,7 +348,7 @@ export default function OfflineRegisterForm({
                       className="rounded-lg"
                       disabled={!emailVerified}
                     >
-                      Upload Certificate
+                      Upload High School Certificate
                     </Button>
                   </Upload>
                 </Form.Item>
@@ -464,7 +486,12 @@ export default function OfflineRegisterForm({
                               placeholder="Enter pincode"
                               className="rounded-lg"
                               maxLength={6}
-                              onBlur={() => onMemberPincodeVerification(index)}
+                              onChange={(e) => {
+                                const value = e.target.value.replace(/\D/g, "");
+                                if (value.length === 6) {
+                                  onPincodeVerification(value, index);
+                                }
+                              }}
                             />
                           </Form.Item>
 
@@ -474,8 +501,9 @@ export default function OfflineRegisterForm({
                             rules={[{ required: true, message: "Enter state" }]}
                           >
                             <Input
-                              placeholder="Enter state"
+                              placeholder="Auto-filled from pincode"
                               className="rounded-lg"
+                              disabled
                             />
                           </Form.Item>
 
@@ -489,8 +517,9 @@ export default function OfflineRegisterForm({
                             ]}
                           >
                             <Input
-                              placeholder="Enter district"
+                              placeholder="Auto-filled from pincode"
                               className="rounded-lg"
+                              disabled
                             />
                           </Form.Item>
 
@@ -500,12 +529,27 @@ export default function OfflineRegisterForm({
                             }
                             name={[index, "school"]}
                             rules={[
-                              { required: true, message: "Enter school name" },
+                              {
+                                required: true,
+                                message: "Select your school name",
+                              },
                             ]}
                           >
-                            <Input
-                              placeholder="Enter school name"
+                            <Select
+                              showSearch
+                              placeholder="Select your school"
                               className="rounded-lg"
+                              disabled={schools.length === 0}
+                              optionFilterProp="label"
+                              filterOption={(input, option) =>
+                                option?.label
+                                  ?.toLowerCase()
+                                  .includes(input.toLowerCase())
+                              }
+                              options={schools.map((school) => ({
+                                label: `${school.name} (${school.address})`,
+                                value: school.uuid,
+                              }))}
                             />
                           </Form.Item>
 
@@ -521,8 +565,8 @@ export default function OfflineRegisterForm({
                               className="rounded-lg"
                             >
                               {classes.map((cls) => (
-                                <Option key={cls.id} value={cls.id}>
-                                  {cls.name}
+                                <Option key={cls.uuid} value={cls.uuid}>
+                                  {cls.label}
                                 </Option>
                               ))}
                             </Select>
@@ -542,8 +586,8 @@ export default function OfflineRegisterForm({
                               className="rounded-lg"
                             >
                               {sections.map((section) => (
-                                <Option key={section.id} value={section.id}>
-                                  {section.name}
+                                <Option key={section.uuid} value={section.uuid}>
+                                  {section.label}
                                 </Option>
                               ))}
                             </Select>
@@ -551,7 +595,9 @@ export default function OfflineRegisterForm({
 
                           <Form.Item
                             label={
-                              <span className="text-gray-700">School ID</span>
+                              <span className="text-gray-700">
+                                School ID (Max 5MB)
+                              </span>
                             }
                             name={[index, "schoolId"]}
                             valuePropName="fileList"
@@ -562,12 +608,12 @@ export default function OfflineRegisterForm({
                               { required: true, message: "Upload school ID" },
                             ]}
                           >
-                            <Upload beforeUpload={() => false} maxCount={1}>
+                            <Upload beforeUpload={beforeUpload} maxCount={1}>
                               <Button
                                 icon={<UploadOutlined />}
                                 className="rounded-lg"
                               >
-                                Upload School ID
+                                Upload your School ID
                               </Button>
                             </Upload>
                           </Form.Item>
@@ -575,7 +621,7 @@ export default function OfflineRegisterForm({
                           <Form.Item
                             label={
                               <span className="text-gray-700">
-                                High School Certificate
+                                High School Certificate (Max 5MB)
                               </span>
                             }
                             name={[index, "highSchoolCertificate"]}
@@ -590,12 +636,12 @@ export default function OfflineRegisterForm({
                               },
                             ]}
                           >
-                            <Upload beforeUpload={() => false} maxCount={1}>
+                            <Upload beforeUpload={beforeUpload} maxCount={1}>
                               <Button
                                 icon={<UploadOutlined />}
                                 className="rounded-lg"
                               >
-                                Upload Certificate
+                                Upload High School Certificate
                               </Button>
                             </Upload>
                           </Form.Item>
@@ -643,22 +689,24 @@ export default function OfflineRegisterForm({
         centered
       >
         <div className="py-4">
-          <p className="text-gray-600 mb-4">
+          <p className="text-gray-600 mb-4 text-center">
             Enter the 6-digit OTP sent to your email
           </p>
-          <Input
-            placeholder="Enter OTP"
+
+          <Input.OTP
+            length={6}
             value={otp}
             onChange={onOtpChange}
-            maxLength={6}
             size="large"
-            className="rounded-lg mb-4"
+            className="rounded-lg"
+            style={{ width: "100%", justifyContent: "center" }}
           />
+
           <Button
             type="primary"
             onClick={onOtpVerification}
             loading={otpLoading}
-            className="w-full rounded-lg"
+            className="w-full rounded-lg mt-6"
             size="large"
           >
             Verify OTP

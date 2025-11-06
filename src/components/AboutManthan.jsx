@@ -22,10 +22,7 @@ const AboutManthan = () => {
   ];
 
   return (
-    <section
-      id="about-manthan"
-      className="md:py-20 py-10 px-4 font-inter min-h-screen relative overflow-hidden"
-    >
+    <section className="md:py-20 py-10 px-4 font-inter min-h-screen relative overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-14 ">
           <h2
@@ -103,12 +100,12 @@ const AboutManthan = () => {
           </div>
         </div>
 
-        <div className="mb-12 bg-accent/5 rounded-2xl p-8 border border-accent/20">
+        <div className="mb-12 bg-primary rounded-2xl p-8 border border-primary/20">
           <div className="text-center mb-8">
-            <h3 className="text-2xl md:text-3xl font-bold text-primary mb-3">
+            <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">
               Domains of Discovery
             </h3>
-            <p className="text-textLight md:text-lg text-sm">
+            <p className="text-gray-100 md:text-lg text-sm">
               Seven diverse domains designed around the acronym MANTHAN
             </p>
           </div>
@@ -123,8 +120,8 @@ const AboutManthan = () => {
                     className="bg-white rounded-xl p-5 text-center border border-primary/20 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-2 cursor-pointer min-w-[120px] flex flex-col justify-center group animate-scale-in"
                     style={{ animationDelay: `${idx * 100}ms` }}
                   >
-                    <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3 transition-all duration-300 group-hover:bg-primary/20 group-hover:scale-110 group-hover:rotate-6">
-                      <Icon className="w-6 h-6 text-primary transition-transform duration-300 group-hover:scale-110" />
+                    <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-3 transition-all duration-300 group-hover:scale-110 group-hover:rotate-6">
+                      <Icon className="w-6 h-6 text-accent transition-transform duration-300 group-hover:scale-110" />
                     </div>
                     <div className="font-semibold text-sm md:text-base text-primary mb-1 transition-colors duration-300 group-hover:text-accent">
                       {item.word}
