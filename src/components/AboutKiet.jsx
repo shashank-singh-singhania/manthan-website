@@ -1,4 +1,3 @@
-import ScrollVelocity from "./ScrollVelocity";
 const AboutKiet = () => {
   return (
     <>
@@ -48,14 +47,14 @@ const AboutKiet = () => {
           </div>
         </div>
       </section>
-      <ScrollVelocity
+      {/* <ScrollVelocity
         texts={[
           "Manthan 3.0 • KIET Group of Institutions •",
           "War and Diplomacy : Crafting Nations Towards Peace •",
         ]}
         velocity={100}
         className="custom-scroll-text bg-primary/40 text-white text-3xl"
-      />
+      /> */}
     </>
   );
 };

@@ -1,11 +1,11 @@
 # --- Stage 1: Build ---
-FROM oven/bun:1.3.1 AS build
+FROM oven/bun:latest AS build
 
 WORKDIR /manthan-client
 
 COPY bun.lock package.json ./
 
-RUN bun install 
+RUN bun install --frozen-lockfile
 
 COPY . .
 
