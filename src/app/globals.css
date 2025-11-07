@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
 @theme {
   --color-primary: #2563eb;
@@ -23,5 +24,3 @@
 .animate-scale-in {
   animation: scale-in 0.5s ease-out backwards;
 }
-
-

@@ -76,7 +76,7 @@ export default function OfflineRegister() {
     if (!email || emailVerified) return;
     try {
       const response = await apiCall("post", endpoints.VERIFY_EMAIL_OTP, {
-        data: { email },
+        data: { email, registration_mode: 0 },
       });
       if (response.success) {
         if (response.data.status === true) {
@@ -219,11 +219,11 @@ export default function OfflineRegister() {
     formData.append("captain[last_name]", values.leaderLastName);
     formData.append("captain[email]", values.leaderEmail);
     formData.append("captain[phone_no]", values.leaderPhone);
-    formData.append("captain[aadhaar_no]", values.leaderAadhar);
+    formData.append("captain[aadhaar_number]", values.leaderAadhar);
     formData.append("captain[pincode]", values.leaderPincode);
     formData.append("captain[state]", values.leaderState);
     formData.append("captain[district]", values.leaderDistrict);
-    formData.append("captain[school]", values.leaderSchool);
+    formData.append("captain[scuid]", values.leaderSchool);
     formData.append("captain[cuid]", values.leaderClass);
     formData.append("captain[suid]", values.leaderSection);
 
@@ -245,11 +245,11 @@ export default function OfflineRegister() {
       formData.append(`members[${index}][last_name]`, member.lastName);
       formData.append(`members[${index}][email]`, member.email);
       formData.append(`members[${index}][phone_no]`, member.phone);
-      formData.append(`members[${index}][aadhaar_no]`, member.aadhar);
+      formData.append(`members[${index}][aadhaar_number]`, member.aadhar);
       formData.append(`members[${index}][pincode]`, member.pincode);
       formData.append(`members[${index}][state]`, member.state);
       formData.append(`members[${index}][district]`, member.district);
-      formData.append(`members[${index}][school]`, member.school);
+      formData.append(`members[${index}][scuid]`, member.school);
       formData.append(`members[${index}][cuid]`, member.class);
       formData.append(`members[${index}][suid]`, member.section);
 

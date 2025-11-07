@@ -1,6 +1,7 @@
 "use client";
 import { Form, Input, Select, Upload, Button, Modal } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
+import { ArrowLeft } from "lucide-react";
 import toast from "react-hot-toast";
 
 const { Option } = Select;
@@ -36,13 +37,22 @@ export default function OnlineRegisterForm({
       <div className="min-h-screen flex items-center justify-center bg-gray-50 py-4">
         <div className="w-full max-w-3xl">
           <div className="bg-white rounded-2xl shadow-xl p-6 md:p-10">
-            <div className="text-center mb-6">
-              <h1 className="text-3xl md:text-4xl font-bold mb-2 text-blue-600">
-                MANTHAN 3.0
-              </h1>
-              <p className="text-sm md:text-base text-gray-600">
-                Register for the online quiz
-              </p>
+            <div className="flex items-center justify-between mb-6">
+              <a
+                href="/"
+                className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+              >
+                <ArrowLeft className="w-6 h-6 text-gray-700" />
+              </a>
+              <div className="flex-1 text-center">
+                <h1 className="text-3xl md:text-4xl font-bold mb-2 text-blue-600">
+                  MANTHAN 3.0
+                </h1>
+                <p className="text-sm md:text-base text-gray-600">
+                  Register for the online quiz
+                </p>
+              </div>
+              <div className="w-8"></div>
             </div>
 
             <Form
@@ -57,6 +67,7 @@ export default function OnlineRegisterForm({
                 <Form.Item
                   label={<span className="text-gray-700">First Name</span>}
                   name="first_name"
+                  className="enabled-field"
                   rules={[
                     { required: true, message: "Enter your first name" },
                     {
@@ -74,6 +85,7 @@ export default function OnlineRegisterForm({
                 <Form.Item
                   label={<span className="text-gray-700">Last Name</span>}
                   name="last_name"
+                  className="enabled-field"
                   rules={[
                     {
                       pattern: /^[A-Za-z]+$/,
@@ -90,6 +102,7 @@ export default function OnlineRegisterForm({
                 <Form.Item
                   label={<span className="text-gray-700">Email</span>}
                   name="email"
+                  className={!emailVerified ? "enabled-field" : ""}
                   rules={[
                     { required: true, message: "Enter your email" },
                     { type: "email", message: "Enter a valid email" },
@@ -121,6 +134,7 @@ export default function OnlineRegisterForm({
                 <Form.Item
                   label={<span className="text-gray-700">Phone Number</span>}
                   name="phone_no"
+                  className={emailVerified ? "enabled-field" : ""}
                   rules={[
                     { required: true, message: "Enter your phone number" },
                     {
@@ -140,6 +154,7 @@ export default function OnlineRegisterForm({
                 <Form.Item
                   label={<span className="text-gray-700">Aadhar Number</span>}
                   name="aadhar_number"
+                  className={emailVerified ? "enabled-field" : ""}
                   rules={[
                     { required: true, message: "Enter your aadhar number" },
                     {
@@ -159,6 +174,7 @@ export default function OnlineRegisterForm({
                 <Form.Item
                   label={<span className="text-gray-700">Pincode</span>}
                   name="pincode"
+                  className={emailVerified ? "enabled-field" : ""}
                   rules={[
                     { required: true, message: "Enter your pincode" },
                     {
@@ -208,6 +224,9 @@ export default function OnlineRegisterForm({
                 <Form.Item
                   label={<span className="text-gray-700">School Name</span>}
                   name="school"
+                  className={
+                    emailVerified && schools.length > 0 ? "enabled-field" : ""
+                  }
                   rules={[
                     { required: true, message: "Select your school name" },
                   ]}
@@ -231,6 +250,7 @@ export default function OnlineRegisterForm({
                 <Form.Item
                   label={<span className="text-gray-700">Class</span>}
                   name="class"
+                  className={emailVerified ? "enabled-field" : ""}
                   rules={[{ required: true, message: "Select your class" }]}
                 >
                   <Select
@@ -249,6 +269,7 @@ export default function OnlineRegisterForm({
                 <Form.Item
                   label={<span className="text-gray-700">Section</span>}
                   name="section"
+                  className={emailVerified ? "enabled-field" : ""}
                   rules={[{ required: true, message: "Select your section" }]}
                 >
                   <Select
@@ -357,7 +378,7 @@ export default function OnlineRegisterForm({
             value={otp}
             onChange={onOtpChange}
             size="large"
-            className="rounded-lg"
+            className="rounded-lg enabled-field"
             style={{ width: "100%", justifyContent: "center" }}
           />
 
@@ -372,6 +393,30 @@ export default function OnlineRegisterForm({
           </Button>
         </div>
       </Modal>
+      <style jsx global>{`
+        .enabled-field .ant-input:not(:disabled),
+        .enabled-field
+          .ant-select:not(.ant-select-disabled)
+          .ant-select-selector,
+        .enabled-field .ant-input-otp:not(:disabled) {
+          border-color: #60a5fa;
+        }
+        .enabled-field .ant-input:not(:disabled):hover,
+        .enabled-field
+          .ant-select:not(.ant-select-disabled):hover
+          .ant-select-selector,
+        .enabled-field .ant-input-otp:not(:disabled):hover {
+          border-color: #3b82f6;
+        }
+        .enabled-field .ant-input:not(:disabled):focus,
+        .enabled-field
+          .ant-select:not(.ant-select-disabled).ant-select-focused
+          .ant-select-selector,
+        .enabled-field .ant-input-otp:not(:disabled):focus {
+          border-color: #2563eb;
+          box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+        }
+      `}</style>
     </>
   );
 }

@@ -75,7 +75,7 @@ export default function OnlineRegister() {
     if (!email || emailVerified) return;
     try {
       const response = await apiCall("post", endpoints.VERIFY_EMAIL_OTP, {
-        data: { email },
+        data: { email, registration_mode: 1 },
       });
       if (response.success) {
         if (response.data.status === true) {
@@ -89,11 +89,11 @@ export default function OnlineRegister() {
           setIsOtpModalVisible(true);
         }
       } else {
-        toast.error("Error verifying email");
+        toast.error(response.data.error);
         form.setFieldValue("email", "");
       }
     } catch (error) {
-      toast.error("Error verifying email");
+      toast.error(response.data.error);
     }
   };
 
@@ -156,6 +156,7 @@ export default function OnlineRegister() {
         form.setFieldsValue({
           state: response.data.state,
           district: response.data.district,
+          school: undefined,
         });
         await fetchSchools(response.data.state, response.data.district);
       } else {
@@ -175,11 +176,11 @@ export default function OnlineRegister() {
     const formData = new FormData();
     formData.append("registration_mode", 1);
     formData.append("participant_type", 2);
-    formData.append("aadhaar_no", values.aadhar_number);
+    formData.append("aadhaar_number", values.aadhar_number);
     formData.append("district", values.district);
     formData.append("state", values.state);
     formData.append("email", values.email);
-    formData.append("school", values.school);
+    formData.append("scuid", values.school);
     formData.append("cuid", values.class);
     formData.append("suid", values.section);
     formData.append("first_name", values.first_name);

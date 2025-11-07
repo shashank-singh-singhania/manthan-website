@@ -5,6 +5,7 @@ import {
   PlusOutlined,
   MinusCircleOutlined,
 } from "@ant-design/icons";
+import { ArrowLeft } from "lucide-react";
 import toast from "react-hot-toast";
 
 const { Option } = Select;
@@ -43,13 +44,22 @@ export default function OfflineRegisterForm({
       <div className="min-h-screen flex items-center justify-center bg-gray-50 py-4">
         <div className="w-full max-w-3xl">
           <div className="bg-white rounded-2xl shadow-xl p-6 md:p-10">
-            <div className="text-center mb-8">
-              <h1 className="text-3xl md:text-4xl font-bold mb-2 text-blue-600">
-                MANTHAN 3.0
-              </h1>
-              <p className="text-sm md:text-base text-gray-600">
-                Team Registration for the offline quiz
-              </p>
+            <div className="flex items-center justify-between mb-6">
+              <a
+                href="/"
+                className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+              >
+                <ArrowLeft className="w-6 h-6 text-gray-700" />
+              </a>
+              <div className="flex-1 text-center">
+                <h1 className="text-3xl md:text-4xl font-bold mb-2 text-blue-600">
+                  MANTHAN 3.0
+                </h1>
+                <p className="text-sm md:text-base text-gray-600">
+                  Team Registration for the offline quiz
+                </p>
+              </div>
+              <div className="w-8"></div>
             </div>
 
             <Form
@@ -65,6 +75,7 @@ export default function OfflineRegisterForm({
                   <span className="text-gray-700 font-semibold">Team Name</span>
                 }
                 name="teamName"
+                className="enabled-field"
                 rules={[
                   { required: true, message: "Enter your team name" },
                   {
@@ -90,6 +101,7 @@ export default function OfflineRegisterForm({
                 <Form.Item
                   label={<span className="text-gray-700">First Name</span>}
                   name="leaderFirstName"
+                  className="enabled-field"
                   rules={[
                     { required: true, message: "Enter first name" },
                     {
@@ -107,6 +119,7 @@ export default function OfflineRegisterForm({
                 <Form.Item
                   label={<span className="text-gray-700">Last Name</span>}
                   name="leaderLastName"
+                  className="enabled-field"
                   rules={[
                     {
                       pattern: /^[A-Za-z]+$/,
@@ -120,6 +133,7 @@ export default function OfflineRegisterForm({
                 <Form.Item
                   label={<span className="text-gray-700">Email</span>}
                   name="leaderEmail"
+                  className={!emailVerified ? "enabled-field" : ""}
                   rules={[
                     { required: true, message: "Enter email" },
                     { type: "email", message: "Enter a valid email" },
@@ -151,6 +165,7 @@ export default function OfflineRegisterForm({
                 <Form.Item
                   label={<span className="text-gray-700">Phone Number</span>}
                   name="leaderPhone"
+                  className={emailVerified ? "enabled-field" : ""}
                   rules={[
                     { required: true, message: "Enter phone number" },
                     {
@@ -170,6 +185,7 @@ export default function OfflineRegisterForm({
                 <Form.Item
                   label={<span className="text-gray-700">Aadhar Number</span>}
                   name="leaderAadhar"
+                  className={emailVerified ? "enabled-field" : ""}
                   rules={[
                     { required: true, message: "Enter aadhar number" },
                     {
@@ -189,6 +205,7 @@ export default function OfflineRegisterForm({
                 <Form.Item
                   label={<span className="text-gray-700">Pincode</span>}
                   name="leaderPincode"
+                  className={emailVerified ? "enabled-field" : ""}
                   rules={[
                     { required: true, message: "Enter pincode" },
                     {
@@ -238,6 +255,9 @@ export default function OfflineRegisterForm({
                 <Form.Item
                   label={<span className="text-gray-700">School Name</span>}
                   name="leaderSchool"
+                  className={
+                    emailVerified && schools.length > 0 ? "enabled-field" : ""
+                  }
                   rules={[
                     { required: true, message: "Select your school name" },
                   ]}
@@ -261,6 +281,7 @@ export default function OfflineRegisterForm({
                 <Form.Item
                   label={<span className="text-gray-700">Class</span>}
                   name="leaderClass"
+                  className={emailVerified ? "enabled-field" : ""}
                   rules={[{ required: true, message: "Select class" }]}
                 >
                   <Select
@@ -279,6 +300,7 @@ export default function OfflineRegisterForm({
                 <Form.Item
                   label={<span className="text-gray-700">Section</span>}
                   name="leaderSection"
+                  className={emailVerified ? "enabled-field" : ""}
                   rules={[{ required: true, message: "Select section" }]}
                 >
                   <Select
@@ -376,6 +398,7 @@ export default function OfflineRegisterForm({
                               <span className="text-gray-700">First Name</span>
                             }
                             name={[index, "firstName"]}
+                            className="enabled-field"
                             rules={[
                               { required: true, message: "Enter first name" },
                               {
@@ -395,6 +418,7 @@ export default function OfflineRegisterForm({
                               <span className="text-gray-700">Last Name</span>
                             }
                             name={[index, "lastName"]}
+                            className="enabled-field"
                             rules={[
                               {
                                 pattern: /^[A-Za-z]+$/,
@@ -411,6 +435,7 @@ export default function OfflineRegisterForm({
                           <Form.Item
                             label={<span className="text-gray-700">Email</span>}
                             name={[index, "email"]}
+                            className="enabled-field"
                             rules={[
                               { required: true, message: "Enter email" },
                               { type: "email", message: "Enter a valid email" },
@@ -429,6 +454,7 @@ export default function OfflineRegisterForm({
                               </span>
                             }
                             name={[index, "phone"]}
+                            className="enabled-field"
                             rules={[
                               { required: true, message: "Enter phone number" },
                               {
@@ -451,6 +477,7 @@ export default function OfflineRegisterForm({
                               </span>
                             }
                             name={[index, "aadhar"]}
+                            className="enabled-field"
                             rules={[
                               {
                                 required: true,
@@ -474,6 +501,7 @@ export default function OfflineRegisterForm({
                               <span className="text-gray-700">Pincode</span>
                             }
                             name={[index, "pincode"]}
+                            className="enabled-field"
                             rules={[
                               { required: true, message: "Enter pincode" },
                               {
@@ -528,6 +556,9 @@ export default function OfflineRegisterForm({
                               <span className="text-gray-700">School Name</span>
                             }
                             name={[index, "school"]}
+                            className={
+                              schools.length > 0 ? "enabled-field" : ""
+                            }
                             rules={[
                               {
                                 required: true,
@@ -556,6 +587,7 @@ export default function OfflineRegisterForm({
                           <Form.Item
                             label={<span className="text-gray-700">Class</span>}
                             name={[index, "class"]}
+                            className="enabled-field"
                             rules={[
                               { required: true, message: "Select class" },
                             ]}
@@ -577,6 +609,7 @@ export default function OfflineRegisterForm({
                               <span className="text-gray-700">Section</span>
                             }
                             name={[index, "section"]}
+                            className="enabled-field"
                             rules={[
                               { required: true, message: "Select section" },
                             ]}
@@ -698,7 +731,7 @@ export default function OfflineRegisterForm({
             value={otp}
             onChange={onOtpChange}
             size="large"
-            className="rounded-lg"
+            className="rounded-lg enabled-field"
             style={{ width: "100%", justifyContent: "center" }}
           />
 
@@ -713,6 +746,30 @@ export default function OfflineRegisterForm({
           </Button>
         </div>
       </Modal>
+      <style jsx global>{`
+        .enabled-field .ant-input:not(:disabled),
+        .enabled-field
+          .ant-select:not(.ant-select-disabled)
+          .ant-select-selector,
+        .enabled-field .ant-input-otp:not(:disabled) {
+          border-color: #60a5fa;
+        }
+        .enabled-field .ant-input:not(:disabled):hover,
+        .enabled-field
+          .ant-select:not(.ant-select-disabled):hover
+          .ant-select-selector,
+        .enabled-field .ant-input-otp:not(:disabled):hover {
+          border-color: #3b82f6;
+        }
+        .enabled-field .ant-input:not(:disabled):focus,
+        .enabled-field
+          .ant-select:not(.ant-select-disabled).ant-select-focused
+          .ant-select-selector,
+        .enabled-field .ant-input-otp:not(:disabled):focus {
+          border-color: #2563eb;
+          box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+        }
+      `}</style>
     </>
   );
 }
