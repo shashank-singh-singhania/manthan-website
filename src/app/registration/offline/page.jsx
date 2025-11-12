@@ -90,7 +90,7 @@ export default function OfflineRegister() {
           setIsOtpModalVisible(true);
         }
       } else {
-        toast.error("Error verifying email");
+        toast.error(response.data.error);
         form.setFieldValue("leaderEmail", "");
       }
     } catch (error) {

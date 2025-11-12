@@ -47,9 +47,9 @@ export default function OfflineRegisterForm({
             <div className="flex items-center justify-between mb-6">
               <a
                 href="/"
-                className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                className="p-2 hover:bg-gray-100 bg-primary rounded-lg transition-colors"
               >
-                <ArrowLeft className="w-6 h-6 text-gray-700" />
+                <ArrowLeft className="w-6 h-6 text-white" />
               </a>
               <div className="flex-1 text-center">
                 <h1 className="text-3xl md:text-4xl font-bold mb-2 text-blue-600">

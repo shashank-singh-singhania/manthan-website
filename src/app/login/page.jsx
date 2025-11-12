@@ -1,7 +1,6 @@
 "use client";
 import { Form, Input } from "antd";
 import { MailOutlined, LockOutlined } from "@ant-design/icons";
-import Link from "next/link";
 import toast from "react-hot-toast";
 import { endpoints } from "@/constants/urls";
 import { useRouter } from "next/navigation";
@@ -12,12 +11,10 @@ export default function Login() {
   const [authenticated, setAuthenticated] = useState(true);
   const router = useRouter();
   const onFinish = async (values) => {
-    console.log("Login:", values);
     const response = await apiCall("post", endpoints.LOGIN, { data: values });
-    console.log(response);
     if (response.success) {
+      toast.success(response.data.msg);
       router.push("/user");
-      toast.success(response.data.message);
     } else {
       toast.error(response.data.error);
     }
@@ -74,12 +71,6 @@ export default function Login() {
               />
             </Form.Item>
 
-            <div className="text-right mb-6">
-              <a href="#" className="text-sm hover:underline text-primary">
-                Forgot password?
-              </a>
-            </div>
-
             <Form.Item>
               <button
                 type="submit"
@@ -89,16 +80,6 @@ export default function Login() {
               </button>
             </Form.Item>
           </Form>
-
-          <div className="text-center mt-6">
-            <span className="text-textLight">Don't have an account? </span>
-            <Link
-              href="/register"
-              className="font-semibold hover:underline text-primary"
-            >
-              Register
-            </Link>
-          </div>
         </div>
       </div>
     </div>
