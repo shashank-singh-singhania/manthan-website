@@ -11,9 +11,9 @@ const Rules = () => {
       <section className="py-26 px-4">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-2xl md:text-4xl font-extrabold mb-2 text-center leading-tight">
-            Rules & <span className="text-primary">Regulations</span>
+            Rules & <span className="text-accent">Regulations</span>
           </h2>
-          <div className="w-20 h-1 bg-primary mx-auto rounded-full mb-10"></div>
+          <div className="w-20 h-1 bg-accent mx-auto rounded-full mb-10"></div>
 
           <div className="mb-12">
             <div className="grid md:grid-cols-2 gap-6">

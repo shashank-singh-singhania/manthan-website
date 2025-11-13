@@ -18,9 +18,9 @@ const Faqs = () => {
       <section className="py-30 px-4">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-2xl md:text-4xl font-extrabold mb-2 leading-tight text-center">
-            Frequently Asked <span className="text-primary">Questions</span>
+            Frequently Asked <span className="text-accent">Questions</span>
           </h2>
-          <div className="w-20 h-1 bg-primary mx-auto rounded-full mb-10"></div>
+          <div className="w-20 h-1 bg-accent mx-auto rounded-full mb-10"></div>
           <div className="space-y-3">
             {faqs.map((faq, idx) => (
               <div
@@ -42,7 +42,7 @@ const Faqs = () => {
                   <div
                     className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${
                       openIndex === idx
-                        ? "bg-blue-600 rotate-180"
+                        ? "bg-primary rotate-180"
                         : "bg-gray-100 group-hover:bg-gray-200"
                     }`}
                   >

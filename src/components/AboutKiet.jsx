@@ -9,11 +9,11 @@ const AboutKiet = () => {
           <div className="text-center mb-12 animate-fade-in-up">
             <h2 className="text-2xl md:text-4xl font-bold mb-3 text-textDark">
               About{" "}
-              <span className="text-primary inline-block relative">
+              <span className="text-accent inline-block relative">
                 KIET Group of Institutions
               </span>
             </h2>
-            <div className="mx-auto h-1 w-24 bg-primary rounded-full transition-all duration-500 hover:w-36" />
+            <div className="mx-auto h-1 w-24 bg-accent rounded-full transition-all duration-500 hover:w-36" />
           </div>
 
           <div className="mx-auto max-w-4xl space-y-8">

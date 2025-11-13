@@ -11,7 +11,7 @@ const HeroSection = () => {
         <div className="relative rounded-2xl overflow-hidden shadow-2xl mb-8 group">
           <div className="relative h-[30vh] md:h-[40vh] lg:h-[40vh] overflow-hidden">
             <img
-              src="https://kiet-website-client-rhxb.vercel.app/assets/images/kiet/main/homepage%20banner_6.webp"
+              src="/images/banner.jpg"
               alt="Manthan Event Banner"
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             />

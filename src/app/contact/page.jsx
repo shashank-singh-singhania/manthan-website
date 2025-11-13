@@ -12,12 +12,11 @@ const Contact = () => {
           <div className="animate-fade-in-up">
             <h2 className="text-2xl md:text-4xl font-extrabold mb-2 leading-tight">
               Contact{" "}
-              <span className="text-primary relative inline-block group">
+              <span className="text-accent relative inline-block group">
                 Us
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-500 group-hover:w-full"></span>
               </span>
             </h2>
-            <div className="w-20 h-1 bg-primary mx-auto rounded-full mb-4 transition-all duration-500 hover:w-32"></div>
+            <div className="w-20 h-1 bg-accent mx-auto rounded-full mb-4 transition-all duration-500 hover:w-32"></div>
             <p className="text-textLight max-w-2xl mx-auto mb-10">
               Get in touch with our coordinators for any queries
             </p>

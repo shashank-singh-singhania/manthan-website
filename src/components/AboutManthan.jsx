@@ -29,11 +29,11 @@ const AboutManthan = () => {
             className={`text-2xl md:text-4xl font-extrabold mb-3 leading-tight`}
           >
             About{" "}
-            <span className="text-primary relative inline-block group">
+            <span className="text-accent relative inline-block group">
               MANTHAN 3.0
             </span>
           </h2>
-          <div className="w-20 h-1 bg-primary mx-auto rounded-full transition-all duration-500 hover:w-32"></div>
+          <div className="w-20 h-1 bg-accent mx-auto rounded-full transition-all duration-500 hover:w-32"></div>
         </div>
 
         <div className="mb-12 bg-primary/5 rounded-2xl p-8 border border-primary/20 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group">
