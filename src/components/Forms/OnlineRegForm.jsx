@@ -40,7 +40,7 @@ export default function OnlineRegisterForm({
             <div className="flex items-center justify-between mb-6">
               <a
                 href="/"
-                className="p-2 hover:bg-gray-100 bg-primary rounded-lg transition-colors"
+                className="p-2 hover:bg-gray-100 bg-blue-600 rounded-lg transition-colors"
               >
                 <ArrowLeft className="w-6 h-6 text-white" />
               </a>
