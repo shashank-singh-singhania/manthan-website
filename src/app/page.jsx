@@ -2,7 +2,6 @@ import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import AboutKiet from "@/components/AboutKiet";
 import AboutManthan from "@/components/AboutManthan";
-import PartnersSection from "@/components/Partners";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -15,7 +14,6 @@ export default function Home() {
       <AboutKiet />
       <div id="about-manthan" className="relative top-0 z-30 bg-white">
         <AboutManthan />
-        <PartnersSection />
         <Footer />
       </div>
     </div>

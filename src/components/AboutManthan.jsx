@@ -1,5 +1,6 @@
-import { Trophy, Award, Users } from "lucide-react";
+import { Trophy, Award, Users, ArrowRight } from "lucide-react";
 import categories from "@/data/manthanCategories";
+import Link from "next/link";
 
 const AboutManthan = () => {
   const onlinePrizes = [
@@ -37,22 +38,12 @@ const AboutManthan = () => {
         </div>
 
         <div className="mb-12 bg-primary/5 rounded-2xl p-8 border border-primary/20 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group">
-          <p className="text-xl font-semibold text-textDark mb-3 italic">
-            "War and Diplomacy: Crafting Nations Towards Peace"
-          </p>
-          <p className="text-textLight text-justify leading-relaxed mb-4">
-            This year's theme celebrates India's technological and social
-            evolution as it strides toward becoming a developed nation. The
-            event challenges young minds to explore how emerging technologies,
-            digital inclusion, and sustainable innovation can accelerate
-            progress toward the 2047 vision.
-          </p>
           <p className="text-textLight text-justify leading-relaxed mb-1">
             Organized by the Department of PR and International Relations at
-            KIET Group of Institutions, Manthan is an inter-school nationwide
-            quiz competition that fosters critical thinking, sharpens intellect,
-            and fuels the spirit of healthy competition among schools across the
-            country.
+            KIET Group of Institutions(Deemed-to-be University), Manthan is an
+            inter-school nationwide quiz competition that fosters critical
+            thinking, sharpens intellect, and fuels the spirit of healthy
+            competition among schools across the country.
           </p>
           <p className="text-textLight text-justify leading-relaxed">
             After the resounding success of its previous two editions in 2022
@@ -68,7 +59,7 @@ const AboutManthan = () => {
               <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center transition-transform duration-300 ">
                 <Users className="w-6 h-6 text-primary" />
               </div>
-              <h3 className="text-2xl font-bold text-primary">The Vision</h3>
+              <h3 className="text-2xl font-bold text-primary">Vision</h3>
             </div>
             <p className="text-textLight text-justify leading-relaxed relative z-10">
               Manthan is not just a competition - it is a movement that aims to
@@ -199,7 +190,7 @@ const AboutManthan = () => {
                 ))}
               </div>
               <div className="text-center bg-primary/5 rounded-xl p-10 mt-6 border border-primary/20 hover:bg-primary/10 transition-all duration-300 group">
-                <h3 className="md:text-3xl text-2xl font-bold mb-4 group-hover:text-primary transition-colors duration-300">
+                <h3 className="md:text-3xl text-2xl font-bold mb-4">
                   Join Us at Manthan 3.0
                 </h3>
                 <p className="md:text-lg text-sm text-textLight mb-6 max-w-3xl mx-auto">
@@ -207,16 +198,22 @@ const AboutManthan = () => {
                   intellect meets inspiration. Challenge yourself, expand your
                   horizons, and shine on the national stage!
                 </p>
-                <div className="flex flex-wrap justify-center gap-3 text-sm">
-                  <span className="bg-white px-5 py-2 rounded-full border border-primary/30 text-textLight hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 cursor-default">
-                    Critical Thinking
-                  </span>
-                  <span className="bg-white px-5 py-2 rounded-full border border-primary/30 text-textLight hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 cursor-default">
-                    Analytical Skills
-                  </span>
-                  <span className="bg-white px-5 py-2 rounded-full border border-primary/30 text-textLight hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 cursor-default">
-                    Teamwork
-                  </span>
+                <div className="flex flex-col sm:flex-row justify-center gap-4 text-sm w-full max-w-xl mx-auto">
+                  <Link
+                    href="/registration/online"
+                    className="flex-1 bg-primary hover:bg-primary/90 text-white font-semibold py-3 sm:py-4 px-4 rounded-lg transition-all duration-200 flex items-center justify-center group/btn text-xs sm:text-base shadow-md hover:shadow-lg"
+                  >
+                    Register for Online
+                    <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 transition-transform group-hover/btn:translate-x-1" />
+                  </Link>
+
+                  <Link
+                    href="/registration/offline"
+                    className="flex-1 bg-accent hover:bg-accent/90 text-white font-semibold py-3 sm:py-4 px-4 rounded-lg transition-all duration-200 flex items-center justify-center group/btn text-xs sm:text-base shadow-md hover:shadow-lg"
+                  >
+                    Register for Offline
+                    <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 transition-transform group-hover/btn:translate-x-1" />
+                  </Link>
                 </div>
               </div>
             </div>

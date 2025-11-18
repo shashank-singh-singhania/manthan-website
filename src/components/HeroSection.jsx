@@ -1,4 +1,4 @@
-import { ArrowRight, Calendar, Award } from "lucide-react";
+import { ArrowRight, Calendar } from "lucide-react";
 import Link from "next/link";
 
 const HeroSection = () => {
@@ -30,20 +30,21 @@ const HeroSection = () => {
             </Link>
 
             <p className="text-textLight mb-4 sm:mb-6 text-center text-sm sm:text-base">
-              Participate online! Top 150 teams advance to on-campus rounds.
+              Participate online! Team formation, not required.
             </p>
 
             <div className="space-y-3 sm:space-y-4">
               <div className="flex items-center text-textLight bg-gray-50 p-2.5 sm:p-3 rounded-lg transition-all duration-200 hover:bg-primary/5 text-sm sm:text-base">
                 <Calendar className="w-4 h-4 sm:w-5 sm:h-5 mr-2 sm:mr-3 text-primary shrink-0" />
-                <span>22nd - 23rd November 2025</span>
+                {/* <span>22nd - 23rd November 2025</span> */}
+                <span>Dates: December 2025 (Tentative)</span>
               </div>
-              <div className="flex items-start text-textLight bg-gray-50 p-2.5 sm:p-3 rounded-lg transition-all duration-200 hover:bg-primary/5 text-sm sm:text-base">
+              {/* <div className="flex items-start text-textLight bg-gray-50 p-2.5 sm:p-3 rounded-lg transition-all duration-200 hover:bg-primary/5 text-sm sm:text-base">
                 <Award className="w-4 h-4 sm:w-5 sm:h-5 mr-2 sm:mr-3 text-primary shrink-0 mt-0.5" />
                 <span className="leading-tight">
                   1st Prize: ₹5,000 | 2nd Prize: ₹5,000 | 3rd Prize: ₹5,000
                 </span>
-              </div>
+              </div> */}
             </div>
           </div>
 
@@ -57,20 +58,22 @@ const HeroSection = () => {
             </Link>
 
             <p className="text-textLight mb-4 sm:mb-6 text-center text-sm sm:text-base">
-              Top 150 teams compete at KIET Campus for the ultimate glory!
+              Participate in inter/intra school teams at KIET Campus in
+              Ghaziabad.
             </p>
 
             <div className="space-y-3 sm:space-y-4">
               <div className="flex items-center text-textLight bg-gray-50 p-2.5 sm:p-3 rounded-lg transition-all duration-200 hover:bg-accent/5 text-sm sm:text-base">
                 <Calendar className="w-4 h-4 sm:w-5 sm:h-5 mr-2 sm:mr-3 text-accent shrink-0" />
-                <span>5th - 6th December 2025</span>
+                {/* <span>5th - 6th December 2025</span> */}
+                <span>Dates: Coming your way in 2026. Don’t miss it!</span>
               </div>
-              <div className="flex items-start text-textLight bg-gray-50 p-2.5 sm:p-3 rounded-lg transition-all duration-200 hover:bg-accent/5 text-sm sm:text-base">
+              {/* <div className="flex items-start text-textLight bg-gray-50 p-2.5 sm:p-3 rounded-lg transition-all duration-200 hover:bg-accent/5 text-sm sm:text-base">
                 <Award className="w-4 h-4 sm:w-5 sm:h-5 mr-2 sm:mr-3 text-accent shrink-0 mt-0.5" />
                 <span className="leading-tight">
                   1st Prize: ₹11,000 | 2nd Prize: ₹7,000 | 3rd Prize: ₹5,000
                 </span>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
