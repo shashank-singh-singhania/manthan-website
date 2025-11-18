@@ -1,5 +1,13 @@
 "use client";
-import { Form, Input, Select, Upload, Button, Modal } from "antd";
+import {
+  Form,
+  Input,
+  Select,
+  Upload,
+  Button,
+  Modal,
+  ConfigProvider,
+} from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import { ArrowLeft } from "lucide-react";
 import toast from "react-hot-toast";
@@ -33,26 +41,49 @@ export default function OnlineRegisterForm({
   };
 
   return (
-    <>
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 py-4">
-        <div className="w-full max-w-3xl">
+    <ConfigProvider
+      theme={{
+        token: {
+          colorPrimary: "#5843b5",
+          colorInfo: "#5843b5",
+          colorLink: "#5843b5",
+          colorSuccess: "#15b7c6",
+          borderRadius: 8,
+        },
+        components: {
+          Button: {
+            colorPrimary: "#5843b5",
+            algorithm: true,
+          },
+          Input: {
+            colorPrimary: "#5843b5",
+            colorPrimaryHover: "#6b52d4",
+          },
+          Select: {
+            colorPrimary: "#5843b5",
+            colorPrimaryHover: "#6b52d4",
+          },
+        },
+      }}
+    >
+      <div className="min-h-screen flex items-center justify-center bg-gray-50 py-6">
+        <div className="w-full max-w-4xl">
           <div className="bg-white rounded-2xl shadow-xl p-6 md:p-10">
-            <div className="flex items-center justify-between mb-6">
+            <div className="mb-6">
               <a
                 href="/"
-                className="p-2 hover:bg-gray-100 bg-blue-600 rounded-lg transition-colors"
+                className="hidden md:flex items-center gap-2 px-4 py-2 text-gray-700 hover:text-primary hover:bg-primary/10 rounded-lg transition-colors border border-gray-200 hover:border-primary mb-4 w-fit"
               >
-                <ArrowLeft className="w-6 h-6 text-white" />
+                <ArrowLeft className="w-5 h-5" />
               </a>
-              <div className="flex-1 text-center">
-                <h1 className="text-3xl md:text-4xl font-bold mb-2 text-blue-600">
+              <div className="text-center">
+                <h1 className="text-3xl md:text-4xl font-bold mb-2 text-primary">
                   MANTHAN 3.0
                 </h1>
                 <p className="text-sm md:text-base text-gray-600">
-                  Register for the online quiz
+                  Individual Participation Form - Online Quiz Competition
                 </p>
               </div>
-              <div className="w-8"></div>
             </div>
 
             <Form
@@ -399,14 +430,14 @@ export default function OnlineRegisterForm({
           .ant-select:not(.ant-select-disabled)
           .ant-select-selector,
         .enabled-field .ant-input-otp:not(:disabled) {
-          border-color: #60a5fa;
+          border-color: #5843b5;
         }
         .enabled-field .ant-input:not(:disabled):hover,
         .enabled-field
           .ant-select:not(.ant-select-disabled):hover
           .ant-select-selector,
         .enabled-field .ant-input-otp:not(:disabled):hover {
-          border-color: #3b82f6;
+          border-color: #5843b5;
         }
         .enabled-field .ant-input:not(:disabled):focus,
         .enabled-field
@@ -417,6 +448,6 @@ export default function OnlineRegisterForm({
           box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
         }
       `}</style>
-    </>
+    </ConfigProvider>
   );
 }
