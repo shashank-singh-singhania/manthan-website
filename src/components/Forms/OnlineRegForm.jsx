@@ -381,7 +381,7 @@ export default function OnlineRegisterForm({
               <Form.Item className="mb-0">
                 <button
                   type="submit"
-                  className="w-full h-12 rounded-lg text-base font-semibold bg-blue-600 text-white hover:bg-blue-700 transition-colors mt-2 disabled:bg-gray-400 disabled:cursor-not-allowed"
+                  className="w-full h-12 rounded-lg text-base font-semibold bg-primary text-white hover:opacity-75 transition-colors mt-2 disabled:bg-gray-400 disabled:cursor-not-allowed"
                   disabled={!emailVerified}
                 >
                   Register
@@ -445,7 +445,6 @@ export default function OnlineRegisterForm({
           .ant-select-selector,
         .enabled-field .ant-input-otp:not(:disabled):focus {
           border-color: #2563eb;
-          box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
         }
       `}</style>
     </ConfigProvider>
