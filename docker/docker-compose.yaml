@@ -1,12 +1,13 @@
 services:
   nginx-react:
     build:
-      context: .
-      dockerfile: DockerFile
+      context: ..
+      dockerfile: ./docker/Dockerfile
     restart: always
     tty: true
     volumes:
-      - ./nginx/ssl:/etc/ssl
+      - ..:/manthan-client
+      - ../nginx/ssl:/etc/ssl
     ports:
       - 80:80
       - 443:443

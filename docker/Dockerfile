@@ -3,7 +3,7 @@ FROM oven/bun:latest AS build
 
 WORKDIR /manthan-client
 
-COPY bun.lock package.json ./
+COPY ./bun.lock ./package.json ./
 
 RUN bun install --frozen-lockfile
 
