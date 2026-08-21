@@ -159,7 +159,7 @@ const AboutManthan = () => {
                   "For Class 11th & 12th qualifiers only",
                   "Top 3 students per school invited",
                   "On-Campus at KIET, Ghaziabad",
-                  "~150 students from across India",
+                  "Top 150 teams from across India",
                   "Certificates of Merit for all finalists",
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-2.5 text-textLight text-sm">

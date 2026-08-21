@@ -76,8 +76,8 @@ const Rules = () => {
                     Invitation Only
                   </p>
                   <p>
-                    <span className="font-semibold">Approx. Students:</span>{" "}
-                    ~150 invited from across India
+                    <span className="font-semibold">Teams Invited:</span>{" "}
+                    Top 150 teams from across India
                   </p>
                 </div>
               </div>

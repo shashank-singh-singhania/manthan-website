@@ -56,8 +56,8 @@ const OfflineRulesComp = () => {
           Grand Finale – Schedule
         </h3>
         <p className="text-textLight mb-6">
-          Approximately 150 students from across India will be invited to the
-          campus for the Grand Finale.
+          The top 150 teams from across India will be shortlisted and invited to
+          KIET Deemed To Be University for the on-campus rounds and Grand Finale.
         </p>
         <div className="space-y-6">
           {offlineSchedule.map((day, idx) => (

@@ -13,7 +13,7 @@ const Header = () => {
   const menuItems = [
     { id: "about-kiet",    label: "About KIET",       type: "scroll" },
     { id: "about-manthan", label: "About Manthan",    type: "scroll" },
-    { id: "/rules",        label: "Rules & Regs",     type: "link"   },
+    { id: "/rules",        label: "Rules & Regulations", type: "link"   },
     { id: "/faqs",         label: "FAQs",             type: "link"   },
     { id: "/contact",      label: "Contact Us",       type: "link"   },
   ];
