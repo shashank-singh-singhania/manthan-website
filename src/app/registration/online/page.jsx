@@ -1,239 +1,84 @@
 "use client";
-import { Form } from "antd";
-import { useState } from "react";
-import toast from "react-hot-toast";
-import { endpoints } from "@/constants/urls";
-import { apiCall } from "@/utils/api";
-import OnlineRegisterForm from "@/components/Forms/OnlineRegForm";
+import { ArrowRight, ExternalLink } from "lucide-react";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+
+const REGISTRATION_URL = "https://forms.gle/dXjc1KYHgcrW1z9d7";
 
 export default function OnlineRegister() {
-  const [form] = Form.useForm();
-  const [classes, setClasses] = useState([]);
-  const [sections, setSections] = useState([]);
-  const [schools, setSchools] = useState([]);
-  const [emailVerified, setEmailVerified] = useState(false);
-  const [isOtpModalVisible, setIsOtpModalVisible] = useState(false);
-  const [uuid, setUuid] = useState("");
-  const [otp, setOtp] = useState("");
-  const [otpLoading, setOtpLoading] = useState(false);
-
-  const fetchClasses = async () => {
-    try {
-      const response = await apiCall("get", endpoints.GET_CLASS_SECTION, {
-        headers: { loader: false },
-        params: { type: "name", name: "class" },
-      });
-      if (response.success) {
-        setClasses(response.data || []);
-      } else {
-        toast.error("Error loading classes");
-      }
-    } catch (error) {
-      toast.error("Error loading classes");
-    }
-  };
-
-  const fetchSections = async () => {
-    try {
-      const response = await apiCall("get", endpoints.GET_CLASS_SECTION, {
-        headers: { loader: false },
-        params: { type: "name", name: "section" },
-      });
-      if (response.success) {
-        setSections(response.data || []);
-      } else {
-        toast.error("Error loading sections");
-      }
-    } catch (error) {
-      toast.error("Error loading sections");
-    }
-  };
-
-  const fetchSchools = async (state, district) => {
-    if (!state || !district) return;
-    try {
-      const response = await apiCall("get", endpoints.GET_SCHOOLS, {
-        params: { state, district },
-      });
-      if (response.success) {
-        setSchools(response.data || []);
-      } else {
-        toast.error(response.data.msg);
-      }
-    } catch (error) {
-      toast.error("Error loading schools");
-    }
-  };
-
-  const handleEmailVerification = async () => {
-    const email = form.getFieldValue("email");
-    try {
-      await form.validateFields(["email"]);
-    } catch {
-      return;
-    }
-    if (!email || emailVerified) return;
-    try {
-      const response = await apiCall("post", endpoints.VERIFY_EMAIL_OTP, {
-        data: { email, registration_mode: 1 },
-      });
-      if (response.success) {
-        if (response.data.status === true) {
-          setEmailVerified(true);
-          toast.success(response.data.msg);
-          await fetchClasses();
-          await fetchSections();
-        } else {
-          setUuid(response.data.user);
-          toast.success(response.data.msg);
-          setIsOtpModalVisible(true);
-        }
-      } else {
-        toast.error(response.data.error);
-        form.setFieldValue("email", "");
-      }
-    } catch (error) {
-      toast.error(response.data.error);
-    }
-  };
-
-  const handleOtpVerification = async (otpValue) => {
-    const otpToVerify = otpValue || otp;
-    if (!otpToVerify || otpToVerify.length !== 6) {
-      toast.error("Please enter a valid 6-digit OTP");
-      return;
-    }
-    setOtpLoading(true);
-    try {
-      const response = await apiCall("put", endpoints.VERIFY_EMAIL_OTP, {
-        headers: { loader: false },
-        data: { uuid, otp: parseInt(otpToVerify) },
-      });
-      if (response.success) {
-        setEmailVerified(true);
-        setIsOtpModalVisible(false);
-        setOtp("");
-        toast.success(response.data.msg);
-        await fetchClasses();
-        await fetchSections();
-      } else {
-        toast.error(response.data.msg);
-      }
-    } catch (error) {
-      toast.error("Error verifying OTP");
-    } finally {
-      setOtpLoading(false);
-    }
-  };
-
-  const handleOtpModalCancel = () => {
-    setIsOtpModalVisible(false);
-    setOtp("");
-  };
-
-  const handleOtpChange = (value) => {
-    const cleanValue = value.replace(/\D/g, "");
-    setOtp(cleanValue);
-    if (cleanValue.length === 6) {
-      handleOtpVerification(cleanValue);
-    }
-  };
-
-  const handlePincodeVerification = async (pincodeValue) => {
-    const pincode = pincodeValue || form.getFieldValue("pincode");
-    try {
-      await form.validateFields(["pincode"]);
-    } catch {
-      return;
-    }
-    if (!pincode) return;
-    try {
-      const response = await apiCall("get", endpoints.VERIFY_PINCODE, {
-        params: { pincode },
-      });
-
-      if (response.success) {
-        form.setFieldsValue({
-          state: response.data.state,
-          district: response.data.district,
-          school: undefined,
-        });
-        await fetchSchools(response.data.state, response.data.district);
-      } else {
-        form.setFieldValue("pincode", "");
-        toast.error(response.data.msg);
-      }
-    } catch (error) {
-      toast.error("Error verifying pincode");
-    }
-  };
-
-  const onFinish = async (values) => {
-    if (!emailVerified) {
-      toast.error("Please verify your email first");
-      return;
-    }
-    const formData = new FormData();
-    formData.append("registration_mode", 1);
-    formData.append("participant_type", 2);
-    formData.append("aadhaar_number", values.aadhar_number);
-    formData.append("district", values.district);
-    formData.append("state", values.state);
-    formData.append("email", values.email);
-    formData.append("scuid", values.school);
-    formData.append("cuid", values.class);
-    formData.append("suid", values.section);
-    formData.append("first_name", values.first_name);
-    formData.append("last_name", values.last_name);
-    formData.append("phone_no", values.phone_no);
-    formData.append("pincode", values.pincode);
-    if (values.schoolId?.[0]?.originFileObj) {
-      formData.append("id_card", values.schoolId[0].originFileObj);
-    }
-    if (values.highSchoolCertificate?.[0]?.originFileObj) {
-      formData.append(
-        "marksheet",
-        values.highSchoolCertificate[0].originFileObj
-      );
-    }
-    const response = await apiCall("post", endpoints.REGISTER, {
-      data: formData,
-      contentType: "multipart/form-data",
-    });
-    if (response.success) {
-      toast.success(response.data.msg);
-      form.resetFields();
-      setEmailVerified(false);
-      setClasses([]);
-      setSections([]);
-      setSchools([]);
-      setUuid("");
-    } else {
-      toast.error(response.data.error);
-    }
-  };
-
-  const onFinishFailed = () => {
-    toast.error("Please fill all required fields correctly");
-  };
-
   return (
-    <OnlineRegisterForm
-      form={form}
-      classes={classes}
-      sections={sections}
-      schools={schools}
-      emailVerified={emailVerified}
-      isOtpModalVisible={isOtpModalVisible}
-      otp={otp}
-      otpLoading={otpLoading}
-      onEmailVerification={handleEmailVerification}
-      onOtpVerification={handleOtpVerification}
-      onOtpModalCancel={handleOtpModalCancel}
-      onOtpChange={handleOtpChange}
-      onPincodeVerification={handlePincodeVerification}
-      onFinish={onFinish}
-      onFinishFailed={onFinishFailed}
-    />
+    <div className="min-h-screen">
+      <Header />
+      <section className="py-30 px-4">
+        <div className="max-w-2xl mx-auto text-center">
+          <div className="animate-fade-in-up">
+            <h2 className="text-2xl md:text-4xl font-extrabold mb-2 leading-tight">
+              Online{" "}
+              <span className="text-accent">Registration</span>
+            </h2>
+            <div className="w-20 h-1 bg-accent mx-auto rounded-full mb-10"></div>
+          </div>
+
+          <div className="bg-white rounded-2xl shadow-xl border border-primary/20 p-10 animate-fade-in-up delay-200">
+            <div className="text-6xl mb-6">📝</div>
+            <h3 className="text-2xl font-bold text-textDark mb-4">
+              Register for Manthan 2026
+            </h3>
+            <p className="text-textLight mb-2">
+              Registration is done via an official Google Form.
+            </p>
+            <p className="text-textLight mb-8">
+              Click the button below to fill in your details and complete your
+              registration.
+            </p>
+
+            <div className="bg-primary/5 rounded-xl p-5 mb-8 text-left space-y-2 border border-primary/10">
+              <p className="text-sm text-textLight">
+                <span className="font-semibold text-textDark">Classes:</span>{" "}
+                9th to 12th
+              </p>
+              <p className="text-sm text-textLight">
+                <span className="font-semibold text-textDark">Mode:</span>{" "}
+                Individual (no teams)
+              </p>
+              <p className="text-sm text-textLight">
+                <span className="font-semibold text-textDark">
+                  Quiz Date:
+                </span>{" "}
+                13th September 2026
+              </p>
+              <p className="text-sm text-textLight">
+                <span className="font-semibold text-textDark">
+                  Registration Deadline:
+                </span>{" "}
+                6th September 2026
+              </p>
+              <p className="text-sm text-textLight">
+                <span className="font-semibold text-textDark">
+                  E-Certificate:
+                </span>{" "}
+                For all participants
+              </p>
+            </div>
+
+            <a
+              href={REGISTRATION_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="w-full bg-primary hover:bg-primary/80 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-200 flex items-center justify-center group/btn text-base shadow-md hover:shadow-lg"
+            >
+              Register Now on Google Form
+              <ExternalLink className="ml-2 w-5 h-5 transition-transform group-hover/btn:translate-x-1" />
+            </a>
+
+            <p className="text-xs text-textLight mt-4">
+              You will be redirected to Google Forms to complete your
+              registration.
+            </p>
+          </div>
+        </div>
+      </section>
+      <Footer />
+    </div>
   );
 }

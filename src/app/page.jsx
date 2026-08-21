@@ -6,13 +6,11 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <div className="min-h-screen ">
+    <div className="min-h-screen">
       <Header />
-      <div className="lg:sticky top-0 right-0 w-full">
-        <HeroSection />
-      </div>
+      <HeroSection />
       <AboutKiet />
-      <div id="about-manthan" className="relative top-0 z-30 bg-white">
+      <div id="about-manthan">
         <AboutManthan />
         <Footer />
       </div>

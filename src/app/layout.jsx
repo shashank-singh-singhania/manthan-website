@@ -14,7 +14,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Manthan 3.0",
+  title: "Manthan 2026",
+  description:
+    "Manthan 2026 – National Inter-School Quiz Competition organised by KIET Deemed To Be University, Ghaziabad. Theme: Viksit Bharat@2047 – Technology for Transformation.",
 };
 
 export default function RootLayout({ children }) {

@@ -11,11 +11,11 @@ const Header = () => {
   const pathname = usePathname();
 
   const menuItems = [
-    { id: "about-kiet", label: "About KIET", type: "scroll" },
-    { id: "about-manthan", label: "About Manthan", type: "scroll" },
-    { id: "/rules", label: "Rules & Regulations", type: "link" },
-    { id: "/faqs", label: "FAQs", type: "link" },
-    { id: "/contact", label: "Contact Us", type: "link" },
+    { id: "about-kiet",    label: "About KIET",       type: "scroll" },
+    { id: "about-manthan", label: "About Manthan",    type: "scroll" },
+    { id: "/rules",        label: "Rules & Regs",     type: "link"   },
+    { id: "/faqs",         label: "FAQs",             type: "link"   },
+    { id: "/contact",      label: "Contact Us",       type: "link"   },
   ];
 
   const handleNavigation = (item) => {
@@ -25,35 +25,26 @@ const Header = () => {
         router.push(`/#${item.id}`);
       } else {
         const section = document.getElementById(item.id);
-        if (section)
-          section.scrollIntoView({ behavior: "smooth", block: "start" });
+        if (section) section.scrollIntoView({ behavior: "smooth", block: "start" });
       }
-    } else if (item.type === "link") {
+    } else {
       router.push(item.id);
     }
   };
 
   useEffect(() => {
-    if (pathname !== "/") {
-      setActiveSection(pathname);
-      return;
-    }
-
+    if (pathname !== "/") { setActiveSection(pathname); return; }
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
       let current = "home";
       menuItems.forEach((item) => {
         if (item.type === "scroll") {
-          const section = document.getElementById(item.id);
-          if (section) {
-            const top = section.offsetTop - 80;
-            if (window.scrollY >= top) current = item.id;
-          }
+          const el = document.getElementById(item.id);
+          if (el && window.scrollY >= el.offsetTop - 80) current = item.id;
         }
       });
       setActiveSection(current);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [pathname]);
@@ -61,67 +52,102 @@ const Header = () => {
   return (
     <header
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled ? "bg-white/95 backdrop-blur-sm shadow-sm" : "bg-white"
+        isScrolled
+          ? "shadow-lg border-b border-primary/20"
+          : "border-b border-transparent"
       }`}
+      style={{
+        background: isScrolled
+          ? "rgba(13, 9, 32, 0.95)"
+          : "rgba(13, 9, 32, 0.85)",
+        backdropFilter: "blur(12px)",
+      }}
     >
+      {/* Top gold line */}
+      <div className="h-0.5 w-full bg-gradient-to-r from-primary via-gold to-accent" />
+
       <nav className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="flex justify-between items-center h-18">
+        <div className="flex justify-between items-center h-16">
+          {/* Logo */}
           <button
             onClick={() => router.push("/")}
-            className="flex items-center space-x-3 cursor-pointer"
+            className="flex items-center gap-3 cursor-pointer group"
           >
             <img
               src="/images/kietLogo.jpg"
-              alt="Logo"
-              className="h-13 w-auto"
+              alt="KIET Deemed To Be University"
+              className="h-10 w-auto brightness-110 group-hover:brightness-125 transition-all duration-200"
             />
           </button>
 
-          <div className="hidden md:flex items-center space-x-1 ">
-            {menuItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => handleNavigation(item)}
-                className={`px-5 py-2 text-sm font-medium transition-all duration-200 rounded-lg cursor-pointer ${
-                  activeSection === item.id || pathname === item.id
-                    ? "text-primary bg-primary/10"
-                    : "text-textLight hover:text-textDark"
-                }`}
-              >
-                {item.label}
-              </button>
-            ))}
-          </div>
-
-          <button
-            className="md:hidden p-2.5 hover:bg-gray-100 rounded-lg transition-colors duration-200"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            {isMenuOpen ? (
-              <X size={22} className="text-textDark" />
-            ) : (
-              <Menu size={22} className="text-textDark" />
-            )}
-          </button>
-        </div>
-
-        {isMenuOpen && (
-          <div className="md:hidden border-t border-gray-100 animate-fadeIn">
-            <div className="py-3 space-y-1">
-              {menuItems.map((item) => (
+          {/* Desktop nav */}
+          <div className="hidden md:flex items-center gap-1">
+            {menuItems.map((item) => {
+              const isActive = activeSection === item.id || pathname === item.id;
+              return (
                 <button
                   key={item.id}
                   onClick={() => handleNavigation(item)}
-                  className={`block w-full text-left px-5 py-3 text-sm font-medium transition-all duration-200 rounded-lg ${
-                    activeSection === item.id || pathname === item.id
-                      ? "text-primary bg-primary/10"
-                      : "text-textLight hover:text-textDark hover:bg-gray-50"
+                  className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 cursor-pointer ${
+                    isActive
+                      ? "text-gold bg-gold/10 border border-gold/20"
+                      : "text-white/70 hover:text-white hover:bg-white/5"
                   }`}
                 >
                   {item.label}
                 </button>
-              ))}
+              );
+            })}
+            <a
+              href="https://forms.gle/dXjc1KYHgcrW1z9d7"
+              target="_blank"
+              rel="noreferrer"
+              className="ml-3 px-5 py-2 text-sm font-bold rounded-lg transition-all duration-200 shadow-md hover:shadow-gold/30 hover:-translate-y-0.5"
+              style={{ background: "linear-gradient(135deg, #F5C518, #D4A800)", color: "#0d0920" }}
+            >
+              Register Now
+            </a>
+          </div>
+
+          {/* Mobile menu toggle */}
+          <button
+            className="md:hidden p-2.5 rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-colors duration-200"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </div>
+
+        {/* Mobile menu */}
+        {isMenuOpen && (
+          <div className="md:hidden border-t border-white/10 animate-fadeIn">
+            <div className="py-3 space-y-1">
+              {menuItems.map((item) => {
+                const isActive = activeSection === item.id || pathname === item.id;
+                return (
+                  <button
+                    key={item.id}
+                    onClick={() => handleNavigation(item)}
+                    className={`block w-full text-left px-5 py-3 text-sm font-medium rounded-lg transition-all duration-200 ${
+                      isActive
+                        ? "text-gold bg-gold/10"
+                        : "text-white/70 hover:text-white hover:bg-white/5"
+                    }`}
+                  >
+                    {item.label}
+                  </button>
+                );
+              })}
+              <a
+                href="https://forms.gle/dXjc1KYHgcrW1z9d7"
+                target="_blank"
+                rel="noreferrer"
+                className="block w-full text-center px-5 py-3 text-sm font-bold rounded-lg mt-2"
+                style={{ background: "linear-gradient(135deg, #F5C518, #D4A800)", color: "#0d0920" }}
+              >
+                Register Now
+              </a>
             </div>
           </div>
         )}
@@ -129,4 +155,5 @@ const Header = () => {
     </header>
   );
 };
+
 export default Header;

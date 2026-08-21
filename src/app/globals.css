@@ -1,25 +1,97 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #5843b5;
-  --color-accent: #15b7c6;
+  /* Manthan Brand Colors – from banner */
+  --color-primary: #2D1B69;        /* Deep Manthan Purple */
+  --color-primary-light: #4527A0;  /* Mid Purple */
+  --color-gold: #F5C518;           /* Manthan Gold */
+  --color-gold-dark: #D4A800;      /* Darker Gold */
+
+  /* KIET Brand Colors – from logo */
+  --color-navy: #1a3a5c;           /* KIET Navy */
+  --color-accent: #F47920;         /* KIET Orange */
+  --color-accent-light: #FF9A45;   /* Light Orange */
+
+  /* Teal from Manthan logo */
+  --color-teal: #00BCD4;
+
+  /* Neutrals */
   --color-background: #ffffff;
-  --color-textDark: #0f172a;
-  --color-textLight: #64748b;
-  --color-border: #e2e8f0;
+  --color-surface: #FAF8FF;        /* Soft purple-tinted white */
+  --color-textDark: #0f0a1e;
+  --color-textLight: #5a5472;
+  --color-border: #e8e3f5;
 }
+
+/* ---- Keyframe Animations ---- */
 
 @keyframes scale-in {
-  from {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+  from { opacity: 0; transform: scale(0.8); }
+  to   { opacity: 1; transform: scale(1); }
 }
-
 .animate-scale-in {
   animation: scale-in 0.5s ease-out backwards;
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out both;
+}
+.animate-fade-in-up.delay-200 { animation-delay: 200ms; }
+.animate-fade-in-up.delay-400 { animation-delay: 400ms; }
+.animate-fade-in-up.delay-600 { animation-delay: 600ms; }
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.animate-fade-in       { animation: fade-in 0.5s ease-out both; }
+.animate-fade-in-delay { animation: fade-in 0.5s ease-out 150ms both; }
+.animate-fadeIn        { animation: fade-in 0.3s ease-out both; }
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* ---- Gold Gradient Text ---- */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #F5C518 0%, #FFE066 40%, #D4A800 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ---- Purple Gradient Text ---- */
+.text-purple-gradient {
+  background: linear-gradient(135deg, #4527A0 0%, #7C4DFF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ---- Glow Effects ---- */
+.glow-gold {
+  box-shadow: 0 0 20px rgba(245, 197, 24, 0.3), 0 4px 24px rgba(245, 197, 24, 0.15);
+}
+.glow-purple {
+  box-shadow: 0 0 20px rgba(45, 27, 105, 0.2), 0 4px 24px rgba(69, 39, 160, 0.15);
+}
+.glow-orange {
+  box-shadow: 0 0 20px rgba(244, 121, 32, 0.3), 0 4px 24px rgba(244, 121, 32, 0.15);
+}
+
+/* ---- Section Divider ---- */
+.section-divider {
+  height: 4px;
+  background: linear-gradient(90deg, #2D1B69, #F5C518, #F47920, #2D1B69);
+  background-size: 200% auto;
+}
+
+/* ---- Star field background utility ---- */
+.bg-manthan {
+  background: linear-gradient(135deg, #0d0920 0%, #1a0f3d 40%, #2D1B69 100%);
 }

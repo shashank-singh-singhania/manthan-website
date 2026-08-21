@@ -1,125 +1,219 @@
-import { Trophy, Award, Users, ArrowRight } from "lucide-react";
+import { Trophy, Award, Users, ArrowRight, Youtube, Cpu, Zap } from "lucide-react";
 import categories from "@/data/manthanCategories";
-import Link from "next/link";
+
+const REGISTRATION_URL = "https://forms.gle/dXjc1KYHgcrW1z9d7";
+const YOUTUBE_URL = "https://youtu.be/2s2jkFWbda4?si=f0Dxkk0XyYV2HOYe";
 
 const AboutManthan = () => {
-  const onlinePrizes = [
-    { position: "1st", amount: "₹5,000" },
-    { position: "2nd", amount: "₹5,000" },
-    { position: "3rd", amount: "₹5,000" },
-    { position: "4th", amount: "₹4,000" },
-    { position: "5th", amount: "₹4,000" },
-    { position: "6th", amount: "₹4,000" },
-    { position: "7th", amount: "₹2,000" },
-    { position: "8th", amount: "₹2,000" },
-    { position: "9th", amount: "₹2,000" },
-    { position: "10th", amount: "₹2,000" },
-  ];
-
-  const finalePrizes = [
-    { position: "1st Prize", amount: "₹11,000" },
-    { position: "2nd Prize", amount: "₹7,000" },
-    { position: "1st Prize (Special Students)", amount: "₹5,000" },
-  ];
-
   return (
-    <section className="md:py-20 py-10 px-4 font-inter min-h-screen relative overflow-hidden">
+    <section
+      id="about-manthan"
+      className="py-16 md:py-24 px-4 relative overflow-hidden"
+      style={{ background: "linear-gradient(180deg, #ffffff 0%, #FAF8FF 100%)" }}
+    >
+      {/* Decorative blobs */}
+      <div className="absolute top-0 left-0 w-96 h-96 rounded-full opacity-5 blur-3xl pointer-events-none"
+        style={{ background: "#2D1B69", transform: "translate(-50%, -50%)" }} />
+      <div className="absolute bottom-0 right-0 w-80 h-80 rounded-full opacity-5 blur-3xl pointer-events-none"
+        style={{ background: "#F47920", transform: "translate(40%, 40%)" }} />
+
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="text-center mb-14 ">
-          <h2
-            className={`text-2xl md:text-4xl font-extrabold mb-3 leading-tight`}
-          >
+
+        {/* Section header */}
+        <div className="text-center mb-14">
+          <p className="text-accent font-semibold text-sm uppercase tracking-widest mb-2">
+            National Inter-School Quiz Competition
+          </p>
+          <h2 className="text-2xl md:text-4xl font-extrabold mb-4 leading-tight">
             About{" "}
-            <span className="text-accent relative inline-block group">
-              MANTHAN 3.0
+            <span
+              style={{
+                background: "linear-gradient(135deg, #2D1B69 0%, #7C4DFF 50%, #F5C518 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}
+            >
+              MANTHAN 2026
             </span>
           </h2>
-          <div className="w-20 h-1 bg-accent mx-auto rounded-full transition-all duration-500 hover:w-32"></div>
-        </div>
-
-        <div className="mb-12 bg-primary/5 rounded-2xl p-8 border border-primary/20 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group">
-          <p className="text-textLight text-justify leading-relaxed mb-1">
-            Organized by the Department of PR and International Relations at
-            KIET Group of Institutions(Deemed-to-be University), Manthan is an
-            inter-school nationwide quiz competition that fosters critical
-            thinking, sharpens intellect, and fuels the spirit of healthy
-            competition among schools across the country.
-          </p>
-          <p className="text-textLight text-justify leading-relaxed">
-            After the resounding success of its previous two editions in 2022
-            and 2023, Manthan returns this year with its much-awaited 3rd
-            edition, celebrating a grandeur amalgamation of knowledge,
-            creativity, and curiosity.
-          </p>
-        </div>
-
-        <div className="grid lg:grid-cols-2 gap-8 mb-12">
-          <div className="bg-white rounded-xl p-8 shadow-md border border-primary/20 relative overflow-hidden">
-            <div className="flex items-center gap-3 mb-4 relative z-10">
-              <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center transition-transform duration-300 ">
-                <Users className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="text-2xl font-bold text-primary">Vision</h3>
-            </div>
-            <p className="text-textLight text-justify leading-relaxed relative z-10">
-              Manthan is not just a competition - it is a movement that aims to
-              empower students with confidence, broaden their horizons, and
-              prepare them to shine on national and global platforms. By
-              fostering curiosity and a quest for knowledge, it instills the
-              belief that learning is a lifelong journey.
-            </p>
-          </div>
-
-          <div className="bg-white rounded-xl p-8 shadow-md border border-accent/20 relative overflow-hidden">
-            <div className="flex items-center gap-3 mb-4 relative z-10">
-              <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center transition-transform duration-300 ">
-                <Award className="w-6 h-6 text-accent" />
-              </div>
-              <h3 className="text-2xl font-bold text-accent">Quiz Master</h3>
-            </div>
-            <p className="text-textLight leading-relaxed mb-3 text-justify relative z-10">
-              <span className="font-semibold text-textDark">
-                Mr. Gautam Bose
-              </span>
-              , Event Manager and CEO of Greycells
-            </p>
-            <p className="text-textLight leading-relaxed text-justify relative z-10">
-              Renowned for his unmatched energy and vast experience, Mr. Bose
-              has made Manthan a memorable intellectual fest for participants
-              and audiences alike.
-            </p>
+          <div className="flex items-center justify-center gap-1 mx-auto">
+            <div className="h-1 w-12 rounded-full" style={{ background: "#2D1B69" }} />
+            <div className="h-1 w-6 rounded-full" style={{ background: "#F5C518" }} />
+            <div className="h-1 w-12 rounded-full" style={{ background: "#F47920" }} />
           </div>
         </div>
 
-        <div className="mb-12 bg-primary rounded-2xl p-8 border border-primary/20">
-          <div className="text-center mb-8">
-            <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">
+        {/* Intro card */}
+        <div
+          className="mb-12 rounded-2xl p-8 border relative overflow-hidden"
+          style={{
+            background: "linear-gradient(135deg, rgba(45,27,105,0.06) 0%, rgba(244,121,32,0.06) 100%)",
+            borderColor: "rgba(45,27,105,0.15)",
+          }}
+        >
+          <div className="absolute top-0 left-0 w-1 h-full rounded-l-2xl"
+            style={{ background: "linear-gradient(180deg, #2D1B69, #F5C518, #F47920)" }} />
+          <p className="text-textLight text-justify leading-relaxed mb-3 pl-4">
+            Organized by the{" "}
+            <span className="font-semibold text-primary">Department of PR and International Relations</span>{" "}
+            at KIET Deemed To Be University, Manthan is a National Inter-School Quiz Competition that
+            fosters critical thinking, sharpens intellect, and fuels the spirit of healthy competition
+            among schools across the country.
+          </p>
+          <p className="text-textLight text-justify leading-relaxed pl-4">
+            After two successful editions, Manthan returns with its much-awaited 2026 edition under
+            the inspiring theme:{" "}
+            <span className="font-semibold text-primary">
+              "Viksit Bharat@2047 – Technology for Transformation"
+            </span>{" "}
+            — celebrating a grand amalgamation of knowledge, creativity, and curiosity among young
+            minds from Classes 9th to 12th across India.
+          </p>
+        </div>
+
+        {/* Vision + Quiz Master */}
+        <div className="grid lg:grid-cols-2 gap-6 mb-12">
+          {/* Vision */}
+          <div className="rounded-2xl p-8 border border-primary/15 bg-white shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 relative overflow-hidden group">
+            <div className="absolute top-0 right-0 w-32 h-32 rounded-bl-full opacity-5 pointer-events-none"
+              style={{ background: "#2D1B69" }} />
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-11 h-11 rounded-xl flex items-center justify-center shadow-sm"
+                style={{ background: "linear-gradient(135deg, #2D1B69, #4527A0)" }}>
+                <Users className="w-5 h-5 text-white" />
+              </div>
+              <h3 className="text-xl font-bold text-primary">Vision</h3>
+            </div>
+            <p className="text-textLight text-justify leading-relaxed">
+              Manthan is not just a competition — it is a movement that aims to empower students with
+              confidence, broaden their horizons, and prepare them to shine on national and global
+              platforms. By fostering curiosity and a quest for knowledge, it instills the belief
+              that learning is a lifelong journey.
+            </p>
+          </div>
+
+          {/* Quiz Master */}
+          <div className="rounded-2xl p-8 border border-accent/20 bg-white shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 relative overflow-hidden group">
+            <div className="absolute top-0 right-0 w-32 h-32 rounded-bl-full opacity-5 pointer-events-none"
+              style={{ background: "#F47920" }} />
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-11 h-11 rounded-xl flex items-center justify-center shadow-sm"
+                style={{ background: "linear-gradient(135deg, #F47920, #FF9A45)" }}>
+                <Award className="w-5 h-5 text-white" />
+              </div>
+              <h3 className="text-xl font-bold text-accent">Quiz Master</h3>
+            </div>
+            <p className="text-textLight leading-relaxed mb-3 text-justify">
+              <span className="font-semibold text-textDark">Mr. Gautam Bose</span>,{" "}
+              Event Manager and CEO of Greycells
+            </p>
+            <p className="text-textLight leading-relaxed text-justify">
+              Renowned for his unmatched energy and vast experience, Mr. Bose has made Manthan a
+              memorable intellectual fest for participants and audiences alike.
+            </p>
+          </div>
+        </div>
+
+        {/* Competition Structure */}
+        <div className="mb-12 rounded-2xl overflow-hidden shadow-lg border border-primary/10">
+          <div className="p-6 text-white text-center"
+            style={{ background: "linear-gradient(135deg, #0d0920, #2D1B69)" }}>
+            <Zap className="w-8 h-8 text-gold mx-auto mb-2" />
+            <h3 className="text-2xl md:text-3xl font-bold">Competition Structure</h3>
+          </div>
+          <div className="grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-primary/10 bg-white">
+            <div className="p-8">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="text-3xl">💻</span>
+                <div>
+                  <h4 className="text-lg font-bold text-primary">Online Round</h4>
+                  <p className="text-xs text-gold font-semibold">13 September 2026</p>
+                </div>
+              </div>
+              <ul className="space-y-2.5">
+                {[
+                  "Open to Classes 9th – 12th (all streams)",
+                  "Individual participation, from anywhere",
+                  "30-minute MCQ quiz with negative marking",
+                  "Class 9 & 10 winners: Goodies & Recognition",
+                  "E-Certificates for all participants",
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start gap-2.5 text-textLight text-sm">
+                    <span className="mt-1 w-1.5 h-1.5 rounded-full shrink-0 bg-primary" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="p-8">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="text-3xl">🏆</span>
+                <div>
+                  <h4 className="text-lg font-bold text-accent">Grand Finale</h4>
+                  <p className="text-xs text-accent font-semibold">30 Sep – 1 Oct 2026</p>
+                </div>
+              </div>
+              <ul className="space-y-2.5">
+                {[
+                  "For Class 11th & 12th qualifiers only",
+                  "Top 3 students per school invited",
+                  "On-Campus at KIET, Ghaziabad",
+                  "~150 students from across India",
+                  "Certificates of Merit for all finalists",
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start gap-2.5 text-textLight text-sm">
+                    <span className="mt-1 w-1.5 h-1.5 rounded-full shrink-0 bg-accent" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* Domains of Discovery */}
+        <div
+          className="mb-12 rounded-2xl p-8 relative overflow-hidden"
+          style={{ background: "linear-gradient(135deg, #0d0920 0%, #2D1B69 100%)" }}
+        >
+          {/* Subtle grid */}
+          <div className="absolute inset-0 opacity-5"
+            style={{ backgroundImage: "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
+
+          <div className="text-center mb-8 relative z-10">
+            <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">
               Domains of Discovery
             </h3>
-            <p className="text-gray-100 md:text-lg text-sm">
+            <p className="text-gold/70 text-sm">
               Seven diverse domains designed around the acronym MANTHAN
             </p>
           </div>
 
-          <div className="flex justify-center">
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-6 max-w-7xl">
+          <div className="flex justify-center relative z-10">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-4 max-w-7xl">
               {categories.map((item, idx) => {
                 const Icon = item.icon;
                 return (
                   <div
                     key={idx}
-                    className="bg-white rounded-xl p-5 text-center border border-primary/20 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-2 cursor-pointer min-w-[120px] flex flex-col justify-center group animate-scale-in"
-                    style={{ animationDelay: `${idx * 100}ms` }}
+                    className="rounded-xl p-4 text-center border cursor-pointer flex flex-col justify-center group animate-scale-in transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
+                    style={{
+                      background: "rgba(255,255,255,0.07)",
+                      borderColor: "rgba(245,197,24,0.2)",
+                      animationDelay: `${idx * 80}ms`,
+                    }}
                   >
-                    <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-3 transition-all duration-300 group-hover:scale-110 group-hover:rotate-6">
-                      <Icon className="w-6 h-6 text-accent transition-transform duration-300 group-hover:scale-110" />
+                    <div
+                      className="w-11 h-11 rounded-full flex items-center justify-center mx-auto mb-3 transition-all duration-300 group-hover:scale-110"
+                      style={{ background: "rgba(245,197,24,0.15)" }}
+                    >
+                      <Icon className="w-5 h-5 text-gold transition-transform duration-300 group-hover:scale-110" />
                     </div>
-                    <div className="font-semibold text-sm md:text-base text-primary mb-1 transition-colors duration-300 group-hover:text-accent">
+                    <div className="font-bold text-sm text-white mb-0.5 group-hover:text-gold transition-colors duration-300">
                       {item.word}
                     </div>
-                    <div className="text-xs text-textLight italic">
-                      {item.desc}
-                    </div>
+                    <div className="text-xs text-white/50 italic">{item.desc}</div>
                   </div>
                 );
               })}
@@ -127,96 +221,42 @@ const AboutManthan = () => {
           </div>
         </div>
 
-        <div className="mb-12">
-          <div className="text-center mb-8 pt-10">
-            <div className="inline-block">
-              <Trophy className="w-12 h-12 mx-auto mb-3 text-accent" />
-            </div>
-            <h3 className="text-3xl font-bold text-primary mb-2">
-              Prizes Worth ₹1 Lakh
-            </h3>
-            <p className="text-textLight">
-              Every participant receives a certificate of participation
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-8">
-            <div className="bg-white rounded-xl p-8 shadow-md border border-gray-200 hover:shadow-xl transition-all duration-300">
-              <h4 className="md:text-2xl text-xl font-bold mb-6 text-primary text-center">
-                Online Quiz Winners
-              </h4>
-              <div className="space-y-3">
-                {onlinePrizes.map((prize, idx) => (
-                  <div
-                    key={idx}
-                    className="flex justify-between items-center p-3 rounded-lg 
-                        bg-gray-50 border border-gray-200 hover:bg-primary/5 hover:border-primary/30 transition-all duration-200 hover:translate-x-2 group"
-                  >
-                    <span className="font-semibold text-textDark group-hover:text-primary transition-colors duration-200">
-                      {prize.position} Prize
-                    </span>
-                    <span className="font-bold text-lg text-primary transition-transform duration-200 group-hover:scale-110">
-                      {prize.amount}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="bg-white rounded-xl p-8 shadow-md border border-gray-200 hover:shadow-xl transition-all duration-300">
-              <h4 className="md:text-2xl text-xl font-bold mb-6 text-accent text-center">
-                Grand Finale (On-Campus)
-              </h4>
-              <div className="space-y-4 pb-10">
-                {finalePrizes.map((prize, idx) => (
-                  <div
-                    key={idx}
-                    className="bg-primary/5 border border-primary/20 rounded-lg p-6 hover:bg-primary/10 hover:border-primary/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-md group"
-                  >
-                    <div className="flex justify-between items-center">
-                      <span className="font-semibold text-textDark group-hover:text-primary transition-colors duration-200">
-                        {prize.position}
-                      </span>
-                      <span className="font-bold text-2xl text-primary transition-transform duration-200 group-hover:scale-110">
-                        {prize.amount}
-                      </span>
-                    </div>
-                    {prize.position.includes("Special") && (
-                      <p className="text-sm text-textLight mt-2 italic">
-                        For specially-abled students
-                      </p>
-                    )}
-                  </div>
-                ))}
-              </div>
-              <div className="text-center bg-primary/5 rounded-xl p-10 mt-6 border border-primary/20 hover:bg-primary/10 transition-all duration-300 group">
-                <h3 className="md:text-3xl text-2xl font-bold mb-4">
-                  Join Us at Manthan 3.0
-                </h3>
-                <p className="md:text-lg text-sm text-textLight mb-6 max-w-3xl mx-auto">
-                  Be a part of an unforgettable knowledge festival where
-                  intellect meets inspiration. Challenge yourself, expand your
-                  horizons, and shine on the national stage!
-                </p>
-                <div className="flex flex-col sm:flex-row justify-center gap-4 text-sm w-full max-w-xl mx-auto">
-                  <Link
-                    href="/registration/online"
-                    className="flex-1 bg-primary hover:bg-primary/90 text-white font-semibold py-3 sm:py-4 px-4 rounded-lg transition-all duration-200 flex items-center justify-center group/btn text-xs sm:text-base shadow-md hover:shadow-lg"
-                  >
-                    Register for Online
-                    <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 transition-transform group-hover/btn:translate-x-1" />
-                  </Link>
-
-                  <Link
-                    href="/registration/offline"
-                    className="flex-1 bg-accent hover:bg-accent/90 text-white font-semibold py-3 sm:py-4 px-4 rounded-lg transition-all duration-200 flex items-center justify-center group/btn text-xs sm:text-base shadow-md hover:shadow-lg"
-                  >
-                    Register for Offline
-                    <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 transition-transform group-hover/btn:translate-x-1" />
-                  </Link>
-                </div>
-              </div>
-            </div>
+        {/* CTA Section */}
+        <div
+          className="text-center rounded-2xl p-10 relative overflow-hidden border border-gold/20"
+          style={{ background: "linear-gradient(135deg, rgba(45,27,105,0.06) 0%, rgba(245,197,24,0.06) 100%)" }}
+        >
+          <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
+            style={{ backgroundImage: "repeating-linear-gradient(45deg, #F5C518 0, #F5C518 1px, transparent 0, transparent 50%)", backgroundSize: "12px 12px" }} />
+          <Trophy className="w-12 h-12 mx-auto mb-4 text-gold" />
+          <h3 className="md:text-3xl text-2xl font-bold mb-3 text-textDark">
+            Join Us at Manthan 2026
+          </h3>
+          <p className="md:text-lg text-sm text-textLight mb-8 max-w-2xl mx-auto">
+            Be a part of an unforgettable knowledge festival where intellect meets inspiration.
+            Challenge yourself, expand your horizons, and shine on the national stage!
+          </p>
+          <div className="flex flex-col sm:flex-row justify-center gap-4 max-w-lg mx-auto">
+            <a
+              href={REGISTRATION_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="flex-1 font-bold py-4 px-6 rounded-xl transition-all duration-200 flex items-center justify-center group/btn text-sm shadow-lg hover:shadow-gold/30 hover:-translate-y-0.5"
+              style={{ background: "linear-gradient(135deg, #F5C518, #D4A800)", color: "#0d0920" }}
+            >
+              Register Now
+              <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
+            </a>
+            <a
+              href={YOUTUBE_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="flex-1 font-bold py-4 px-6 rounded-xl transition-all duration-200 flex items-center justify-center group/btn text-sm text-white shadow-lg hover:shadow-accent/30 hover:-translate-y-0.5"
+              style={{ background: "linear-gradient(135deg, #F47920, #D4640A)" }}
+            >
+              <Youtube className="mr-2 w-4 h-4" />
+              Watch Manthan 2.0
+            </a>
           </div>
         </div>
       </div>
