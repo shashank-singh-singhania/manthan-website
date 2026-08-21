@@ -73,11 +73,19 @@ const Header = () => {
             onClick={() => router.push("/")}
             className="flex items-center gap-3 cursor-pointer group"
           >
-            <img
-              src="/images/kietLogo.jpg"
-              alt="KIET Deemed To Be University"
-              className="h-10 w-auto brightness-110 group-hover:brightness-125 transition-all duration-200"
-            />
+            <div
+              className="flex items-center px-3 py-1.5 rounded-xl transition-all duration-200 group-hover:shadow-lg"
+              style={{
+                background: "rgba(255, 255, 255, 0.95)",
+                boxShadow: "0 0 0 1px rgba(245,197,24,0.2)",
+              }}
+            >
+              <img
+                src="/images/kietLogo.jpg"
+                alt="KIET Deemed To Be University"
+                className="h-8 w-auto transition-all duration-200"
+              />
+            </div>
           </button>
 
           {/* Desktop nav */}
