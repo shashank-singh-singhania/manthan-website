@@ -41,7 +41,7 @@ const Contact = () => {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 mb-8">
-            {/* Student Coordinators */}
+            {/* Coordinators */}
             <div className="rounded-3xl p-8 border shadow-lg hover:shadow-xl transition-all duration-300 bg-white animate-fade-in-up delay-200 relative overflow-hidden group">
               <div className="absolute top-0 left-0 w-full h-1.5 rounded-t-3xl"
                 style={{ background: "linear-gradient(90deg, #2D1B69, #7C4DFF)" }} />
@@ -49,11 +49,11 @@ const Contact = () => {
                 style={{ background: "#2D1B69" }} />
               <h3 className="text-xl font-bold text-primary mb-6 flex items-center justify-center gap-2">
                 <span className="w-8 h-8 rounded-lg flex items-center justify-center text-white text-sm"
-                  style={{ background: "linear-gradient(135deg, #2D1B69, #4527A0)" }}>S</span>
-                Student Coordinators
+                  style={{ background: "linear-gradient(135deg, #2D1B69, #4527A0)" }}>C</span>
+                Coordinators
               </h3>
               <div className="space-y-4">
-                {contacts.students.map((person, idx) => (
+                {contacts.coordinators.map((person, idx) => (
                   <div key={idx}
                     className="flex items-center bg-surface p-4 rounded-xl border border-primary/10 hover:border-primary/30 hover:-translate-y-0.5 transition-all duration-300 group/card">
                     <div className="w-10 h-10 rounded-full flex items-center justify-center mr-4 shrink-0"

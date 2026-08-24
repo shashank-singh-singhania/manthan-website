@@ -45,7 +45,7 @@ const faqs = [
   },
   {
     q: "How can I contact the Manthan team?",
-    a: "You can reach us at manthan@kiet.edu or call: 9711053299 | 9318355383 | 9555993072 | 7017729658.",
+    a: "You can reach us at manthan@kiet.edu or call: 9711053299 | 9817515811 | 8826477702 | 7017729658.",
   },
 ];
 

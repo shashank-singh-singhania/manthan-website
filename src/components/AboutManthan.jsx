@@ -93,7 +93,7 @@ const AboutManthan = () => {
             </p>
           </div>
 
-          {/* Quiz Master */}
+          {/* Collaboration */}
           <div className="rounded-2xl p-8 border border-accent/20 bg-white shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 relative overflow-hidden group">
             <div className="absolute top-0 right-0 w-32 h-32 rounded-bl-full opacity-5 pointer-events-none"
               style={{ background: "#F47920" }} />
@@ -102,15 +102,13 @@ const AboutManthan = () => {
                 style={{ background: "linear-gradient(135deg, #F47920, #FF9A45)" }}>
                 <Award className="w-5 h-5 text-white" />
               </div>
-              <h3 className="text-xl font-bold text-accent">Quiz Master</h3>
+              <h3 className="text-xl font-bold text-accent">Quizzing Partner</h3>
             </div>
             <p className="text-textLight leading-relaxed mb-3 text-justify">
-              <span className="font-semibold text-textDark">Mr. Gautam Bose</span>,{" "}
-              Event Manager and CEO of Greycells
+              In collaboration with <span className="font-semibold text-textDark text-lg">Quizzinga</span>
             </p>
             <p className="text-textLight leading-relaxed text-justify">
-              Renowned for his unmatched energy and vast experience, Mr. Bose has made Manthan a
-              memorable intellectual fest for participants and audiences alike.
+              Organized in collaboration with Quizzinga to deliver an intellectually stimulating, vibrant, and competitive quizzing arena for young minds across India.
             </p>
           </div>
         </div>
