@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "Manthan 2026",
   description:
-    "Manthan 2026 – National Inter-School Quiz Competition organised by KIET Deemed To Be University, Ghaziabad. Theme: Viksit Bharat@2047 – Technology for Transformation.",
+    "Manthan 2026 – National Inter-School Quiz Competition organised by KIET Deemed To Be University, Ghaziabad. Theme: Technology for Transformation - Viksit Bharat@2047 Mission.",
   icons: {
     icon: "/images/favicon.jpeg",
     shortcut: "/images/favicon.jpeg",

@@ -96,7 +96,7 @@ const OnlineRulesComp = () => {
           Online Quiz – Syllabus &amp; Focus Domains
         </h3>
         <p className="text-textLight mb-4 text-xs italic">
-          Theme: <span className="font-semibold not-italic text-primary">Viksit Bharat@2047 – Technology for Transformation</span>
+          Theme: <span className="font-semibold not-italic text-primary">Technology for Transformation - Viksit Bharat@2047 Mission</span>
         </p>
         <div className="grid md:grid-cols-2 gap-4">
           <ul className="space-y-2 text-textLight text-sm">

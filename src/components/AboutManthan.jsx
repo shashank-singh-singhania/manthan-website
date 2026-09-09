@@ -68,7 +68,7 @@ const AboutManthan = () => {
           <p className="text-textLight text-justify leading-relaxed pl-4">
             After two resounding editions, Manthan returns with its much-awaited 2026 edition under the inspiring theme:{" "}
             <span className="font-semibold text-primary">
-              "Viksit Bharat@2047 – Technology for Transformation"
+              "Technology for Transformation - Viksit Bharat@2047 Mission"
             </span>
             . For this edition, the primary focus is on an expansive, high-stakes{" "}
             <strong className="text-primary">National Online Quiz on 3rd October 2026</strong> for students of Classes 11th &amp; 12th.

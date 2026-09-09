@@ -52,7 +52,7 @@ const HeroSection = () => {
               ✦ Theme 2026 ✦
             </p>
             <h2 className="text-gold text-lg sm:text-xl md:text-2xl font-bold leading-snug">
-              "Viksit Bharat@2047 – Technology for Transformation"
+              "Technology for Transformation - Viksit Bharat@2047 Mission"
             </h2>
           </div>
 
