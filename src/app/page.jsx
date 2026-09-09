@@ -1,7 +1,7 @@
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
-import AboutKiet from "@/components/AboutKiet";
 import AboutManthan from "@/components/AboutManthan";
+import AboutKiet from "@/components/AboutKiet";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -9,11 +9,11 @@ export default function Home() {
     <div className="min-h-screen">
       <Header />
       <HeroSection />
-      <AboutKiet />
       <div id="about-manthan">
         <AboutManthan />
-        <Footer />
       </div>
+      <AboutKiet />
+      <Footer />
     </div>
   );
 }

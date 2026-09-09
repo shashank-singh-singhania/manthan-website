@@ -1,39 +1,28 @@
 export const offlineEligibility = [
-  "Open to students of Classes 11th and 12th from any school across India",
-  "The top 3 best-performing students from each participating school in the Online Round will be invited",
-  "Participation is by invitation only — based on Online Round performance",
-  "All participants must carry a valid school ID card on the day of the event",
-  "Grand Finale dates: 30th September – 1st October 2026 at KIET Campus, Ghaziabad",
+  "Open to Class 11th & 12th students qualifying from the National Online Round",
+  "The 3 best-performing students from each participating school will be invited",
+  "Participation is by qualification and official invitation",
+  "All finalists must carry a valid school ID card on the day of the event",
+  "Grand Finale Dates: Mid-October 2026 (Tentative) at KIET Campus, Ghaziabad",
 ];
 
 export const offlineSchedule = [
   {
-    title: "Day 1 – 30th September 2026",
+    title: "On-Campus Grand Finale – Mid-October 2026 (Tentative)",
     items: [
-      "Registration and check-in at KIET Deemed To Be University campus",
-      "Opening ceremony and welcome address",
-      "Preliminary rounds for qualifying students",
-      "Top teams shortlisted for the Grand Finale",
-      "Cultural program and networking",
-    ],
-  },
-  {
-    title: "Day 2 – 1st October 2026",
-    items: [
-      "Grand Finale rounds at KIET Campus",
-      "Semi-finals and Final rounds",
-      "Winner and Runner-Up announced",
-      "Prize distribution and closing ceremony",
-      "All finalists receive Certificates of Merit",
+      "Arrival and registration at KIET Deemed To Be University campus, Ghaziabad",
+      "Welcome address, orientation, and introduction to the Grand Finale rounds",
+      "Semi-final stages and live onstage Grand Finale quiz battles",
+      "Award ceremony, trophy presentation, and Certificates of Merit distribution",
+      "Campus tour, innovation lab demonstrations, and networking lunch",
     ],
   },
 ];
 
 export const offlineRules = [
-  "Participants must report to the venue at least 30 minutes before scheduled time.",
-  "The quizmaster's decision regarding results, scoring, or disputes will be final and binding.",
-  "Use of mobile phones, calculators, or any electronic devices during the quiz is strictly prohibited.",
-  "Any form of malpractice or indiscipline will lead to immediate disqualification.",
-  "College provides food and accommodation on prior information.",
-  "Only students invited based on the Online Round results are eligible to participate.",
+  "Finalists must report to the venue at the designated time with valid school credentials.",
+  "The quizmaster's decision regarding results, scoring, and stage rounds will be final.",
+  "Use of electronic gadgets or unfair means during rounds will lead to immediate disqualification.",
+  "KIET Deemed To Be University will provide hospitality, food, and accommodation on prior intimation.",
+  "Only shortlisted students from the Online Qualifying Round are eligible to participate.",
 ];

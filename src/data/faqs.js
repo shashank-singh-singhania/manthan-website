@@ -1,51 +1,47 @@
 const faqs = [
   {
     q: "Who can participate in Manthan 2026?",
-    a: "Students from Classes 9th to 12th from any school across India can participate in the online round. The offline Grand Finale is open to Class 11th and 12th students who qualify through the online round.",
+    a: "Manthan 2026 is exclusively open to students currently studying in Classes 11th and 12th from any recognized school across India (all streams: Science, Commerce, or Humanities).",
   },
   {
     q: "Is participation individual or in teams?",
-    a: "Participation in the Online Quiz is entirely individual. No team formation is required.",
+    a: "Participation in the Online Quiz is strictly individual. No team formation is required.",
   },
   {
-    q: "What is the registration deadline?",
-    a: "The last date to register for Manthan 2026 is 6th September 2026.",
+    q: "What are the important dates for the Online Quiz?",
+    a: "• Registration Deadline: 26th September 2026\n• Mock Test: 29th – 30th September 2026\n• National Online Quiz Date: 3rd October 2026\n• Offline Grand Finale: Mid-October 2026 (Tentative)",
   },
   {
-    q: "When is the Online Quiz scheduled?",
-    a: "The Online Quiz will be held on 13th September 2026. The quiz duration is 30 minutes.",
+    q: "What is the duration and question format of the Online Quiz?",
+    a: "The online quiz consists of 45 Multiple Choice Questions (MCQs) to be completed within 30 Minutes. It is time-based, so completing it quickly increases your qualification edge.",
+  },
+  {
+    q: "What is the marking scheme and how are ties resolved?",
+    a: "Each correct answer earns +3 marks, while each incorrect answer incurs -1 mark (negative marking applicable). Star-marked questions (*) — Q5, Q10, Q15, Q20, Q25, Q30, Q35, Q40, and Q45 — will serve as primary tie-breakers, followed by faster submission time.",
+  },
+  {
+    q: "What are the Cash Prizes for Manthan 2026?",
+    a: "Manthan 2026 features a total Cash Prize pool of ₹1,00,000:\n• 5 Winners: ₹10,000 each (₹50,000)\n• 5 Runner-Ups: ₹6,000 each (₹30,000)\n• 5 Consolation Prizes: ₹4,000 each (₹20,000)\nIn addition, all participants receive official E-Certificates.",
   },
   {
     q: "Is there any registration fee?",
-    a: "No, there is absolutely no registration fee for participating in Manthan 2026.",
+    a: "No, participation in Manthan 2026 is completely free of charge.",
   },
   {
-    q: "Is there negative marking?",
-    a: "Yes, negative marking is applicable in Manthan 2026. Please read the rules carefully before attempting.",
-  },
-  {
-    q: "Will participants receive certificates?",
-    a: "Yes! E-Certificates will be provided to all participants of Manthan 2026.",
-  },
-  {
-    q: "What happens after the Online Round for Class 11th & 12th students?",
-    a: "The Online Round serves as the qualifying round for Class 11th & 12th students. The top 3 best-performing students from each participating school will be invited to compete in the Offline Grand Finale at KIET Campus on 30th September – 1st October 2026.",
-  },
-  {
-    q: "What happens for Class 9th & 10th students?",
-    a: "Winners from Class 9th & 10th will be awarded exciting goodies along with recognition. There is no offline round for these classes.",
-  },
-  {
-    q: "How do I register for Manthan 2026?",
-    a: "Registration is done online via the Google Form link available on this website. Visit the registration page or click the Register Now button.",
+    q: "What happens after the Online Round?",
+    a: "The online round acts as the national qualifier. The top 3 best-performing students from each participating school will receive an exclusive invitation to the On-Campus Grand Finale at KIET Campus around Mid-October 2026 (Tentative).",
   },
   {
     q: "Will accommodation be provided for the Grand Finale?",
-    a: "Yes, the college will provide food and accommodation on prior information for students attending the on-campus Grand Finale rounds.",
+    a: "Yes, KIET Deemed To Be University will provide hospitality, food, and accommodation upon prior intimation for on-campus finalists.",
   },
   {
-    q: "How can I contact the Manthan team?",
-    a: "You can reach us at manthan@kiet.edu or call: 9711053299 | 9817515811 | 8826477702 | 7017729658.",
+    q: "How do I register for Manthan 2026?",
+    a: "Registration is simple! Click the 'Register Now' button on this website to fill out the official Google Form before 26th September 2026.",
+  },
+  {
+    q: "How can I contact the Manthan team for queries?",
+    a: "You can reach us at manthan@kiet.edu or contact our coordinators: 9711053299 | 9817515811 | 8826477702 | 7017729658.",
   },
 ];
 
