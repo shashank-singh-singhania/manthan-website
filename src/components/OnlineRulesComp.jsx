@@ -4,7 +4,7 @@ import { onlineStructure } from "@/data/onlineData.js";
 import { onlinePrizes } from "@/data/onlineData.js";
 import { Star, Trophy, Clock, CheckCircle2, AlertCircle } from "lucide-react";
 
-const REGISTRATION_URL = "https://forms.gle/dXjc1KYHgcrW1z9d7";
+const QUIZ_URL = "https://quiz.kiet.edu/login/index.php";
 
 const OnlineRulesComp = () => {
   return (
@@ -170,13 +170,13 @@ const OnlineRulesComp = () => {
 
         <div className="text-center">
           <a
-            href={REGISTRATION_URL}
+            href={QUIZ_URL}
             target="_blank"
             rel="noreferrer"
             className="inline-flex items-center font-bold py-3.5 px-8 rounded-xl transition-all duration-200 shadow-md hover:shadow-lg"
             style={{ background: "linear-gradient(135deg, #F5C518, #D4A800)", color: "#0d0920" }}
           >
-            Register Now via Google Form →
+            Attempt Mock Quiz →
           </a>
         </div>
       </div>

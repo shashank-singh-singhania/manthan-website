@@ -2,7 +2,7 @@ import { Trophy, Award, Users, ArrowRight, Youtube, Zap, Clock, Star, Gift, Chec
 import categories from "@/data/manthanCategories";
 import { onlinePrizes } from "@/data/onlineData";
 
-const REGISTRATION_URL = "https://forms.gle/dXjc1KYHgcrW1z9d7";
+const QUIZ_URL = "https://quiz.kiet.edu/login/index.php";
 const YOUTUBE_URL = "https://youtu.be/2s2jkFWbda4?si=f0Dxkk0XyYV2HOYe";
 
 const AboutManthan = () => {
@@ -226,13 +226,13 @@ const AboutManthan = () => {
 
             <div className="text-center sm:text-left">
               <a
-                href={REGISTRATION_URL}
+                href={QUIZ_URL}
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 font-bold py-3 px-6 rounded-xl text-sm transition-all shadow-md hover:shadow-gold/30"
                 style={{ background: "linear-gradient(135deg, #F5C518, #D4A800)", color: "#0d0920" }}
               >
-                Register Now for Online Quiz
+                Attempt Mock Quiz
                 <ArrowRight className="w-4 h-4" />
               </a>
             </div>
@@ -333,20 +333,20 @@ const AboutManthan = () => {
           />
           <Trophy className="w-12 h-12 mx-auto mb-4 text-gold" />
           <h3 className="md:text-3xl text-2xl font-bold mb-3 text-textDark">
-            Register for Manthan 2026 Online Quiz
+            Attempt Manthan 2026 Mock Quiz
           </h3>
           <p className="md:text-lg text-sm text-textLight mb-8 max-w-2xl mx-auto">
-            Classes 11th &amp; 12th students: compete for ₹1,00,000 in Cash Prizes and secure your school's spot in the Grand Finale!
+            Classes 11th &amp; 12th students: test your skills now in the official Mock Quiz on KIET's portal and prepare for the National Online Quiz!
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4 max-w-lg mx-auto">
             <a
-              href={REGISTRATION_URL}
+              href={QUIZ_URL}
               target="_blank"
               rel="noreferrer"
               className="flex-1 font-bold py-4 px-6 rounded-xl transition-all duration-200 flex items-center justify-center group/btn text-sm shadow-lg hover:shadow-gold/30 hover:-translate-y-0.5"
               style={{ background: "linear-gradient(135deg, #F5C518, #D4A800)", color: "#0d0920" }}
             >
-              Register Now (Free)
+              Attempt Mock Quiz
               <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
             </a>
             <a

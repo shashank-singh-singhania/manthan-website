@@ -107,13 +107,13 @@ const Header = () => {
               );
             })}
             <a
-              href="https://forms.gle/dXjc1KYHgcrW1z9d7"
+              href="https://quiz.kiet.edu/login/index.php"
               target="_blank"
               rel="noreferrer"
               className="ml-3 px-5 py-2 text-sm font-bold rounded-lg transition-all duration-200 shadow-md hover:shadow-gold/30 hover:-translate-y-0.5"
               style={{ background: "linear-gradient(135deg, #F5C518, #D4A800)", color: "#0d0920" }}
             >
-              Register Now
+              Attempt Mock Quiz
             </a>
           </div>
 
@@ -148,13 +148,13 @@ const Header = () => {
                 );
               })}
               <a
-                href="https://forms.gle/dXjc1KYHgcrW1z9d7"
+                href="https://quiz.kiet.edu/login/index.php"
                 target="_blank"
                 rel="noreferrer"
                 className="block w-full text-center px-5 py-3 text-sm font-bold rounded-lg mt-2"
                 style={{ background: "linear-gradient(135deg, #F5C518, #D4A800)", color: "#0d0920" }}
               >
-                Register Now
+                Attempt Mock Quiz
               </a>
             </div>
           </div>

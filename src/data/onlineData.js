@@ -34,7 +34,7 @@ export const onlineRules = [
 export const onlineEligibility = [
   "Exclusively open to students of Classes 11th and 12th (any stream: Science, Commerce, or Humanities)",
   "Individual participation — no team formation required for the online round",
-  "Registration via official Google Form",
+  "Access & Login via official KIET Quiz Portal (quiz.kiet.edu)",
   "Mock Test: 1st – 2nd October 2026",
   "National Online Quiz Date: 3rd October 2026",
 ];

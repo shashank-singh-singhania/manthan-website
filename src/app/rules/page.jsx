@@ -104,8 +104,8 @@ const Rules = () => {
                 </div>
                 <div className="space-y-4 text-sm">
                   <div className="flex justify-between items-center border-b border-gray-100 pb-3">
-                    <span className="text-textLight">Registration Status</span>
-                    <span className="font-bold text-green-600">Now Open (Free)</span>
+                    <span className="text-textLight">Quiz Portal Access</span>
+                    <span className="font-bold text-green-600">Live (quiz.kiet.edu)</span>
                   </div>
                   <div className="flex justify-between items-center border-b border-gray-100 pb-3">
                     <span className="text-textLight">Online Mock Test</span>

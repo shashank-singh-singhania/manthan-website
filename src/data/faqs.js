@@ -36,8 +36,8 @@ const faqs = [
     a: "Yes, KIET Deemed To Be University will provide hospitality, food, and accommodation upon prior intimation for on-campus finalists.",
   },
   {
-    q: "How do I register for Manthan 2026?",
-    a: "Registration is simple! Click the 'Register Now' button on this website to fill out the official Google Form.",
+    q: "How do I attempt the Mock Test and Online Quiz?",
+    a: "Click the 'Attempt Mock Quiz' button on this website to log in directly to the official KIET Quiz Portal (quiz.kiet.edu) and start your test.",
   },
   {
     q: "How can I contact the Manthan team for queries?",

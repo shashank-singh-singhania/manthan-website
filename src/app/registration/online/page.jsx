@@ -3,7 +3,7 @@ import { ArrowRight, ExternalLink, Trophy, Calendar, CheckCircle2 } from "lucide
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
-const REGISTRATION_URL = "https://forms.gle/dXjc1KYHgcrW1z9d7";
+const QUIZ_URL = "https://quiz.kiet.edu/login/index.php";
 
 export default function OnlineRegister() {
   return (
@@ -13,22 +13,22 @@ export default function OnlineRegister() {
         <div className="max-w-2xl mx-auto text-center">
           <div className="animate-fade-in-up">
             <span className="text-xs font-bold uppercase tracking-widest text-accent bg-accent/10 px-3.5 py-1 rounded-full border border-accent/20">
-              National Online Quiz
+              National Online Quiz Portal
             </span>
             <h2 className="text-2xl md:text-4xl font-extrabold mt-3 mb-2 leading-tight text-textDark">
-              Online <span className="text-accent">Registration</span>
+              Attempt <span className="text-accent">Mock Quiz</span>
             </h2>
             <div className="w-20 h-1 bg-accent mx-auto rounded-full mb-8"></div>
           </div>
 
           <div className="bg-white rounded-3xl shadow-xl border border-primary/20 p-8 sm:p-10 animate-fade-in-up delay-200 relative overflow-hidden">
             <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-primary via-gold to-accent" />
-            <div className="text-5xl mb-4">📝</div>
+            <div className="text-5xl mb-4">💻</div>
             <h3 className="text-2xl font-bold text-textDark mb-2">
-              Register for Manthan 2026
+              Manthan 2026 Quiz Portal
             </h3>
             <p className="text-textLight text-sm mb-6">
-              Registration is open for students of <strong>Classes 11th &amp; 12th</strong> (all streams). Complete your free registration via our official Google Form.
+              Classes <strong>11th &amp; 12th</strong> students can now log in to the official KIET Quiz Portal to attempt the Mock Test and the National Online Quiz.
             </p>
 
             <div className="bg-surface rounded-2xl p-5 mb-8 text-left space-y-2.5 border border-primary/10 text-xs sm:text-sm">
@@ -63,18 +63,18 @@ export default function OnlineRegister() {
             </div>
 
             <a
-              href={REGISTRATION_URL}
+              href={QUIZ_URL}
               target="_blank"
               rel="noreferrer"
               className="w-full font-bold py-4 px-6 rounded-xl transition-all duration-200 flex items-center justify-center group/btn text-base shadow-lg glow-gold hover:scale-[1.02]"
               style={{ background: "linear-gradient(135deg, #F5C518 0%, #D4A800 100%)", color: "#0d0920" }}
             >
-              Register Now on Google Form (Free)
+              Attempt Mock Quiz
               <ExternalLink className="ml-2 w-5 h-5 transition-transform group-hover/btn:translate-x-1" />
             </a>
 
             <p className="text-xs text-textLight mt-4">
-              You will be redirected to the secure official Google Form to complete your registration.
+              You will be redirected to the secure official KIET Quiz Portal (<code className="text-primary font-semibold">quiz.kiet.edu</code>) to log in and start your test.
             </p>
           </div>
         </div>

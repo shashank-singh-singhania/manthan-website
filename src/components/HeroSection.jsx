@@ -1,7 +1,7 @@
 import { ArrowRight, Calendar, Trophy, Zap, Star, Award, CheckCircle2, Clock } from "lucide-react";
 import Link from "next/link";
 
-const REGISTRATION_URL = "https://forms.gle/dXjc1KYHgcrW1z9d7";
+const QUIZ_URL = "https://quiz.kiet.edu/login/index.php";
 
 const HeroSection = () => {
   return (
@@ -142,13 +142,13 @@ const HeroSection = () => {
 
             <div className="flex flex-col sm:flex-row items-center gap-4">
               <a
-                href={REGISTRATION_URL}
+                href={QUIZ_URL}
                 target="_blank"
                 rel="noreferrer"
                 className="w-full sm:w-auto flex-1 font-bold py-4 px-8 rounded-xl transition-all duration-200 flex items-center justify-center group/btn text-base shadow-xl glow-gold hover:scale-[1.02]"
                 style={{ background: "linear-gradient(135deg, #F5C518 0%, #D4A800 100%)", color: "#0d0920" }}
               >
-                Register Now for Online Quiz
+                Attempt Mock Quiz
                 <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover/btn:translate-x-1" />
               </a>
               <Link
