@@ -55,18 +55,18 @@ const OnlineRulesComp = () => {
         </div>
       </div>
 
-      {/* Star Tie-Breakers & Marking Scheme Box */}
+      {/* Marking Scheme Box */}
       <div className="mb-6 rounded-2xl p-6 md:p-8 border border-gold/40 shadow-md bg-gradient-to-r from-gold/10 via-white to-accent/10">
         <div className="flex items-center gap-2 mb-4">
-          <Star className="w-6 h-6 text-gold fill-gold" />
+          <Trophy className="w-6 h-6 text-gold" />
           <h3 className="text-xl font-black text-textDark">
-            Marking Scheme &amp; Star-Marked Tie-Breakers (*)
+            Marking Scheme &amp; Question Pattern
           </h3>
         </div>
-        <div className="grid sm:grid-cols-3 gap-4 mb-4">
+        <div className="grid sm:grid-cols-3 gap-4 mb-2">
           <div className="bg-white p-4 rounded-xl border border-gray-200 text-center shadow-sm">
             <span className="text-xs font-semibold text-textLight uppercase">Correct Answer</span>
-            <div className="text-2xl font-black text-green-600 mt-1">+3 Marks</div>
+            <div className="text-2xl font-black text-green-600 mt-1">+4 Marks</div>
           </div>
           <div className="bg-white p-4 rounded-xl border border-gray-200 text-center shadow-sm">
             <span className="text-xs font-semibold text-textLight uppercase">Incorrect Answer</span>
@@ -74,19 +74,8 @@ const OnlineRulesComp = () => {
           </div>
           <div className="bg-white p-4 rounded-xl border border-gray-200 text-center shadow-sm">
             <span className="text-xs font-semibold text-textLight uppercase">Total Questions</span>
-            <div className="text-2xl font-black text-primary mt-1">45 MCQs / 30 Min</div>
+            <div className="text-2xl font-black text-primary mt-1">50 MCQs / 30 Min</div>
           </div>
-        </div>
-        <div className="bg-white/90 p-4 rounded-xl border border-gold/30 text-xs sm:text-sm text-textDark leading-relaxed">
-          <p className="font-bold text-primary mb-1">
-            ⭐ Tie-Breaker Resolution Rule:
-          </p>
-          <p className="mb-2">
-            Questions <strong>Q5, Q10, Q15, Q20, Q25, Q30, Q35, Q40, and Q45</strong> are designated Star Questions (*).
-          </p>
-          <p className="text-textLight">
-            If two or more students achieve identical total scores, the tie is resolved by comparing performance on star-marked questions first, followed by the participant who submitted the quiz in the fastest recorded time.
-          </p>
         </div>
       </div>
 

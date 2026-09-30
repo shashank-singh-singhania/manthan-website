@@ -198,7 +198,7 @@ const AboutManthan = () => {
                 </span>
                 <div>
                   <h4 className="text-xl font-bold text-primary">Stage 1: National Online Quiz (Primary Round)</h4>
-                  <p className="text-xs font-semibold text-accent">Quiz Date: 3rd October 2026 | Practice Mock: 29–30 Sep 2026</p>
+                  <p className="text-xs font-semibold text-accent">Quiz Date: 3rd October 2026 | Practice Mock: 1st–2nd Oct 2026</p>
                 </div>
               </div>
               <span className="px-3 py-1 rounded-full text-xs font-bold bg-primary/10 text-primary border border-primary/20">
@@ -214,22 +214,13 @@ const AboutManthan = () => {
               </div>
               <div className="bg-surface p-4 rounded-xl border border-primary/10">
                 <p className="text-xs text-textLight font-semibold uppercase mb-1">Time &amp; Questions</p>
-                <p className="text-sm font-bold text-textDark">45 MCQs in 30 Minutes</p>
+                <p className="text-sm font-bold text-textDark">50 MCQs in 30 Minutes</p>
                 <p className="text-xs text-textLight">Time-based rapid evaluation</p>
               </div>
               <div className="bg-surface p-4 rounded-xl border border-primary/10">
                 <p className="text-xs text-textLight font-semibold uppercase mb-1">Marking Scheme</p>
-                <p className="text-sm font-bold text-textDark">+3 for Correct | -1 for Incorrect</p>
+                <p className="text-sm font-bold text-textDark">+4 for Correct | -1 for Incorrect</p>
                 <p className="text-xs text-textLight">Negative marking applicable</p>
-              </div>
-            </div>
-
-            <div className="bg-gold/10 border border-gold/30 rounded-xl p-4 mb-6">
-              <div className="flex items-start gap-3">
-                <Star className="w-5 h-5 text-gold shrink-0 mt-0.5 fill-gold" />
-                <div className="text-xs sm:text-sm text-textDark leading-relaxed">
-                  <strong>Tie-Breaker Star Questions (*):</strong> Questions <strong>Q5, Q10, Q15, Q20, Q25, Q30, Q35, Q40, and Q45</strong> are star-marked. In the event of tied scores, accuracy on these star questions and faster overall completion time decide rank.
-                </div>
               </div>
             </div>
 
@@ -241,7 +232,7 @@ const AboutManthan = () => {
                 className="inline-flex items-center gap-2 font-bold py-3 px-6 rounded-xl text-sm transition-all shadow-md hover:shadow-gold/30"
                 style={{ background: "linear-gradient(135deg, #F5C518, #D4A800)", color: "#0d0920" }}
               >
-                Register Now for Online Quiz (Deadline: 26 Sep)
+                Register Now for Online Quiz
                 <ArrowRight className="w-4 h-4" />
               </a>
             </div>

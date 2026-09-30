@@ -41,16 +41,16 @@ const Rules = () => {
                 </p>
                 <div className="grid sm:grid-cols-2 gap-3 text-textLight text-sm">
                   <p className="flex items-center gap-2">
-                    <span className="font-semibold text-textDark">Registration Closes:</span> 26th Sep 2026
+                    <span className="font-semibold text-textDark">Mock Test:</span> 1st – 2nd Oct 2026
                   </p>
                   <p className="flex items-center gap-2">
-                    <span className="font-semibold text-textDark">Mock Test:</span> 29th – 30th Sep 2026
+                    <span className="font-semibold text-textDark">Quiz Date:</span> 3rd October 2026
                   </p>
                   <p className="flex items-center gap-2">
-                    <span className="font-semibold text-textDark">Format:</span> 45 MCQs in 30 Minutes
+                    <span className="font-semibold text-textDark">Format:</span> 50 MCQs in 30 Minutes
                   </p>
                   <p className="flex items-center gap-2">
-                    <span className="font-semibold text-textDark">Marking Scheme:</span> +3 for Correct, -1 for Incorrect
+                    <span className="font-semibold text-textDark">Marking Scheme:</span> +4 for Correct, -1 for Incorrect
                   </p>
                   <p className="flex items-center gap-2 sm:col-span-2">
                     <span className="font-semibold text-textDark">Eligibility:</span> Exclusively Classes 11th &amp; 12th (All Streams)
@@ -104,16 +104,12 @@ const Rules = () => {
                 </div>
                 <div className="space-y-4 text-sm">
                   <div className="flex justify-between items-center border-b border-gray-100 pb-3">
-                    <span className="text-textLight">Registration Opens</span>
-                    <span className="font-semibold text-textDark">Now Open</span>
-                  </div>
-                  <div className="flex justify-between items-center border-b border-gray-100 pb-3">
-                    <span className="text-textLight">Registration Closes</span>
-                    <span className="font-bold text-accent">26th September 2026</span>
+                    <span className="text-textLight">Registration Status</span>
+                    <span className="font-bold text-green-600">Now Open (Free)</span>
                   </div>
                   <div className="flex justify-between items-center border-b border-gray-100 pb-3">
                     <span className="text-textLight">Online Mock Test</span>
-                    <span className="font-semibold text-textDark">29th – 30th September 2026</span>
+                    <span className="font-bold text-accent">1st – 2nd October 2026</span>
                   </div>
                   <div className="flex justify-between items-center border-b border-gray-100 pb-3">
                     <span className="text-textLight">National Online Quiz Date</span>

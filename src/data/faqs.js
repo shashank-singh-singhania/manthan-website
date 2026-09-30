@@ -9,15 +9,15 @@ const faqs = [
   },
   {
     q: "What are the important dates for the Online Quiz?",
-    a: "• Registration Deadline: 26th September 2026\n• Mock Test: 29th – 30th September 2026\n• National Online Quiz Date: 3rd October 2026\n• Offline Grand Finale: Mid-October 2026 (Tentative)",
+    a: "• Mock Test: 1st – 2nd October 2026\n• National Online Quiz Date: 3rd October 2026\n• Offline Grand Finale: Mid-October 2026 (Tentative)",
   },
   {
     q: "What is the duration and question format of the Online Quiz?",
-    a: "The online quiz consists of 45 Multiple Choice Questions (MCQs) to be completed within 30 Minutes. It is time-based, so completing it quickly increases your qualification edge.",
+    a: "The online quiz consists of 50 Multiple Choice Questions (MCQs) to be completed within 30 Minutes. It is time-based, so completing it quickly increases your qualification edge.",
   },
   {
-    q: "What is the marking scheme and how are ties resolved?",
-    a: "Each correct answer earns +3 marks, while each incorrect answer incurs -1 mark (negative marking applicable). Star-marked questions (*) — Q5, Q10, Q15, Q20, Q25, Q30, Q35, Q40, and Q45 — will serve as primary tie-breakers, followed by faster submission time.",
+    q: "What is the marking scheme for the Online Quiz?",
+    a: "Each correct answer earns +4 marks, while each incorrect answer incurs -1 mark (negative marking applicable).",
   },
   {
     q: "What are the Cash Prizes for Manthan 2026?",
@@ -37,7 +37,7 @@ const faqs = [
   },
   {
     q: "How do I register for Manthan 2026?",
-    a: "Registration is simple! Click the 'Register Now' button on this website to fill out the official Google Form before 26th September 2026.",
+    a: "Registration is simple! Click the 'Register Now' button on this website to fill out the official Google Form.",
   },
   {
     q: "How can I contact the Manthan team for queries?",

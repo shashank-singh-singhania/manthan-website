@@ -110,17 +110,17 @@ const HeroSection = () => {
               <div className="bg-white/5 border border-white/10 p-3 rounded-xl text-center">
                 <Zap className="w-4 h-4 text-gold mx-auto mb-1" />
                 <div className="text-xs text-white/60">Questions</div>
-                <div className="text-sm font-bold text-white">45 MCQs</div>
+                <div className="text-sm font-bold text-white">50 MCQs</div>
               </div>
               <div className="bg-white/5 border border-white/10 p-3 rounded-xl text-center">
                 <Award className="w-4 h-4 text-gold mx-auto mb-1" />
                 <div className="text-xs text-white/60">Marking</div>
-                <div className="text-sm font-bold text-white">+3 / -1</div>
+                <div className="text-sm font-bold text-white">+4 / -1</div>
               </div>
               <div className="bg-white/5 border border-white/10 p-3 rounded-xl text-center">
                 <Trophy className="w-4 h-4 text-gold mx-auto mb-1" />
-                <div className="text-xs text-white/60">Tie-Breaker</div>
-                <div className="text-sm font-bold text-white">9 Star Qs</div>
+                <div className="text-xs text-white/60">Mode</div>
+                <div className="text-sm font-bold text-white">Online</div>
               </div>
             </div>
 
@@ -128,15 +128,9 @@ const HeroSection = () => {
             <div className="space-y-2.5 mb-6">
               <div className="flex items-center justify-between text-sm bg-white/5 border border-white/10 px-4 py-2.5 rounded-xl hover:bg-gold/10 transition-colors">
                 <span className="flex items-center gap-2 text-white/80">
-                  <Calendar className="w-4 h-4 text-gold" /> Registration Deadline
-                </span>
-                <span className="font-bold text-gold">26th September 2026</span>
-              </div>
-              <div className="flex items-center justify-between text-sm bg-white/5 border border-white/10 px-4 py-2.5 rounded-xl hover:bg-gold/10 transition-colors">
-                <span className="flex items-center gap-2 text-white/80">
                   <Calendar className="w-4 h-4 text-accent" /> Mock Test (Practice)
                 </span>
-                <span className="font-bold text-accent">29th – 30th September 2026</span>
+                <span className="font-bold text-accent">1st – 2nd October 2026</span>
               </div>
               <div className="flex items-center justify-between text-sm bg-white/10 border border-gold/40 px-4 py-2.5 rounded-xl">
                 <span className="flex items-center gap-2 font-bold text-white">

@@ -41,12 +41,8 @@ export default function OnlineRegister() {
                 <span>Online (Individual)</span>
               </p>
               <p className="text-textLight flex justify-between">
-                <span className="font-semibold text-textDark">Registration Deadline:</span>{" "}
-                <span className="font-bold text-accent">26th September 2026</span>
-              </p>
-              <p className="text-textLight flex justify-between">
                 <span className="font-semibold text-textDark">Online Mock Test:</span>{" "}
-                <span>29th – 30th September 2026</span>
+                <span className="font-bold text-accent">1st – 2nd October 2026</span>
               </p>
               <p className="text-textLight flex justify-between">
                 <span className="font-semibold text-textDark">National Quiz Date:</span>{" "}
@@ -54,7 +50,7 @@ export default function OnlineRegister() {
               </p>
               <p className="text-textLight flex justify-between">
                 <span className="font-semibold text-textDark">Format:</span>{" "}
-                <span>45 MCQs in 30 Minutes (+3 / -1)</span>
+                <span>50 MCQs in 30 Minutes (+4 / -1)</span>
               </p>
               <p className="text-textLight flex justify-between">
                 <span className="font-semibold text-textDark">Cash Prizes:</span>{" "}

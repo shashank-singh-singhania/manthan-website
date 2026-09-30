@@ -24,11 +24,9 @@ export const onlinePrizes = [
 
 export const onlineRules = [
   "Each participant must attempt the quiz individually without any external help (books, internet, or peers).",
-  "Total 45 questions per set with a duration of exactly 30 minutes.",
+  "Total 50 questions per set with a duration of exactly 30 minutes.",
   "Time-based evaluation: Try to complete the quiz as fast as possible for a higher qualification advantage.",
-  "Marking Scheme: +3 marks for every correct answer, -1 mark for every incorrect answer (negative marking applicable).",
-  "Star-Marked Questions (*): Questions Q5, Q10, Q15, Q20, Q25, Q30, Q35, Q40, and Q45 are star-marked tie-breaker questions.",
-  "Tie-Breaker Rule: In case of equal scores, performance on star-marked questions followed by faster completion time will decide the higher rank.",
+  "Marking Scheme: +4 marks for every correct answer, -1 mark for every incorrect answer (negative marking applicable).",
   "Switching browser tabs or minimizing the quiz window during the test may lead to disqualification.",
   "The decision of the organizing committee will be final and binding.",
 ];
@@ -36,16 +34,15 @@ export const onlineRules = [
 export const onlineEligibility = [
   "Exclusively open to students of Classes 11th and 12th (any stream: Science, Commerce, or Humanities)",
   "Individual participation — no team formation required for the online round",
-  "Registration Deadline: 26th September 2026 via official Google Form",
-  "Mock Test: 29th – 30th September 2026",
+  "Registration via official Google Form",
+  "Mock Test: 1st – 2nd October 2026",
   "National Online Quiz Date: 3rd October 2026",
 ];
 
 export const onlineStructure = [
-  "Total Questions: 45 MCQs per set",
+  "Total Questions: 50 MCQs per set",
   "Duration: 30 Minutes (Time-based assessment)",
-  "Marking Scheme: +3 for Correct, -1 for Incorrect",
-  "Tie-Breakers: 9 Star-Marked Questions (Q5, 10, 15, 20, 25, 30, 35, 40, 45)",
+  "Marking Scheme: +4 for Correct, -1 for Incorrect",
   "E-Certificates: Provided to all participants",
   "Offline Final Qualifier: Top 3 best-performing students per school qualify for On-Campus Finale (Mid-October 2026 Tentative)",
 ];
