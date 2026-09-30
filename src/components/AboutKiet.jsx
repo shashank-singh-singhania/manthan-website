@@ -15,7 +15,6 @@ const AboutKiet = () => {
             Organised by
           </p>
           <h2 className="text-2xl md:text-4xl font-bold mb-3 text-textDark">
-            About{" "}
             <span
               className="inline-block relative"
               style={{
