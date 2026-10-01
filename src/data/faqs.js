@@ -16,8 +16,8 @@ const faqs = [
     a: "The online quiz consists of 50 Multiple Choice Questions (MCQs) to be completed within 30 Minutes. It is time-based, so completing it quickly increases your qualification edge.",
   },
   {
-    q: "What is the marking scheme for the Online Quiz?",
-    a: "Each correct answer earns +4 marks, while each incorrect answer incurs -1 mark (negative marking applicable).",
+    q: "What is the official scoring system and how are ties resolved?",
+    a: "• Correct Answer: +4 marks\n• Incorrect Answer: −1 mark (negative marking)\n• Unattempted: 0 marks\n\nTie-Breaker Priority:\n1. Total Marks (Highest overall score)\n2. Least Negative Marks (Fewer negative marks deducted)\n3. Timing (Fastest completion time)\n* Final decision rests solely with the Organising Team.",
   },
   {
     q: "What are the Cash Prizes for Manthan 2026?",
