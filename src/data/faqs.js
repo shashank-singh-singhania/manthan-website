@@ -1,5 +1,13 @@
 const faqs = [
   {
+    q: "Have the National Online Quiz results been declared?",
+    a: "Yes! The official results for the Manthan 2026 National Online Quiz have been declared. You can view the complete Hall of Fame on the home page with all 15 national winners, their schools, cities, and cash prizes.",
+  },
+  {
+    q: "How will the cash prizes and certificates be disbursed?",
+    a: "The KIET organizing team is reaching out directly to the 15 position holders and their respective schools for prize disbursal. Verified digital certificates are also being sent to participants' registered email addresses.",
+  },
+  {
     q: "Who can participate in Manthan 2026?",
     a: "Manthan 2026 is exclusively open to students currently studying in Classes 11th and 12th from any recognized school across India (all streams: Science, Commerce, or Humanities).",
   },

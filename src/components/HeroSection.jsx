@@ -85,11 +85,11 @@ const HeroSection = () => {
             <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-primary via-gold to-accent" />
             
             <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
-              <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-bold bg-gold/20 text-gold border border-gold/40">
-                <Zap className="w-3.5 h-3.5 fill-gold" /> LIVE NATIONAL EVENT
+              <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-bold bg-amber-400/20 text-amber-300 border border-amber-400/40">
+                <Trophy className="w-3.5 h-3.5 text-amber-300" /> RESULTS DECLARED • 15 NATIONAL WINNERS
               </span>
               <span className="text-xs font-semibold text-white/80 bg-white/10 px-3 py-1 rounded-full border border-white/10">
-                Eligibility: Classes 11th & 12th (All Streams)
+                Total Cash Prize: ₹1,00,000
               </span>
             </div>
 
@@ -97,65 +97,63 @@ const HeroSection = () => {
               National Online Quiz Competition 2026
             </h3>
             <p className="text-white/70 text-sm sm:text-base mb-6">
-              Individual online participation from anywhere in India. Test your knowledge in a high-energy, speed-based 30-minute challenge!
+              The National Quiz was successfully conducted on 3rd October 2026. Heartiest congratulations to all 15 position holders across India who demonstrated outstanding knowledge and lightning speed!
             </p>
 
             {/* Quick Stats Grid */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
               <div className="bg-white/5 border border-white/10 p-3 rounded-xl text-center">
+                <Trophy className="w-4 h-4 text-gold mx-auto mb-1" />
+                <div className="text-xs text-white/60">Cash Prizes</div>
+                <div className="text-sm font-bold text-white">₹1,00,000</div>
+              </div>
+              <div className="bg-white/5 border border-white/10 p-3 rounded-xl text-center">
+                <Award className="w-4 h-4 text-gold mx-auto mb-1" />
+                <div className="text-xs text-white/60">Winners</div>
+                <div className="text-sm font-bold text-white">15 Students</div>
+              </div>
+              <div className="bg-white/5 border border-white/10 p-3 rounded-xl text-center">
+                <Zap className="w-4 h-4 text-gold mx-auto mb-1" />
+                <div className="text-xs text-white/60">Format</div>
+                <div className="text-sm font-bold text-white">50 MCQs</div>
+              </div>
+              <div className="bg-white/5 border border-white/10 p-3 rounded-xl text-center">
                 <Clock className="w-4 h-4 text-gold mx-auto mb-1" />
                 <div className="text-xs text-white/60">Duration</div>
                 <div className="text-sm font-bold text-white">30 Mins</div>
               </div>
-              <div className="bg-white/5 border border-white/10 p-3 rounded-xl text-center">
-                <Zap className="w-4 h-4 text-gold mx-auto mb-1" />
-                <div className="text-xs text-white/60">Questions</div>
-                <div className="text-sm font-bold text-white">50 MCQs</div>
-              </div>
-              <div className="bg-white/5 border border-white/10 p-3 rounded-xl text-center">
-                <Award className="w-4 h-4 text-gold mx-auto mb-1" />
-                <div className="text-xs text-white/60">Marking</div>
-                <div className="text-sm font-bold text-white">+4 / -1</div>
-              </div>
-              <div className="bg-white/5 border border-white/10 p-3 rounded-xl text-center">
-                <Trophy className="w-4 h-4 text-gold mx-auto mb-1" />
-                <div className="text-xs text-white/60">Mode</div>
-                <div className="text-sm font-bold text-white">Online</div>
-              </div>
             </div>
 
-            {/* Important Dates List */}
+            {/* Important Dates / Status List */}
             <div className="space-y-2.5 mb-6">
-              <div className="flex items-center justify-between text-sm bg-white/5 border border-white/10 px-4 py-2.5 rounded-xl hover:bg-gold/10 transition-colors">
+              <div className="flex items-center justify-between text-sm bg-white/5 border border-white/10 px-4 py-2.5 rounded-xl">
                 <span className="flex items-center gap-2 text-white/80">
-                  <Calendar className="w-4 h-4 text-accent" /> Mock Test (Practice)
+                  <Calendar className="w-4 h-4 text-accent" /> National Quiz Event
                 </span>
-                <span className="font-bold text-accent">1st – 2nd October 2026</span>
+                <span className="font-bold text-white/90">3rd October 2026 (Completed)</span>
               </div>
               <div className="flex items-center justify-between text-sm bg-white/10 border border-gold/40 px-4 py-2.5 rounded-xl">
                 <span className="flex items-center gap-2 font-bold text-white">
-                  <Trophy className="w-4 h-4 text-gold animate-bounce" /> National Quiz Day
+                  <Trophy className="w-4 h-4 text-gold animate-bounce" /> Official Results
                 </span>
-                <span className="font-extrabold text-white text-base">3rd October 2026</span>
+                <span className="font-extrabold text-gold text-base">Announced • See Below</span>
               </div>
             </div>
 
             <div className="flex flex-col sm:flex-row items-center gap-4">
               <a
-                href={QUIZ_URL}
-                target="_blank"
-                rel="noreferrer"
+                href="#winners"
                 className="w-full sm:w-auto flex-1 font-bold py-4 px-8 rounded-xl transition-all duration-200 flex items-center justify-center group/btn text-base shadow-xl glow-gold hover:scale-[1.02]"
                 style={{ background: "linear-gradient(135deg, #F5C518 0%, #D4A800 100%)", color: "#0d0920" }}
               >
-                Attempt Mock Quiz
+                View Hall of Fame & Winners
                 <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover/btn:translate-x-1" />
               </a>
               <Link
                 href="/rules"
                 className="w-full sm:w-auto px-6 py-4 rounded-xl border border-white/20 hover:border-gold/50 text-white/90 hover:text-white text-sm font-semibold transition-all text-center"
               >
-                View Rules & Format
+                Rules & Regulations
               </Link>
             </div>
           </div>

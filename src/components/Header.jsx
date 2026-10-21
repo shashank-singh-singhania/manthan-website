@@ -11,6 +11,7 @@ const Header = () => {
   const pathname = usePathname();
 
   const menuItems = [
+    { id: "winners",       label: "Winners 🏆",       type: "scroll" },
     { id: "about-manthan", label: "About Manthan",    type: "scroll" },
     { id: "about-kiet",    label: "About KIET",       type: "scroll" },
     { id: "/rules",        label: "Rules & Regulations", type: "link"   },
@@ -106,15 +107,14 @@ const Header = () => {
                 </button>
               );
             })}
-            <a
-              href="https://quiz.kiet.edu/login/index.php"
-              target="_blank"
-              rel="noreferrer"
-              className="ml-3 px-5 py-2 text-sm font-bold rounded-lg transition-all duration-200 shadow-md hover:shadow-gold/30 hover:-translate-y-0.5"
+            <button
+              onClick={() => handleNavigation({ id: "winners", type: "scroll" })}
+              className="ml-3 px-5 py-2 text-sm font-bold rounded-lg transition-all duration-200 shadow-md hover:shadow-gold/30 hover:-translate-y-0.5 cursor-pointer flex items-center gap-1.5"
               style={{ background: "linear-gradient(135deg, #F5C518, #D4A800)", color: "#0d0920" }}
             >
-              Attempt Mock Quiz
-            </a>
+              <span>View Winners</span>
+              <span>🏆</span>
+            </button>
           </div>
 
           {/* Mobile menu toggle */}
@@ -147,15 +147,13 @@ const Header = () => {
                   </button>
                 );
               })}
-              <a
-                href="https://quiz.kiet.edu/login/index.php"
-                target="_blank"
-                rel="noreferrer"
-                className="block w-full text-center px-5 py-3 text-sm font-bold rounded-lg mt-2"
+              <button
+                onClick={() => handleNavigation({ id: "winners", type: "scroll" })}
+                className="block w-full text-center px-5 py-3 text-sm font-bold rounded-lg mt-2 cursor-pointer"
                 style={{ background: "linear-gradient(135deg, #F5C518, #D4A800)", color: "#0d0920" }}
               >
-                Attempt Mock Quiz
-              </a>
+                View Winners 🏆
+              </button>
             </div>
           </div>
         )}
