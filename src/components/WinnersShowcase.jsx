@@ -283,19 +283,19 @@ const WinnersShowcase = () => {
           </div>
         ) : viewMode === "grid" ? (
           /* ================= GRID VIEW ================= */
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredStudents.map((student) => {
               const styles = getRankBadge(student.tierTheme, student.rank);
               return (
                 <div
                   key={`${student.name}-${student.rank}`}
-                  className={`relative rounded-2xl p-6 border ${styles.border} bg-gradient-to-br ${styles.cardBg} backdrop-blur-xl shadow-xl hover:-translate-y-1.5 transition-all duration-300 group flex flex-col justify-between`}
+                  className={`relative rounded-3xl p-6 border ${styles.border} bg-gradient-to-br ${styles.cardBg} backdrop-blur-xl shadow-xl hover:-translate-y-1.5 transition-all duration-300 group flex flex-col justify-between overflow-hidden`}
                 >
-                  {/* Top Bar: Rank & Prize Tag */}
                   <div>
-                    <div className="flex items-center justify-between gap-2 mb-4">
+                    {/* Top Header: Rank, Position & Prize */}
+                    <div className="flex items-center justify-between gap-2 mb-5">
                       <div className="flex items-center gap-2">
-                        <span className="w-8 h-8 rounded-xl bg-black/40 border border-white/15 flex items-center justify-center font-black text-sm text-white">
+                        <span className="w-8 h-8 rounded-xl bg-black/40 border border-white/15 flex items-center justify-center font-black text-sm text-white shadow-inner">
                           #{student.rank}
                         </span>
                         <span
@@ -306,33 +306,59 @@ const WinnersShowcase = () => {
                         </span>
                       </div>
 
-                      <span className={`px-3 py-1 rounded-full text-xs font-black shadow-sm ${styles.pill}`}>
+                      <span className={`px-3 py-1 rounded-full text-xs font-black shadow-md ${styles.pill}`}>
                         {student.prize}
                       </span>
                     </div>
 
-                    {/* Student Name */}
-                    <h3 className="text-xl sm:text-2xl font-black text-white group-hover:text-amber-300 transition-colors mb-2 leading-tight">
-                      {student.name}
-                    </h3>
+                    {/* Student Photo & Identity Spotlight */}
+                    <div className="flex items-center gap-4 mb-4">
+                      {/* Photo Container */}
+                      <div className="relative shrink-0">
+                        <div
+                          className={`w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden border-2 ${styles.border} shadow-xl group-hover:scale-105 transition-transform duration-300 bg-slate-900/60 relative`}
+                        >
+                          <img
+                            src={student.image}
+                            alt={`${student.name} - Manthan 2026 Winner`}
+                            className="w-full h-full object-cover object-top"
+                            loading="lazy"
+                          />
+                        </div>
+                        <div className="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-slate-950 border border-white/20 flex items-center justify-center text-xs shadow-md">
+                          {student.tierTheme === "gold" ? "🥇" : student.tierTheme === "silver" ? "🥈" : "🥉"}
+                        </div>
+                      </div>
+
+                      {/* Name & Quick Metadata */}
+                      <div className="flex-1 min-w-0">
+                        <h3 className="text-xl sm:text-2xl font-black text-white group-hover:text-amber-300 transition-colors leading-tight mb-1 truncate">
+                          {student.name}
+                        </h3>
+                        <div className="inline-flex items-center gap-1.5 bg-white/10 px-2.5 py-0.5 rounded-lg border border-white/10 text-xs font-semibold text-amber-300 mb-1">
+                          <GraduationCap className="w-3.5 h-3.5 shrink-0" />
+                          <span>Class {student.class}</span>
+                        </div>
+                        <div className="flex items-center gap-1.5 text-xs text-white/70 font-medium truncate">
+                          <MapPin className="w-3.5 h-3.5 text-accent shrink-0" />
+                          <span className="truncate">{student.city}</span>
+                        </div>
+                      </div>
+                    </div>
 
                     {/* School Name */}
-                    <div className="flex items-start gap-2 text-white/80 text-xs sm:text-sm mb-4 leading-snug">
+                    <div className="flex items-start gap-2 text-white/80 text-xs sm:text-sm bg-black/25 p-3 rounded-xl border border-white/10 mb-4 leading-snug">
                       <School className="w-4 h-4 text-white/50 shrink-0 mt-0.5" />
-                      <span className="font-medium">{student.school}</span>
+                      <span className="font-medium line-clamp-2">{student.school}</span>
                     </div>
                   </div>
 
-                  {/* Metadata Chips: City & Class */}
-                  <div className="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-white/70">
-                    <div className="flex items-center gap-1.5 font-medium">
-                      <MapPin className="w-3.5 h-3.5 text-accent" />
-                      <span>{student.city}</span>
-                    </div>
-                    <div className="flex items-center gap-1.5 font-semibold bg-white/10 px-2.5 py-1 rounded-lg border border-white/10">
-                      <GraduationCap className="w-3.5 h-3.5 text-amber-300" />
-                      <span>Class {student.class}</span>
-                    </div>
+                  {/* Card Bottom Status */}
+                  <div className="pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-white/60">
+                    <span className="flex items-center gap-1">
+                      <Sparkles className="w-3 h-3 text-amber-400" /> National Position Holder
+                    </span>
+                    <span className="font-semibold text-white/80">{student.prize} Cash Award</span>
                   </div>
                 </div>
               );
@@ -345,6 +371,7 @@ const WinnersShowcase = () => {
               <thead className="bg-white/10 uppercase tracking-wider text-[11px] font-bold text-white border-b border-white/15">
                 <tr>
                   <th className="px-4 py-3.5 text-center">Rank</th>
+                  <th className="px-4 py-3.5">Photo</th>
                   <th className="px-5 py-3.5">Student Name</th>
                   <th className="px-5 py-3.5">School</th>
                   <th className="px-4 py-3.5">City</th>
@@ -364,7 +391,17 @@ const WinnersShowcase = () => {
                       <td className="px-4 py-4 text-center font-bold text-white">
                         #{student.rank}
                       </td>
-                      <td className="px-5 py-4 font-black text-white text-sm sm:text-base">
+                      <td className="px-4 py-3">
+                        <div className="w-11 h-11 rounded-xl overflow-hidden border border-white/20 shadow-md bg-slate-900 shrink-0">
+                          <img
+                            src={student.image}
+                            alt={student.name}
+                            className="w-full h-full object-cover object-top"
+                            loading="lazy"
+                          />
+                        </div>
+                      </td>
+                      <td className="px-5 py-4 font-black text-white text-sm sm:text-base whitespace-nowrap">
                         {student.name}
                       </td>
                       <td className="px-5 py-4 text-white/80 max-w-xs">{student.school}</td>

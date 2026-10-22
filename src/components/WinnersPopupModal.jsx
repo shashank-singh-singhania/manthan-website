@@ -105,10 +105,34 @@ const WinnersPopupModal = () => {
                 🎉
               </h2>
 
-              <p className="text-white/80 text-xs sm:text-sm mb-5 leading-relaxed">
+              <p className="text-white/80 text-xs sm:text-sm mb-4 leading-relaxed">
                 Heartiest congratulations to the top 15 position holders across India sharing{" "}
                 <strong className="text-amber-300 font-bold">₹1,00,000</strong> in cash prizes in the Manthan 2026 National Online Quiz!
               </p>
+
+              {/* Top Champions Photos Row */}
+              <div className="flex items-center justify-center gap-2 mb-5">
+                {[
+                  { name: "Neil", img: "/images/winners/neil-sheoran.jpg", rank: 1 },
+                  { name: "Pratyush", img: "/images/winners/pratyush-singh.jpg", rank: 2 },
+                  { name: "Yatharth", img: "/images/winners/yatharth-tyagi.jpg", rank: 3 },
+                  { name: "Aradhya", img: "/images/winners/aradhya-dubey.jpg", rank: 4 },
+                  { name: "Raman", img: "/images/winners/raman-saini.jpg", rank: 5 },
+                ].map((w) => (
+                  <div key={w.name} className="flex flex-col items-center">
+                    <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full overflow-hidden border-2 border-amber-400 shadow-lg bg-slate-900 relative">
+                      <img
+                        src={w.img}
+                        alt={w.name}
+                        className="w-full h-full object-cover object-top"
+                      />
+                    </div>
+                    <span className="text-[10px] text-amber-300 font-bold mt-1 truncate max-w-[50px]">
+                      {w.name}
+                    </span>
+                  </div>
+                ))}
+              </div>
 
               {/* Prize Tiers Overview Box */}
               <div className="space-y-2 mb-6 text-left text-xs sm:text-sm">

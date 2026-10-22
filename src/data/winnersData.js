@@ -28,6 +28,7 @@ export const winnersData = {
           position: "Winner",
           prize: "₹10,000",
           badgeColor: "gold",
+          image: "/images/winners/neil-sheoran.jpg",
         },
         {
           rank: 2,
@@ -38,6 +39,7 @@ export const winnersData = {
           position: "Winner",
           prize: "₹10,000",
           badgeColor: "gold",
+          image: "/images/winners/pratyush-singh.jpg",
         },
         {
           rank: 3,
@@ -48,6 +50,7 @@ export const winnersData = {
           position: "Winner",
           prize: "₹10,000",
           badgeColor: "gold",
+          image: "/images/winners/yatharth-tyagi.jpg",
         },
         {
           rank: 4,
@@ -58,6 +61,7 @@ export const winnersData = {
           position: "Winner",
           prize: "₹10,000",
           badgeColor: "gold",
+          image: "/images/winners/aradhya-dubey.jpg",
         },
         {
           rank: 5,
@@ -68,6 +72,7 @@ export const winnersData = {
           position: "Winner",
           prize: "₹10,000",
           badgeColor: "gold",
+          image: "/images/winners/raman-saini.jpg",
         },
       ],
     },
@@ -90,6 +95,7 @@ export const winnersData = {
           position: "Runner Up",
           prize: "₹6,000",
           badgeColor: "silver",
+          image: "/images/winners/nivriti-tripathi.jpg",
         },
         {
           rank: 7,
@@ -100,6 +106,7 @@ export const winnersData = {
           position: "Runner Up",
           prize: "₹6,000",
           badgeColor: "silver",
+          image: "/images/winners/sakshi-verma.jpg",
         },
         {
           rank: 8,
@@ -110,6 +117,7 @@ export const winnersData = {
           position: "Runner Up",
           prize: "₹6,000",
           badgeColor: "silver",
+          image: "/images/winners/bhoomika-upadhyay.jpg",
         },
         {
           rank: 9,
@@ -120,6 +128,7 @@ export const winnersData = {
           position: "Runner Up",
           prize: "₹6,000",
           badgeColor: "silver",
+          image: "/images/winners/riya-rai.jpg",
         },
         {
           rank: 10,
@@ -130,6 +139,7 @@ export const winnersData = {
           position: "Runner Up",
           prize: "₹6,000",
           badgeColor: "silver",
+          image: "/images/winners/arsh-singhal.jpg",
         },
       ],
     },
@@ -152,6 +162,7 @@ export const winnersData = {
           position: "2nd Runner Up",
           prize: "₹4,000",
           badgeColor: "bronze",
+          image: "/images/winners/kartik-kumar.jpg",
         },
         {
           rank: 12,
@@ -162,6 +173,7 @@ export const winnersData = {
           position: "2nd Runner Up",
           prize: "₹4,000",
           badgeColor: "bronze",
+          image: "/images/winners/nivyansh-sharma.jpg",
         },
         {
           rank: 13,
@@ -172,6 +184,7 @@ export const winnersData = {
           position: "2nd Runner Up",
           prize: "₹4,000",
           badgeColor: "bronze",
+          image: "/images/winners/aditya-mishra.jpg",
         },
         {
           rank: 14,
@@ -182,6 +195,7 @@ export const winnersData = {
           position: "2nd Runner Up",
           prize: "₹4,000",
           badgeColor: "bronze",
+          image: "/images/winners/vansh-bhardwaj.jpg",
         },
         {
           rank: 15,
@@ -192,6 +206,7 @@ export const winnersData = {
           position: "2nd Runner Up",
           prize: "₹4,000",
           badgeColor: "bronze",
+          image: "/images/winners/shreyansh-singh.jpg",
         },
       ],
     },
